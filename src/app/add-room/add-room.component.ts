@@ -12,4 +12,8 @@ export class AddRoomComponent implements OnInit {
   ngOnInit() {
   }
 
+ ShowLocation(){
+    document.getElementById('L1').style.display = "none";
+    document.getElementById('LocationForm').style.display = "block";
+ }
 }
