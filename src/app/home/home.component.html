@@ -1,1 +1,20 @@
-<p>home works!</p>
+<h1>Manage your provided locations</h1>
+
+<div class="location" *ngFor="let location of locations;">
+    <h3>{{location.Address}}<br>
+        {{location.City}}, {{location.State}} {{location.Zip}}</h3>
+
+    <button type="button">Add New Room</button>
+
+    <div class="room" *ngFor="let room of rooms">
+        Room: {{testRoom.RoomNumber}} Gender: {{testRoom.Gender}}<br>
+        Occupancy: <b>{{testRoom.CurrentOccupancy}}</b> of <b>{{testRoom.MaxOccupancy}}</b><br>
+        Start Date: {{testRoom.StartDate}} End Date: {{testRoom.EndDate}}<br>
+        {{testRoom.Description}}<br>
+        <span><button>Update</button></span>
+        <span><button>Remove</button></span>
+        <br>
+    </div>
+
+
+</div>
