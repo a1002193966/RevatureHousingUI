@@ -24,6 +24,12 @@ export class AddRoomComponent implements OnInit {
       console.log(this.cust);
   })
 
-    
-  }
+}
+
+ postRoomInfo(){
+   this.datasvc.postDate();
+ }
+
+
+
 }
