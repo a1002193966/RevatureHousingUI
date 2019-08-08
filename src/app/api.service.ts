@@ -16,6 +16,7 @@ export class ApiService {
   getDate(){
     return this.http.get("https://reqres.in/api/users");
   }
+  
   postDate(){
     return this.http.post("url",{
         "firstname": "john",

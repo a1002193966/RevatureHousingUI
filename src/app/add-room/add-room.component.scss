@@ -1,0 +1,11 @@
+
+
+.opacity {
+	position: absolute;
+	opacity: 0;
+	width: 0;		/* for internet explorer */
+}
+input.checked[type="radio"]
+{
+    visibility:hidden;
+}
