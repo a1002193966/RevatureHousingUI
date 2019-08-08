@@ -17,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import {FormsModule} from '@angular/forms'
+import { StickyNavModule } from 'ng2-sticky-nav';
 
 
 
@@ -36,9 +37,8 @@ import {FormsModule} from '@angular/forms'
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
-
-    
+    FormsModule,
+    StickyNavModule
   ],
   providers: [Room, Provider, Location, ApiService],
   bootstrap: [AppComponent]
