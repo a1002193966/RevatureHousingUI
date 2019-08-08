@@ -3,17 +3,17 @@
         <h1 class="pb-1">Add a Room</h1>
 </div>
 
-<form>
+<form #userForm="ngForm"  (ngSubmit)="onSubmit(userForm.value)">
     <fieldset class="form-group">
         <div class="row justify-content-center">
             <legend class="col-form-label col-sm-2 pt-0">Room Type:</legend>
                 <div class="col-sm-2 py-0">
                     <div class="form-check form-check-inline">
-                        <input type="radio" class="form-check-input" name="RoomType" id ="Apartment" value="Apartment">
+                        <input type="radio" class="form-check-input" name="RoomType" id ="Apartment" value="Apartment" ngModel>
                         <label for="Apartment" class="form-check-label">Apartment</label>
                     </div>
                     <div class="form-check form-check-inline">
-                         <input type="radio" class="form-check-input" name="RoomType" id ="Dorm" value="Dorm">
+                         <input type="radio" class="form-check-input" name="RoomType" id ="Dorm" value="Dorm" ngModel>
                          <label for="Dorm" class="form-check-label">Dorm</label>
                     </div>
                 </div>
@@ -22,15 +22,14 @@
     <div class = "form-group">
         <div class="row justify-content-center">
                 <label for="NumBeds" class="col-sm-2">Number of Beds:</label>
-                <input type="number" class="form-control col-sm-2 " name="NumBeds" id="NumBeds" required>
+                <input type="number" class="form-control col-sm-2 " name="NumBeds" id="NumBeds" required ngModel>
         </div>
     </div>
     <div class="form-group" id="L1">
         <div class="row justify-content-center">
                 <label for="Location" class="col-sm-2">Location:</label>
-                <select class="form-control col-sm-2" id="Location" name="Location" required>
-                  <option>1</option>
-                  <option>2</option>
+                <select class="form-control col-sm-2" id="Location" name="Location" *ngIf = "custs" required ngModel>
+                  <option  *ngFor = "let cus of cust.data"> {{cus.first_name}} </option>
                 </select>
                 <button type="button" class="btn btn-link col-sm-3" id="AddLocation" (click) = "ShowLocation()">Add Location</button>
         </div>    
@@ -67,11 +66,11 @@
                 <legend class="col-form-label col-sm-2 pt-0">Gender:</legend>
                     <div class="col-sm-2 py-0">
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="Gender" id ="Male" value="Male">
+                            <input type="radio" class="form-check-input" name="Gender" id ="Male" value="Male" ngModel>
                             <label for="Male" class="form-check-label">Male</label>
                         </div>
                         <div class="form-check form-check-inline">
-                             <input type="radio" class="form-check-input" name="Gender" id ="Female" value="Female">
+                             <input type="radio" class="form-check-input" name="Gender" id ="Female" value="Female" ngModel>
                              <label for="Female" class="form-check-label">Female</label>
                         </div>
                     </div>
@@ -80,28 +79,27 @@
     <div class="form-group">
         <div class="row justify-content-center">
             <label for="StartDate" class="col-sm-2">Start Date:</label>
-            <input type="date" class="form-control col-sm-2" id="StartDate" name="StartDate" required>
+            <input type="date" class="form-control col-sm-2" id="StartDate" name="StartDate" required ngModel>
         </div>
     </div>
     <div class="form-group">
             <div class="row justify-content-center">
                 <label for="EndDate" class="col-sm-2">End Date:</label>
-                <input type="date" class="form-control col-sm-2" id="EndDate" name="EndDate" required>
+                <input type="date" class="form-control col-sm-2" id="EndDate" name="EndDate" required ngModel>
             </div>
     </div>
     <div class = "form-group">
             <div class="row justify-content-center">
                     <label for="NumTenents" class="col-sm-2">Number of Tenents:</label>
-                    <input type="number" class="form-control col-sm-2 " name="NumTenets" id="NumTenents" required>
+                    <input type="number" class="form-control col-sm-2 " name="NumTenets" id="NumTenents" required ngModel>
             </div>
     </div>
     <div class="form-group">
         <div class="col text-center">
-             <input type="button" class="btn btn-primary" id="AddRoom" value="Submit">
+             <input type="submit" class="btn btn-primary" id="AddRoom" value="Submit">
         </div>
     </div>
 </form>
 
 
-<button (click)="getRoomInfo()">TestGetData</button>
 

@@ -7,17 +7,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-
+url: string = "https://reqres.in/api/users";
 
   constructor(private http : HttpClient) { 
     
   }
 
-  getDate(){
-    return this.http.get("https://reqres.in/api/users");
+  getData(){
+    return this.http.get(this.url);
   }
-  postDate(){
-    
+
+  postData(obj: object){
+  return this.http.post(this.url, JSON.stringify(obj));
   }
 
 

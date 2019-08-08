@@ -16,7 +16,7 @@ import { ApiService } from './api.service';
 import {HttpClientModule} from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-
+import {FormsModule} from '@angular/forms'
 
 
 
@@ -35,7 +35,10 @@ import { ContactComponent } from './contact/contact.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
+
+    
   ],
   providers: [Room, Provider, Location, ApiService],
   bootstrap: [AppComponent]
