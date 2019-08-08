@@ -18,12 +18,10 @@ export class AddRoomComponent implements OnInit {
   ngOnInit() {
   }
 
-<<<<<<< HEAD
  ShowLocation(){
     document.getElementById('L1').style.display = "none";
     document.getElementById('LocationForm').style.display = "block";
  }
-=======
   getRoomInfo(){
     this.datasvc.getDate().subscribe(data => {
       this.cust = data;
@@ -32,5 +30,4 @@ export class AddRoomComponent implements OnInit {
 
     
   }
->>>>>>> 33688fe686296aa1fe2e849c59de0d3d8525ec43
 }
