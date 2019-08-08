@@ -1,0 +1,26 @@
+[
+    {
+        "locationId": 1,
+        "address": "223 Lake Ave",
+        "city": "Maitland",
+        "state": "FL",
+        "trainingCenter": "The Best Training Center",
+        "providerId": 1
+    },
+    {
+        "locationId": 2,
+        "address": "443 Cold St",
+        "city": "Orlando",
+        "state": "FL",
+        "trainingCenter": "The Best Training Center",
+        "providerId": 2
+    },
+    {
+        "locationId": 3,
+        "address": "685 Rude Drive",
+        "city": "Winter Park",
+        "state": "FL",
+        "trainingCenter": "The Best Training Center",
+        "providerId": 1
+    }
+]
