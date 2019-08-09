@@ -22,7 +22,7 @@ export class ApiService {
   }
 
   getLocationData(){
-    return this.http.get("http://localhost:61965/api/locations");
+    return this.http.get("http://localhost:59754/api/locations");
   }
   
 
@@ -37,16 +37,16 @@ export class ApiService {
   postLocationData(obj: Location): Observable<Location>{
     console.log(obj);
   return this.http
-  .post<Location>("http://localhost:61965/api/Rooms", obj
+  .post<Location>("http://localhost:59754/api/Locations", obj
   );
 
   }
 
 
  
-  updateData(obj: object)
+  updateData(obj: Room)
   {
-    return this.http.put("url", JSON.stringify(obj));
+    return this.http.put("http://localhost:59754/api/Rooms/" + obj.RoomID, obj);
   }
 
 }
