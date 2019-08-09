@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-update-room',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateRoomComponent implements OnInit {
 
-  constructor() { }
+  room: Object;
+  cust: Object;
+  location: Location;
+  rooms: boolean = false;
+
+  constructor(private datasvc: ApiService) { }
 
   ngOnInit() {
+  }
+
+
+  updateRoomInfo(value: object){
+    this.datasvc.updateData(value);
   }
 
 }
