@@ -20,7 +20,6 @@
     float: left;
     width: 100%;
     margin-bottom: 80px;
-    
 }
 
 .loc-info{
@@ -49,6 +48,7 @@
 
 .room-detail{
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .btn-room{
@@ -57,17 +57,38 @@
 }
 
 #btn-remove{
-    background-color: cadetblue;
+    background-color: white;
     border-radius: 5px;
-    padding-left: 10%;
-    padding-right: 10%;
+    width: 48.5%;
+    opacity: 0.8;
+    border: 1px solid cadetblue;
+    color: cadetblue;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 
 #btn-update{
-    background-color: orange;
+    background-color: white;
     border-radius: 5px;
-    padding-left: 10%;
-    padding-right: 10%;
+    width: 48.5%;
+    opacity: 0.8;
+    border: 1px solid orange;
+    color: orange;
+    margin-right: 3%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#btn-remove:hover{
+    opacity: 1;
+    background-color: cadetblue;
+    color: white;
+}
+
+#btn-update:hover{
+    opacity: 1;
+    background-color: orange;
+    color: white;
 }
 
 #btn-addroom{
@@ -79,6 +100,7 @@
     padding-right: 20px;
     color: white;
     opacity: 0.7;
+    margin-right: 4%;
 }
 
 #btn-addroom:hover{
@@ -92,4 +114,8 @@
 
 #btn-showall{
     color: cadetblue;
+}
+
+#txt{
+    font-weight: 600;
 }

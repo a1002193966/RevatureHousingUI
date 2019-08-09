@@ -53,7 +53,7 @@ import { AddLocationComponent } from './add-location/add-location.component';
       cacheLocation: 'localStorage'
     })
   ],
-  providers: [Room, Provider, Location, ApiService],
+  providers: [Room, Provider, Location, ApiService, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
