@@ -34,10 +34,10 @@ export class ApiService {
 
   }
 
-  postLocationData(obj: Location): Observable<Location>{
+  PostLocationData(obj: Location): Observable<Location>{
     console.log(obj);
   return this.http
-  .post<Location>("http://localhost:59754/api/Locations", obj
+  .post<Location>("http://localhost:59754/api/locations", obj
   );
 
   }

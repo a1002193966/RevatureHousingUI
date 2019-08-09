@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { Location } from 'src/Entities/location';
 
 @Component({
   selector: 'dev-add-location',
@@ -8,17 +9,18 @@ import { ApiService } from '../api.service';
 })
 export class AddLocationComponent implements OnInit {
 
-  location: Location;
+  
   constructor(private datasvc: ApiService) { }
   
 
   ngOnInit() {
   }
 
-  postLocationInfo(value: Location){
-    console.log(value);
+  PostLocationInfo(obj: Location){
+    obj.ProviderID = 1;
+    console.log(obj);
     
-     this.datasvc.postLocationData(value).subscribe(data => {
+     this.datasvc.PostLocationData(obj).subscribe(data => {
       //post location success
       console.log(data);
       console.log("Post success");
@@ -26,7 +28,7 @@ export class AddLocationComponent implements OnInit {
     }), error => {
       //post location error handling 
       console.log("Error", error);
-      console.log(value);
+      console.log(obj);
     } 
     //console.log(value);
   }
