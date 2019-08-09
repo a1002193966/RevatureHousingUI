@@ -11,9 +11,9 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
   styleUrls: ['./add-room.component.scss']
 })
 export class AddRoomComponent implements OnInit {
-  room: Object;
+  room: Room;
   cust: Object;
-  location: Location;
+  location: Object;
   rooms: boolean = false;
 
   startDate: FormControl;
@@ -35,26 +35,37 @@ export class AddRoomComponent implements OnInit {
     document.getElementById('L1').style.display = "none";
     document.getElementById('LocationForm').style.display = "block";
  }
+
+ //Get RoomInfo working: Test It 
   getRoomInfo(){
     //httpclient get method
-    this.datasvc.getData().subscribe(data => {
-      this.room = data;//assign data to room object
+    this.datasvc.getLocationData().subscribe(data => {
+      this.location = data;//assign data to location object
       this.rooms = true;//set rooms to true because room object existed
-      console.log(this.cust);
+      console.log(this.location);
   })
   }
 
-  postRoomInfo(value: object){
-    this.datasvc.postData(value).subscribe(data => {
-      //post successss
-      console.log("Post success"); 
+ 
+ 
+  postRoomInfo(value: Room){
+    console.log(value);
+    value.IsActive = true;
+    value.RoomID = 0;
+     this.datasvc.postRoomData(value).subscribe(data => {
+      //post room success
+      console.log(data);
+      console.log("Post success");
+
     }), error => {
-      //httpclient post error handling 
+      //post room error handling 
       console.log("Error", error);
-    }
+      console.log(value);
+    } 
+    //console.log(value);
   }
 
-  
+
   onSubmit(value: any) {
     //get the value by its property
     console.log(value);

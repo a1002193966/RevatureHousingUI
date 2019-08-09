@@ -16,10 +16,13 @@ describe('AddRoomComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AddRoomComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+
+//   //ngOnInit test
+//   it('should call getRoomInfo in ngOnInit',()=>{
+//     spyOn(component,'getRoomInfo');
+//     fixture.detectChanges();
+//     expect(component.getRoomInfo).toHaveBeenCalled();
+//   })
+ });

@@ -18,6 +18,9 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import {FormsModule} from '@angular/forms'
 import { StickyNavModule } from 'ng2-sticky-nav';
+import { MsAdalAngular6Module,AuthenticationGuard } from 'microsoft-adal-angular6';
+import { environment } from '../environments/environment';
+import { AddLocationComponent } from './add-location/add-location.component';
 
 
 
@@ -31,14 +34,24 @@ import { StickyNavModule } from 'ng2-sticky-nav';
     DeleteRoomComponent,
     UpdateRoomComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    AddLocationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    StickyNavModule
+    StickyNavModule,
+    MsAdalAngular6Module.forRoot({
+      tenant: environment.tenant,
+      clientId: environment.clientId,
+      redirectUri: window.location.origin,
+      endpoints: environment.endpoints,
+      navigateToLoginRequestUrl: false,
+      extraQueryParameter: environment.extraQueryParameter,
+      cacheLocation: 'localStorage'
+    })
   ],
   providers: [Room, Provider, Location, ApiService],
   bootstrap: [AppComponent]
