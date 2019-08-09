@@ -19,9 +19,11 @@ url: string = "https://reqres.in/api/users";
   
   postData(obj: object){
   return this.http.post(this.url, JSON.stringify(obj));
-
   }
 
-
+  updateData(obj: object)
+  {
+    return this.http.put(this.url, JSON.stringify(obj));
+  }
 
 }
