@@ -1,9 +1,7 @@
 <div class="home-body">
 
     <div class="home-head">
-        <h1>
-            Display all available rooms with locations
-        </h1>
+        <h1>Display All Properties</h1>
     </div>
 
     <div class="display-info" *ngFor="let location of locations;">
@@ -11,8 +9,8 @@
             <div class="loc-info">
                 
                 <div class="address">
-                    <h3 id="location-address">{{location.Address}}<br>
-                        {{location.City}}, {{location.State}} {{location.Zip}}</h3>
+                    <h4 id="location-address">{{location.Address}}</h4>
+                    <h5>{{location.City}}, {{location.State}} {{location.Zip}}</h5>
                 </div>
         
                 <div class="btn-room">
@@ -34,8 +32,8 @@
                             {{testRoom.Description}}<br>
                         </div>
                 
-                        <button id="btn-update">Update</button>
-                        <button id="btn-remove">Remove</button>
+                        <button id="btn-update">Edit</button>
+                        <button id="btn-remove">Delete</button>
                     </div>
             </div>
             <div class="btn-show">
