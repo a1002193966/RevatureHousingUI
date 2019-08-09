@@ -10,7 +10,7 @@ import { Location } from '../../Entities/location';
 export class HomeComponent implements OnInit {
   
   // test data
-  rooms = [1, 2, 3, 4];
+  rooms = [1, 2, 3, 4, 5];
   testRoom = {
     RoomID: 101,
     Type: "Apartment",
