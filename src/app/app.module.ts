@@ -51,7 +51,7 @@ import { environment } from '../environments/environment';
       cacheLocation: 'localStorage'
     })
   ],
-  providers: [Room, Provider, Location, ApiService],
+  providers: [Room, Provider, Location, ApiService, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

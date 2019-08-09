@@ -1,10 +1,10 @@
 export const environment = {
   production: true,
-  tenant: "08e0fc22-eb7c-8c61-2de5cc0825b9",
-  clientId: "ec9bc0dc-f72d-46ca-ade9-b0b2be584c30",
+  tenant: "9d8d0698-40b7-4f4b-a29a-050698a88de6",
+  clientId:  "335f1779-7ca4-4235-bd75-b6793ea8fd2f",
   extraQueryParameter: 'nux=1', // This is optional
   endpoints: {
-    "http://localhost:4200/api": "ec9bc0dc-f72d-46ca-ade9-b0b2be584c30" // Note, this is an object, you could add several things here
+    "http://localhost:4200/api":  "335f1779-7ca4-4235-bd75-b6793ea8fd2f" // Note, this is an object, you could add several things here
   }
   };
 
