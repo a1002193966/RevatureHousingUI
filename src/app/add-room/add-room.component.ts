@@ -10,9 +10,9 @@ import { Location } from 'src/Entities/location';
   styleUrls: ['./add-room.component.scss']
 })
 export class AddRoomComponent implements OnInit {
-  room: Object;
+  room: Room;
   cust: Object;
-  location: Location;
+  location: Object;
   rooms: boolean = false;
   constructor(private datasvc: ApiService) { }
 
@@ -24,23 +24,34 @@ export class AddRoomComponent implements OnInit {
     document.getElementById('L1').style.display = "none";
     document.getElementById('LocationForm').style.display = "block";
  }
+
+ //Get RoomInfo working: Test It 
   getRoomInfo(){
     //httpclient get method
     this.datasvc.getData().subscribe(data => {
-      this.room = data;//assign data to room object
+      this.location = data;//assign data to location object
       this.rooms = true;//set rooms to true because room object existed
-      console.log(this.cust);
+      console.log(this.location);
   })
   }
 
-  postRoomInfo(value: object){
-    this.datasvc.postData(value).subscribe(data => {
+ 
+ 
+  postRoomInfo(value: Room){
+    console.log(value);
+    value.IsActive = true;
+    value.RoomID = 0;
+     this.datasvc.postData(value).subscribe(data => {
       //post success
-      console.log("Post success"); 
+      console.log(data);
+      console.log("Post success");
+
     }), error => {
       //httpclient post error handling 
       console.log("Error", error);
-    }
+      console.log(value);
+    } 
+    //console.log(value);
   }
 
 

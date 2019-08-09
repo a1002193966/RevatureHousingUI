@@ -1,16 +1,121 @@
-.location {
-    max-width: 800px;
-    background-color: rgb(220, 220, 220);
-    border: 1px solid black;
-    margin: 50px;
+
+.home-body{
+    width: 80%;
+    margin-left: 12%;
+    margin-right: 8%;
 }
 
-.room {
-    border-top: 1px dashed black;
+.home-head{
+    float: left;
+    width: 100%;
+    margin-bottom: 50px;
+    margin-top: 40px;
 }
 
-button {
-    margin: 20px;
-    min-height: 40px;
-    background-color: rgb(200, 200, 200);
+#location-address{
+    color: #444;
+}
+
+.display-info{
+    float: left;
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+.loc-info{
+    float: left;
+    width: 100%;
+}
+
+.address{
+    float: left;
+    width: 50%;
+}
+
+.room-info{
+    width: 100%;
+}
+
+.room-card{
+    padding-right: 2%;
+    float: left;
+    width: 25%;
+}
+
+#room-img{
+    width: 100%;
+}
+
+.room-detail{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.btn-room{
+    float: left;
+    width: 50%;
+}
+
+#btn-remove{
+    background-color: white;
+    border-radius: 5px;
+    width: 48.5%;
+    opacity: 0.8;
+    border: 1px solid cadetblue;
+    color: cadetblue;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#btn-update{
+    background-color: white;
+    border-radius: 5px;
+    width: 48.5%;
+    opacity: 0.8;
+    border: 1px solid orange;
+    color: orange;
+    margin-right: 3%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#btn-remove:hover{
+    opacity: 1;
+    background-color: cadetblue;
+    color: white;
+}
+
+#btn-update:hover{
+    opacity: 1;
+    background-color: orange;
+    color: white;
+}
+
+#btn-addroom{
+    float: right;
+    background-color: cadetblue;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    opacity: 0.7;
+    margin-right: 4%;
+}
+
+#btn-addroom:hover{
+    opacity: 1;
+}
+
+.btn-show{
+    float: left;
+    margin-top: 30px;
+}
+
+#btn-showall{
+    color: cadetblue;
+}
+
+#txt{
+    font-weight: 600;
 }

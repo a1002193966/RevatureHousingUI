@@ -11,6 +11,7 @@ import { AuthenticationGuard } from 'microsoft-adal-angular6';
 
 
 const routes: Routes = [
+
   { path: "home", component: HomeComponent},
   //Will redirect users to azure login
   //{ path: "home", component: HomeComponent, canActivate: [AuthenticationGuard] },

@@ -10,7 +10,7 @@ import { Location } from '../../Entities/location';
 export class HomeComponent implements OnInit {
   
   // test data
-  rooms = [1, 2, 3, 4, 5];
+  rooms = [1, 2, 3, 4];
   testRoom = {
     RoomID: 101,
     Type: "Apartment",
@@ -18,8 +18,8 @@ export class HomeComponent implements OnInit {
     RoomNumber: 11,
     LocationID: 1001,
     Gender: "Male",
-    StartDate: new Date(),
-    EndDate: null,
+    StartDate: new Date().toLocaleDateString(),
+    EndDate: new Date().toLocaleDateString(),
     CurrentOccupancy: 2,
     IsActive: true,
     Description: "A short, optional description of the room"

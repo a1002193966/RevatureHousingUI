@@ -14,17 +14,17 @@
 
 <!-- *********************************Form*********************************** -->
 <!-- Room Type-->
-<form #userForm="ngForm"  (ngSubmit)="onSubmit(userForm.value)">
+<form #userForm="ngForm"  (ngSubmit)="postRoomInfo(userForm.value)">
     <fieldset class="form-group">
         <div class="row justify-content-center">
             <legend class="col-form-label col-sm-2 pt-0">Room Type:</legend>
                 <div class="col-sm-2 py-0">
                     <div class="form-check form-check-inline">
-                        <input type="radio" class="form-check-input" name="RoomType" id ="Apartment" value="Apartment" ngModel>
+                        <input type="radio" class="form-check-input" name="Type" id ="Apartment" value="Apartment" ngModel>
                         <label for="Apartment" class="form-check-label">Apartment</label>
                     </div>
                     <div class="form-check form-check-inline">
-                         <input type="radio" class="form-check-input" name="RoomType" id ="Dorm" value="Dorm" ngModel>
+                         <input type="radio" class="form-check-input" name="Type" id ="Dorm" value="Dorm" ngModel>
                          <label for="Dorm" class="form-check-label">Dorm</label>
                     </div>
                 </div>
@@ -34,15 +34,15 @@
     <div class = "form-group">
         <div class="row justify-content-center">
                 <label for="NumBeds" class="col-sm-2">Number of Beds:</label>
-                <input type="number" class="form-control col-sm-2 " name="NumBeds" id="NumBeds" required ngModel>
+                <input type="number" class="form-control col-sm-2 " name="MaxOccupancy" id="NumBeds" required ngModel>
         </div>
     </div>
 <!-- Location drop down list -->
     <div class="form-group" id="L1">
         <div class="row justify-content-center">
                 <label for="Location" class="col-sm-2">Location:</label>
-                <select class="form-control col-sm-2" id="Location" name="Location" *ngIf = "rooms" required ngModel>
-                  <option  *ngFor = "let room of rooms.data"> {{room.first_name}} </option>
+                <select class="form-control col-sm-2" id="Location" name="LocationID" *ngIf = "rooms" required >
+                  <option  *ngFor = "let room of location"> {{room.locationID}} </option>
                 </select>
                 <button type="button" class="btn btn-link col-sm-3" id="AddLocation" (click) = "ShowLocation()">Add Location</button>
         </div>    
@@ -77,7 +77,7 @@
     <div class="form-group">
         <div class="row justify-content-center">
             <label for="InternalAddress" class="col-sm-2">Room number:</label>
-            <input type="text" class="from-control col-sm-2" id="InternalAddress" required>
+            <input type="text" class="from-control col-sm-2" id="InternalAddress" name="RoomNumber" required ngModel>
         </div>
     </div>
  <!-- Gender -->  
@@ -116,9 +116,12 @@
     <div class = "form-group">
             <div class="row justify-content-center">
                     <label for="NumTenents" class="col-sm-2">Number of Tenents:</label>
-                    <input type="number" class="form-control col-sm-2 " name="NumTenets" id="NumTenents" required ngModel>
+                    <input type="number" class="form-control col-sm-2 " name="CurrentOccupency" id="NumTenents" required ngModel>
             </div>
     </div>
+
+    
+    
 <!-- Submit Button -->  
     <div class="form-group">
         <div class="col text-center">
