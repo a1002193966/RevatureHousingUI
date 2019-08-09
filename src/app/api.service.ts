@@ -22,6 +22,9 @@ url: string = "https://reqres.in/api/users";
 
   }
 
+  getRoomData(){
+    return this.http.get(this.url);
+  }
 
 
 }
