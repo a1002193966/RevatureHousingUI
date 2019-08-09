@@ -1,0 +1,105 @@
+.navbar{
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 12px;
+    overflow: hidden;  
+    opacity: 0.9;
+}
+
+.menu, .logo{
+    float: left;
+    height: 100px;
+}
+
+.menu{
+    width: 80%;
+    background-color: white;
+}
+
+.logo{
+    width: 20%;
+    background-color: white;
+}
+
+.menu ul{
+    float: right;
+    padding-top: 53px;
+    margin-right: 20vw;
+}
+
+.menu li{
+    float: left;
+    margin-left: 18px;
+    list-style: none;
+    padding-bottom: 7px;
+}
+
+.menu li a{
+    text-decoration: none;
+    color: #444;
+    font-family: sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.menu li:hover{
+    border-bottom: 2px solid darkorange;
+    cursor: pointer;
+}
+
+.logo img{
+    float: right;
+    padding-top: 30px;
+}
+
+#btn-login{
+    color: #fb752c; 
+    font-size: 11.5px;
+}
+
+#icon-user{
+    color: #fb752c; 
+    margin-right: 5px;
+}
+
+.greeting{
+    padding: 20px;
+    font-weight: 900;
+    font-size: 2rem;
+    text-align: center;
+    background-image: linear-gradient(
+        45deg,
+        #d65db1,
+        #ff6f91,
+        #ff9671,
+        #ffc75f,
+        #f9f871,
+        beige
+    );
+    background-clip: text;
+    color: transparent;
+}
+
+.content{
+    height: 5vh;
+}
+
+#grad{
+    background-image: linear-gradient(
+        45deg,
+        #d65db1,
+        #ff6f91,
+        #ff9671,
+        #ffc75f,
+        #f9f871,
+        beige
+    );
+    background-size: 300%;
+    background-position: left;
+    animation: trans 7s infinite alternate;
+}
+
+@keyframes trans{
+    0%   {background-position: left;}
+    100% {background-position: right;}
+}
