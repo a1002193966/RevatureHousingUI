@@ -15,7 +15,7 @@ export class AddLocationComponent implements OnInit {
   ngOnInit() {
   }
 
-  postRoomInfo(value: Location){
+  postLocationInfo(value: Location){
     console.log(value);
     
      this.datasvc.postLocationData(value).subscribe(data => {

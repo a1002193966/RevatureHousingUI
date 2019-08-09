@@ -11,7 +11,6 @@ import { Location } from 'src/Entities/location';
 })
 export class AddRoomComponent implements OnInit {
   room: Room;
-  cust: Object;
   location: Object;
   rooms: boolean = false;
   constructor(private datasvc: ApiService) { }
@@ -20,10 +19,7 @@ export class AddRoomComponent implements OnInit {
     this.getRoomInfo();//get data when the page is loaded
   }
 
- ShowLocation(){
-    document.getElementById('L1').style.display = "none";
-    document.getElementById('LocationForm').style.display = "block";
- }
+ 
 
  //Get RoomInfo working: Test It 
   getRoomInfo(){
@@ -35,7 +31,6 @@ export class AddRoomComponent implements OnInit {
   })
   }
 
- 
  
   postRoomInfo(value: Room){
     console.log(value);

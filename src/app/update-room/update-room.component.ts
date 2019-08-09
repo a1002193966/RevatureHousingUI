@@ -9,9 +9,7 @@ import { Room } from 'src/Entities/room';
 })
 export class UpdateRoomComponent implements OnInit {
 
-  room: Object;
-  cust: Object;
-  location: Location;
+  room: Room;
   rooms: boolean = false;
 
   constructor(private datasvc: ApiService) { }

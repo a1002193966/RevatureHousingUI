@@ -11,30 +11,38 @@
 
 <div class="d-flex justify-content-center">
     <h1 class="pb-1">Add a Location</h1>
+
 </div>
  <!-- Add Location form -->     
      <!-- Address --> 
-     <div class="form-group" id="LocationForm">
+<form #userForm = "ngForm" (ngSubmit) = "PostLocationInfo(userForm.value)">
+    <div class="form-group" id="LocationForm">
         <div class="row justify-content-center">
                 <label for="Address" class="col-sm-2">Address:</label>
-                <input type="text" class="from-control col-sm-2" id="Address">
+                <input type="text" class="from-control col-sm-2" id="Address" required ngModel>
          </div>
          <br>
 <!-- State --> 
     <div class="row justify-content-center">
                 <label for="State" class="col-sm-2">State:</label>
-                <input type="text" class="from-control col-sm-2" id="State">
+                <input type="text" class="from-control col-sm-2" id="State" required ngModel>
     </div>
     <br>
 <!-- City --> 
     <div class="row justify-content-center">
             <label for="City" class="col-sm-2">City:</label>
-            <input type="text" class="from-control col-sm-2" id="City">
+            <input type="text" class="from-control col-sm-2" id="City" required ngModel>
     </div>
      <br>
 <!-- ZipCode --> 
      <div class="row justify-content-center">
             <label for="ZIP" class="col-sm-2">Zip:</label>
-            <input type="text" class="from-control col-sm-2" id="ZIP">
+            <input type="text" class="from-control col-sm-2" id="ZIP" required ngModel>
+    </div>
+
+    <div>
+        <input type="submit" value="Submit" class="btn btn-primary">
     </div>
 </div>
+</form>
+     
