@@ -1,4 +1,4 @@
-.navbar{
+.nav-bar{
     box-sizing: border-box;
     width: 100%;
     font-size: 12px;
@@ -6,36 +6,36 @@
     opacity: 0.9;
 }
 
-.menu, .logo{
+.menubar, .revlogo{
     float: left;
     height: 100px;
 }
 
-.menu{
+.menubar{
     width: 80%;
     background-color: white;
 }
 
-.logo{
+.revlogo{
     width: 20%;
     cursor: pointer;
     background-color: white;
 }
 
-.menu ul{
+.menubar ul{
     float: right;
     padding-top: 53px;
     margin-right: 20vw;
 }
 
-.menu li{
+.menubar li{
     float: left;
     margin-left: 18px;
     list-style: none;
     padding-bottom: 7px;
 }
 
-.menu li a{
+.menubar li a{
     text-decoration: none;
     color: #444;
     font-family: sans-serif;
@@ -43,14 +43,14 @@
     text-transform: uppercase;
 }
 
-.menu li:hover{
+.menubar li:hover{
     border-bottom: 2px solid darkorange;
     cursor: pointer;
 }
 
-.logo img{
+.revlogo img{
     float: right;
-    padding-top: 30px;
+    padding-top: 30px !important;
 }
 
 #btn-login{
@@ -83,25 +83,4 @@
 
 .content{
     height: 5vh;
-}
-
-#grad{
-    background-image: linear-gradient(
-        45deg,
-        #d65db1,
-        #ff6f91,
-        #ff9671,
-        #ffc75f,
-        #f9f871,
-        beige
-    );
-    background-size: 300%;
-    background-position: left;
-    animation: trans 7s infinite alternate;
-    opacity: 0.5;
-}
-
-@keyframes trans{
-    0%   {background-position: left;}
-    100% {background-position: right;}
 }
