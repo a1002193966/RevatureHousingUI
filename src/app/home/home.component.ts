@@ -1,3 +1,4 @@
+import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '../../Entities/location';
 
@@ -45,10 +46,14 @@ export class HomeComponent implements OnInit {
   ]
   
 
-  constructor() {
+    constructor(private adalSvc: MsAdalAngular6Service) {
+      console.log(this.adalSvc.userInfo);
+      this.adalSvc.acquireToken('https://graph.microsoft.com').subscribe((token: string) => {
+        console.log(token);
+      });
+    }
     
-    
-   }
+   
 
   ngOnInit() {
     // get locations belonging to the provider
