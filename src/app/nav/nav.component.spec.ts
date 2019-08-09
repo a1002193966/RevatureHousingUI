@@ -45,9 +45,12 @@ describe('NavComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('can get RouterLinks from page', () => {
-  //   expect(routerLinks.length).toBe(4, 'should have 4 routerLinks');
-  //   expect(routerLinks[0].linkParams).toBe('/order');
-  //   expect(routerLinks[1].linkParams).toBe('/creditCard');
-  // });
+  it('can get RouterLinks from page', () => {
+    expect(routerLinks.length).toBe(4, 'should have 4 routerLinks');
+    console.log(routerLinks);
+    expect(routerLinks[0].linkParams).toBe('/');
+    expect(routerLinks[1].linkParams).toBe('/about');
+    expect(routerLinks[2].linkParams).toBe('/contact');
+    expect(routerLinks[3].linkParams).toBe('./login');
+  });
 });
