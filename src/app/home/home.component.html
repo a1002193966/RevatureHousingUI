@@ -2,8 +2,9 @@
 
     <div class="home-head">
         <h1>Display All Properties</h1>
+        <button id="btn-addLoc" routerLink="#">Add New Location</button>
     </div>
-
+    
     <div class="display-info" *ngFor="let location of locations;">
 
             <div class="loc-info">
@@ -14,7 +15,7 @@
                 </div>
         
                 <div class="btn-room">
-                    <button routerLink="add-room" id="btn-addroom">Add New Room</button>
+                    <button routerLink="add-room" id="btn-addRoom">Add New Room</button>
                 </div>
         
             </div>
@@ -29,16 +30,12 @@
                             <span id="txt">Occupancy: </span><b>{{testRoom.CurrentOccupancy}}</b> of <b>{{testRoom.MaxOccupancy}}</b><br>
                             <span id="txt">Start Date:</span> {{testRoom.StartDate}} <br>
                             <span id="txt">End Date: </span> {{testRoom.EndDate}}<br>
-                            {{testRoom.Description}}<br>
+                            <span id="des">{{testRoom.Description}}</span><br>
                         </div>
                 
-<<<<<<< HEAD
-                        <button id="btn-update">Edit</button>
-                        <button id="btn-remove">Delete</button>
-=======
-                        <button routerLink="update-room" id="btn-update">Update</button>
-                        <button routerLink="delete-room" id="btn-remove">Remove</button>
->>>>>>> f0c9d20b03d103c67b7f53da0319926420957b7d
+                        <button id="btn-update" routerLink="update-room">Edit</button>
+                        <button id="btn-remove" routerLink="delete-room">Delete</button>
+         
                     </div>
             </div>
             <div class="btn-show">
