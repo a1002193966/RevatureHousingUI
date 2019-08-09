@@ -11,6 +11,7 @@ import { AuthenticationGuard } from 'microsoft-adal-angular6';
 
 
 const routes: Routes = [
+
   { path: "home", component: HomeComponent, canActivate: [AuthenticationGuard] },
   { path: "add-room", component: AddRoomComponent },
   { path: "update-room", component: UpdateRoomComponent },
