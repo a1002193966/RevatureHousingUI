@@ -23,14 +23,14 @@ url: string = "https://reqres.in/api/users";
   }
 
   getData(){
-    return this.http.get("http://localhost:61965/api/locations");
+    return this.http.get("http://localhost:59754/api/locations");
   }
   
 
   postData(obj: Room): Observable<Room>{
     console.log(obj);
   return this.http
-  .post<Room>("http://localhost:61965/api/Rooms", obj
+  .post<Room>("http://localhost:59754/api/Rooms", obj
   );
 
   }
