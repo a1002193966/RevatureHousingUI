@@ -20,6 +20,7 @@ import {FormsModule} from '@angular/forms'
 import { StickyNavModule } from 'ng2-sticky-nav';
 import { MsAdalAngular6Module,AuthenticationGuard } from 'microsoft-adal-angular6';
 import { environment } from '../environments/environment';
+import { AddLocationComponent } from './add-location/add-location.component';
 
 
 
@@ -33,7 +34,8 @@ import { environment } from '../environments/environment';
     DeleteRoomComponent,
     UpdateRoomComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    AddLocationComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ import { environment } from '../environments/environment';
       cacheLocation: 'localStorage'
     })
   ],
-  providers: [Room, Provider, Location, ApiService],
+  providers: [Room, Provider, Location, ApiService, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

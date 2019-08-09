@@ -28,7 +28,7 @@ export class AddRoomComponent implements OnInit {
  //Get RoomInfo working: Test It 
   getRoomInfo(){
     //httpclient get method
-    this.datasvc.getData().subscribe(data => {
+    this.datasvc.getLocationData().subscribe(data => {
       this.location = data;//assign data to location object
       this.rooms = true;//set rooms to true because room object existed
       console.log(this.location);
@@ -41,7 +41,8 @@ export class AddRoomComponent implements OnInit {
     console.log(value);
     value.IsActive = true;
     value.RoomID = 0;
-     this.datasvc.postData(value).subscribe(data => {
+    
+     this.datasvc.postRoomData(value).subscribe(data => {
       //post success
       console.log(data);
       console.log("Post success");
