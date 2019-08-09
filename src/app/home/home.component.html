@@ -1,21 +1,44 @@
+<div class="home-body">
 
-<h1>Manage your provided locations</h1>
-
-<div class="location" *ngFor="let location of locations;">
-    <h3>{{location.Address}}<br>
-        {{location.City}}, {{location.State}} {{location.Zip}}</h3>
-
-    <button routerLink = "/add-room">Add New Room</button>
-
-    <div class="room" *ngFor="let room of rooms">
-        Room: {{testRoom.RoomNumber}} Gender: {{testRoom.Gender}}<br>
-        Occupancy: <b>{{testRoom.CurrentOccupancy}}</b> of <b>{{testRoom.MaxOccupancy}}</b><br>
-        Start Date: {{testRoom.StartDate}} End Date: {{testRoom.EndDate}}<br>
-        {{testRoom.Description}}<br>
-        <span><button routerLink="/update-room">Update</button></span>
-        <span><button routerLink="/delete-room">Remove</button></span>
-        <br>
+    <div class="home-head">
+        <h1>Display All Properties</h1>
     </div>
 
+    <div class="display-info" *ngFor="let location of locations;">
+
+            <div class="loc-info">
+                
+                <div class="address">
+                    <h3 id="location-address">{{location.Address}}<br>
+                        {{location.City}}, {{location.State}} {{location.Zip}}</h3>
+                </div>
+        
+                <div class="btn-room">
+                    <button routerLink="add-room" id="btn-addroom">Add New Room</button>
+                </div>
+        
+            </div>
+        
+            <div class="room-info">
+                <div class="room-card" *ngFor="let room of rooms;">
+                        <img id="room-img" src="https://techcrunch.com/wp-content/uploads/2019/03/blueground-apartment-2-2-2.jpg?w=730&crop=1">
+                
+                        <div class="room-detail">
+                            <span id="txt">Room #:</span> {{testRoom.RoomNumber}}<br>
+                            <span id="txt">Gender:</span> {{testRoom.Gender}}<br>
+                            <span id="txt">Occupancy: </span><b>{{testRoom.CurrentOccupancy}}</b> of <b>{{testRoom.MaxOccupancy}}</b><br>
+                            <span id="txt">Start Date:</span> {{testRoom.StartDate}} <br>
+                            <span id="txt">End Date: </span> {{testRoom.EndDate}}<br>
+                            {{testRoom.Description}}<br>
+                        </div>
+                
+                        <button routerLink="update-room" id="btn-update">Update</button>
+                        <button routerLink="delete-room" id="btn-remove">Remove</button>
+                    </div>
+            </div>
+            <div class="btn-show">
+                <a href="#" id="btn-showall"> Show all rooms available ></a>
+            </div>
+        </div>
 
 </div>

@@ -19,12 +19,15 @@ url: string = "https://reqres.in/api/users";
   
   postData(obj: object){
   return this.http.post(this.url, JSON.stringify(obj));
-
   }
 
   getRoomData(){
     return this.http.get(this.url);
   }
 
+  updateData(obj: object)
+  {
+    return this.http.put(this.url, JSON.stringify(obj));
+  }
 
 }
