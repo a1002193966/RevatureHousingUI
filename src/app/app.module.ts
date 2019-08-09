@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Room } from 'src/Entities/room';
 import { Provider } from 'src/Entities/provider';
-import { Location } from 'src/Entities/location';
+import { ProviderLocation } from 'src/Entities/location';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -53,7 +53,7 @@ import { AddLocationComponent } from './add-location/add-location.component';
       cacheLocation: 'localStorage'
     })
   ],
-  providers: [Room, Provider, Location, ApiService, AuthenticationGuard],
+  providers: [Room, Provider, ProviderLocation, ApiService, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { Component, OnInit } from '@angular/core';
-import { Location } from '../../Entities/location';
+import { ProviderLocation } from '../../Entities/location';
 
 @Component({
   selector: 'app-home',

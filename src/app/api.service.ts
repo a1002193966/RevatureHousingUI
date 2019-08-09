@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Room } from 'src/Entities/room';
 import { Observable } from 'rxjs';
+import { ProviderLocation } from 'src/Entities/location';
 
 // const header = {
 //   header: new HttpHeaders({
@@ -34,10 +35,10 @@ export class ApiService {
 
   }
 
-  PostLocationData(obj: Location): Observable<Location>{
+  PostLocationData(obj: ProviderLocation): Observable<ProviderLocation>{
     console.log(obj);
   return this.http
-  .post<Location>("http://localhost:59754/api/locations", obj
+  .post<ProviderLocation>("http://localhost:59754/api/locations", obj
   );
 
   }

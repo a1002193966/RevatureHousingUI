@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Room } from 'src/Entities/room';
-import { Location } from 'src/Entities/location';
+import { ProviderLocation } from 'src/Entities/location';
 
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { Location } from 'src/Entities/location';
+import { ProviderLocation } from 'src/Entities/location';
 
 @Component({
   selector: 'dev-add-location',
@@ -16,7 +16,7 @@ export class AddLocationComponent implements OnInit {
   ngOnInit() {
   }
 
-  PostLocationInfo(obj: Location){
+  PostLocationInfo(obj: ProviderLocation){
     obj.ProviderID = 1;
     console.log(obj);
     
