@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Room } from 'src/Entities/room';
 import { Location } from 'src/Entities/location';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -12,29 +11,15 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 })
 export class AddRoomComponent implements OnInit {
   room: Room;
-  cust: Object;
   location: Object;
   rooms: boolean = false;
-
-  startDate: FormControl;
-
-
-  constructor(private datasvc: ApiService) { 
-    
-
-  }
-
+  constructor(private datasvc: ApiService) { }
 
   ngOnInit() {
     this.getRoomInfo();//get data when the page is loaded
-    this.startDate = new FormControl('', Validators.required);
-    
   }
 
- ShowLocation(){
-    document.getElementById('L1').style.display = "none";
-    document.getElementById('LocationForm').style.display = "block";
- }
+ 
 
  //Get RoomInfo working: Test It 
   getRoomInfo(){
@@ -47,18 +32,18 @@ export class AddRoomComponent implements OnInit {
   }
 
  
- 
   postRoomInfo(value: Room){
     console.log(value);
     value.IsActive = true;
     value.RoomID = 0;
+    
      this.datasvc.postRoomData(value).subscribe(data => {
-      //post room success
+      //post success
       console.log(data);
       console.log("Post success");
 
     }), error => {
-      //post room error handling 
+      //httpclient post error handling 
       console.log("Error", error);
       console.log(value);
     } 
