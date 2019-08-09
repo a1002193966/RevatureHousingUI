@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Room } from 'src/Entities/room';
 import { Location } from 'src/Entities/location';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -14,10 +15,20 @@ export class AddRoomComponent implements OnInit {
   cust: Object;
   location: Location;
   rooms: boolean = false;
-  constructor(private datasvc: ApiService) { }
+
+  startDate: FormControl;
+
+
+  constructor(private datasvc: ApiService) { 
+    
+
+  }
+
 
   ngOnInit() {
     this.getRoomInfo();//get data when the page is loaded
+    this.startDate = new FormControl('', Validators.required);
+    
   }
 
  ShowLocation(){
@@ -35,7 +46,7 @@ export class AddRoomComponent implements OnInit {
 
   postRoomInfo(value: object){
     this.datasvc.postData(value).subscribe(data => {
-      //post success
+      //post successss
       console.log("Post success"); 
     }), error => {
       //httpclient post error handling 
@@ -43,7 +54,7 @@ export class AddRoomComponent implements OnInit {
     }
   }
 
-
+  
   onSubmit(value: any) {
     //get the value by its property
     console.log(value);

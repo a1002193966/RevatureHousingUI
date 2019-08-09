@@ -42,7 +42,7 @@
         <div class="row justify-content-center">
                 <label for="Location" class="col-sm-2">Location:</label>
                 <select class="form-control col-sm-2" id="Location" name="Location" *ngIf = "rooms" required ngModel>
-                  <option  *ngFor = "let room of rooms.data"> {{room.first_name}} </option>
+                  <option  *ngFor = "let room of room.data"> {{room.first_name}} </option>
                 </select>
                 <button type="button" class="btn btn-link col-sm-3" id="AddLocation" (click) = "ShowLocation()">Add Location</button>
         </div>    
@@ -102,7 +102,8 @@
     <div class="form-group">
         <div class="row justify-content-center">
             <label for="StartDate" class="col-sm-2">Start Date:</label>
-            <input type="date" class="form-control col-sm-2" id="StartDate" name="StartDate" required ngModel>
+            <input type="date"  class="form-control col-sm-2" id="StartDate" name="StartDate" required ngModel>
+   
         </div>
     </div>
 <!-- End Date -->  
