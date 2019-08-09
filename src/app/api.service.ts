@@ -16,8 +16,7 @@ url: string = "https://reqres.in/api/users";
   getData(){
     return this.http.get(this.url);
   }
-
-
+  
   postData(obj: object){
   return this.http.post(this.url, JSON.stringify(obj));
 

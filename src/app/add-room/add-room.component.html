@@ -1,8 +1,19 @@
-
+<!-- ******************************************************************* -->
+<!-- File Information -->
+<!-- Document Name: add-room.component.html-->
+<!-- Author: Luis Concepcion, Jialong Zhang-->
+<!-- Date Created: 8/7/2019 -->
+<!-- Date Updated: 8/8/2019  -->
+<!-- This web site will display  -->
+<!-- Created NgForm for room that consists of room type,number of beds,location,room number, gender, start date, and end date -->
+<!-- Used Httpclient get method to communicate with API to retrieve data -->
+<!-- ******************************************************************** -->
 <div class="d-flex justify-content-center">
         <h1 class="pb-1">Add a Room</h1>
 </div>
 
+<!-- *********************************Form*********************************** -->
+<!-- Room Type-->
 <form #userForm="ngForm"  (ngSubmit)="onSubmit(userForm.value)">
     <fieldset class="form-group">
         <div class="row justify-content-center">
@@ -19,48 +30,57 @@
                 </div>
         </div>
     </fieldset>
+<!-- Number of Beds -->
     <div class = "form-group">
         <div class="row justify-content-center">
                 <label for="NumBeds" class="col-sm-2">Number of Beds:</label>
                 <input type="number" class="form-control col-sm-2 " name="NumBeds" id="NumBeds" required ngModel>
         </div>
     </div>
+<!-- Location drop down list -->
     <div class="form-group" id="L1">
         <div class="row justify-content-center">
                 <label for="Location" class="col-sm-2">Location:</label>
-                <select class="form-control col-sm-2" id="Location" name="Location" *ngIf = "custs" required ngModel>
-                  <option  *ngFor = "let cus of cust.data"> {{cus.first_name}} </option>
+                <select class="form-control col-sm-2" id="Location" name="Location" *ngIf = "rooms" required ngModel>
+                  <option  *ngFor = "let room of rooms.data"> {{room.first_name}} </option>
                 </select>
                 <button type="button" class="btn btn-link col-sm-3" id="AddLocation" (click) = "ShowLocation()">Add Location</button>
         </div>    
     </div>
+ <!-- Add Location form -->     
+     <!-- Address --> 
     <div class="form-group" style="display: none" id="LocationForm">
             <div class="row justify-content-center">
                     <label for="Address" class="col-sm-2">Address:</label>
                     <input type="text" class="from-control col-sm-2" id="Address">
              </div>
              <br>
+    <!-- State --> 
+        <div class="row justify-content-center">
+                    <label for="State" class="col-sm-2">State:</label>
+                    <input type="text" class="from-control col-sm-2" id="State">
+        </div>
+        <br>
+    <!-- City --> 
         <div class="row justify-content-center">
                 <label for="City" class="col-sm-2">City:</label>
                 <input type="text" class="from-control col-sm-2" id="City">
         </div>
-        <br>
-         <div class="row justify-content-center">
-                <label for="State" class="col-sm-2">State:</label>
-                <input type="text" class="from-control col-sm-2" id="State">
-         </div>
          <br>
+    <!-- ZipCode --> 
          <div class="row justify-content-center">
                 <label for="ZIP" class="col-sm-2">Zip:</label>
                 <input type="text" class="from-control col-sm-2" id="ZIP">
         </div>
     </div>
+ <!-- Room Number -->  
     <div class="form-group">
         <div class="row justify-content-center">
-            <label for="InternalAddress" class="col-sm-2">Internal Address:</label>
+            <label for="InternalAddress" class="col-sm-2">Room number:</label>
             <input type="text" class="from-control col-sm-2" id="InternalAddress" required>
         </div>
     </div>
+ <!-- Gender -->  
     <fieldset class="form-group">
             <div class="row justify-content-center">
                 <legend class="col-form-label col-sm-2 pt-0">Gender:</legend>
@@ -78,24 +98,28 @@
                     </div>
             </div>
     </fieldset>
+<!-- Start Date -->  
     <div class="form-group">
         <div class="row justify-content-center">
             <label for="StartDate" class="col-sm-2">Start Date:</label>
             <input type="date" class="form-control col-sm-2" id="StartDate" name="StartDate" required ngModel>
         </div>
     </div>
+<!-- End Date -->  
     <div class="form-group">
             <div class="row justify-content-center">
                 <label for="EndDate" class="col-sm-2">End Date:</label>
                 <input type="date" class="form-control col-sm-2" id="EndDate" name="EndDate" required ngModel>
             </div>
     </div>
+<!-- Number of Tenents -->  
     <div class = "form-group">
             <div class="row justify-content-center">
                     <label for="NumTenents" class="col-sm-2">Number of Tenents:</label>
                     <input type="number" class="form-control col-sm-2 " name="NumTenets" id="NumTenents" required ngModel>
             </div>
     </div>
+<!-- Submit Button -->  
     <div class="form-group">
         <div class="col text-center">
              <input type="submit" class="btn btn-primary" id="AddRoom" value="Submit">

@@ -10,14 +10,14 @@ import { Location } from 'src/Entities/location';
   styleUrls: ['./add-room.component.scss']
 })
 export class AddRoomComponent implements OnInit {
-  room: Room;
+  room: Object;
   cust: Object;
   location: Location;
-  custs: boolean = false;
+  rooms: boolean = false;
   constructor(private datasvc: ApiService) { }
 
   ngOnInit() {
-    this.getRoomInfo();
+    this.getRoomInfo();//get data when the page is loaded
   }
 
  ShowLocation(){
@@ -25,17 +25,20 @@ export class AddRoomComponent implements OnInit {
     document.getElementById('LocationForm').style.display = "block";
  }
   getRoomInfo(){
+    //httpclient get method
     this.datasvc.getData().subscribe(data => {
-      this.cust = data;
+      this.room = data;//assign data to room object
+      this.rooms = true;//set rooms to true because room object existed
       console.log(this.cust);
-      this.custs = true;
   })
   }
 
   postRoomInfo(value: object){
     this.datasvc.postData(value).subscribe(data => {
-      console.log("Post Succesful"); 
+      //post success
+      console.log("Post success"); 
     }), error => {
+      //httpclient post error handling 
       console.log("Error", error);
     }
   }
