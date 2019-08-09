@@ -18,6 +18,7 @@
 
 .logo{
     width: 20%;
+    cursor: pointer;
     background-color: white;
 }
 
@@ -97,6 +98,7 @@
     background-size: 300%;
     background-position: left;
     animation: trans 7s infinite alternate;
+    opacity: 0.5;
 }
 
 @keyframes trans{
