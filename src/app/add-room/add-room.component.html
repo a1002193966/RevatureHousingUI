@@ -1,1 +1,109 @@
-<p>add-room works!</p>
+<!-- ******************************************************************* -->
+<!-- File Information -->
+<!-- Document Name: add-room.component.html-->
+<!-- Author: Luis Concepcion, Jialong Zhang-->
+<!-- Date Created: 8/7/2019 -->
+<!-- Date Updated: 8/8/2019  -->
+<!-- This web site will display  -->
+<!-- Created NgForm for room that consists of room type,number of beds,location,room number, gender, start date, and end date -->
+<!-- Used Httpclient get method to communicate with API to retrieve data -->
+<!-- ******************************************************************** -->
+<div class="d-flex justify-content-center">
+        <h1 class="pb-1">Add a Room</h1>
+</div>
+
+<!-- *********************************Form*********************************** -->
+<!-- Room Type-->
+<form #userForm="ngForm"  (ngSubmit)="postRoomInfo(userForm.value)">
+    <fieldset class="form-group">
+        <div class="row justify-content-center">
+            <legend class="col-form-label col-sm-2 pt-0">Room Type:</legend>
+                <div class="col-sm-2 py-0">
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" name="Type" id ="Apartment" value="Apartment" ngModel>
+                        <label for="Apartment" class="form-check-label">Apartment</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                         <input type="radio" class="form-check-input" name="Type" id ="Dorm" value="Dorm" ngModel>
+                         <label for="Dorm" class="form-check-label">Dorm</label>
+                    </div>
+                </div>
+        </div>
+    </fieldset>
+<!-- Number of Beds -->
+    <div class = "form-group">
+        <div class="row justify-content-center">
+                <label for="NumBeds" class="col-sm-2">Number of Beds:</label>
+                <input type="number" class="form-control col-sm-2 " name="MaxOccupancy" id="NumBeds" required ngModel>
+        </div>
+    </div>
+<!-- Location drop down list -->
+    <div class="form-group" id="L1">
+        <div class="row justify-content-center">
+                <label for="Location" class="col-sm-2">Location:</label>
+                <select class="form-control col-sm-2" id="Location" name="LocationID" *ngIf = "rooms" required  ngModel>
+                  <option  *ngFor = "let room of location" > {{room.locationID}} </option>
+                </select>
+        </div>    
+    </div>
+    
+ <!-- Room Number -->  
+    <div class="form-group">
+        <div class="row justify-content-center">
+            <label for="InternalAddress" class="col-sm-2">Room number:</label>
+            <input type="text" class="from-control col-sm-2" id="InternalAddress" name="RoomNumber" required ngModel>
+        </div>
+    </div>
+ <!-- Gender -->  
+    <fieldset class="form-group">
+            <div class="row justify-content-center">
+                <legend class="col-form-label col-sm-2 pt-0">Gender:</legend>
+                    <div class="col-sm-2 py-0">
+                        <div class="form-check form-check-inline">
+
+                            <input type="radio" class="form-check-input" name="Gender" id ="Male" value="Male" ngModel>
+
+                            <label for="Male" class="form-check-label">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                             <input type="radio" class="form-check-input" name="Gender" id ="Female" value="Female" ngModel>
+                             <label for="Female" class="form-check-label">Female</label>
+                        </div>
+                    </div>
+            </div>
+    </fieldset>
+<!-- Start Date -->  
+    <div class="form-group">
+        <div class="row justify-content-center">
+            <label for="StartDate" class="col-sm-2">Start Date:</label>
+            <input type="date"  class="form-control col-sm-2" id="StartDate" name="StartDate" required ngModel>
+   
+        </div>
+    </div>
+<!-- End Date -->  
+    <div class="form-group">
+            <div class="row justify-content-center">
+                <label for="EndDate" class="col-sm-2">End Date:</label>
+                <input type="date" class="form-control col-sm-2" id="EndDate" name="EndDate" required ngModel>
+            </div>
+    </div>
+<!-- Number of Tenents -->  
+    <div class = "form-group">
+            <div class="row justify-content-center">
+                    <label for="NumTenents" class="col-sm-2">Number of Tenents:</label>
+                    <input type="number" class="form-control col-sm-2 " name="CurrentOccupency" id="NumTenents" required ngModel>
+            </div>
+    </div>
+
+    
+    
+<!-- Submit Button -->  
+    <div class="form-group">
+        <div class="col text-center">
+             <input type="submit" class="btn btn-primary" id="AddRoom" value="Submit">
+        </div>
+    </div>
+</form>
+
+
+

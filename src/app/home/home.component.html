@@ -1,1 +1,45 @@
-<p>home works!</p>
+<div class="home-body">
+
+    <div class="home-head">
+        <h1>Display All Properties</h1>
+        <button id="btn-addLoc" routerLink="add-location">Add New Location</button>
+    </div>
+    
+    <div class="display-info" *ngFor="let location of locations;">
+
+            <div class="loc-info">
+                
+                <div class="address">
+                    <h4 id="location-address">{{location.Address}}</h4>
+                    <h5>{{location.City}}, {{location.State}} {{location.Zip}}</h5>
+                </div>
+        
+                <div class="btn-room">
+                    <button routerLink="add-room" id="btn-addRoom">Add New Room</button>
+                </div>
+        
+            </div>
+        
+            <div class="room-info">
+                <div class="room-card" *ngFor="let room of rooms;">
+                    <img id="room-img" src="https://techcrunch.com/wp-content/uploads/2019/03/blueground-apartment-2-2-2.jpg?w=730&crop=1">
+                
+                    <div class="room-detail">
+                        <span id="txt">Room #:</span> {{testRoom.RoomNumber}}<br>
+                        <span id="txt">Gender:</span> {{testRoom.Gender}}<br>
+                        <span id="txt">Occupancy: </span><b>{{testRoom.CurrentOccupancy}}</b> of <b>{{testRoom.MaxOccupancy}}</b><br>
+                        <span id="txt">Start Date:</span> {{testRoom.StartDate}} <br>
+                        <span id="txt">End Date: </span> {{testRoom.EndDate}}<br>
+                        <span id="des">{{testRoom.Description}}</span><br>
+                        <br>
+                        <button id="btn-update" routerLink="update-room">Edit</button>
+                        <button id="btn-remove" routerLink="delete-room">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-show">
+                <a href="#" id="btn-showall"> Show all rooms available ></a>
+            </div>
+        </div>
+
+</div>

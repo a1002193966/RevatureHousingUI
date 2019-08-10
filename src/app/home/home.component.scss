@@ -1,0 +1,148 @@
+
+.home-body{
+    width: 90%;
+    margin-left: 6%;
+    margin-right: 4%;
+    float: left;
+}
+
+.home-head{
+    float: left;
+    width: 100%;
+    margin-bottom: 50px;
+    margin-top: 40px;
+}
+
+#location-address{
+    color: #444;
+}
+
+.display-info{
+    float: left;
+    width: 100%;
+    margin-bottom: 100px;
+    padding-top: 35px;
+    border-top: 1px solid #DDD;
+}
+
+.loc-info{
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.address{
+    float: left;
+    width: 50%;
+}
+
+.room-info{
+    width: 100%;
+}
+
+.room-card{
+    float: left;
+    width: 19%;
+    margin-right: 1%;
+    border:1px solid #DDD;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 2px #DDD;
+}
+
+#room-img{
+    width: 100%;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.room-detail{
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.btn-room{
+    float: left;
+    width: 50%;
+}
+
+#btn-remove{
+    background-color: white;
+    border-radius: 5px;
+    width: 48.5%;
+    opacity: 0.8;
+    border: 1px solid cadetblue;
+    color: cadetblue;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#btn-update{
+    background-color: white;
+    border-radius: 5px;
+    width: 48.5%;
+    opacity: 0.8;
+    border: 1px solid #eea86a;
+    color: #eea86a;
+    margin-right: 3%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#btn-remove:hover{
+    opacity: 1;
+    background-color: cadetblue;
+    color: white;
+}
+
+#btn-update:hover{
+    opacity: 1;
+    background-color: #eea86a;
+    color: white;
+}
+
+#btn-addRoom{
+    float: right;
+    background-color: cadetblue;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    opacity: 0.7;
+    margin-right: 2%;
+}
+
+#btn-addRoom:hover, #btn-addLoc:hover{
+    opacity: 1;
+}
+
+#btn-addLoc{
+    float: left;
+    background-color: cadetblue;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
+    color: white;
+    opacity: 0.7;
+}
+
+.btn-show{
+    float: left;
+    margin-top: 30px;
+}
+
+#btn-showall{
+    color: cadetblue;
+}
+
+#txt{
+    font-size: 15.5px;
+    font-weight: 600;
+}
+
+#des{
+    font-size: 15px;
+}
