@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Room } from 'src/Entities/room';
-import { ProviderLocation } from 'src/Entities/location';
 
 
 @Component({
@@ -19,7 +18,6 @@ export class AddRoomComponent implements OnInit {
     this.getRoomInfo();//get data when the page is loaded
   }
 
- 
 
  //Get RoomInfo working: Test It 
   getRoomInfo(){

@@ -14,8 +14,6 @@ import { DeleteRoomComponent } from './delete-room/delete-room.component';
 import { UpdateRoomComponent } from './update-room/update-room.component';
 import { ApiService } from './api.service';
 import {HttpClientModule} from '@angular/common/http';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
 import {FormsModule} from '@angular/forms'
 import { StickyNavModule } from 'ng2-sticky-nav';
 import { MsAdalAngular6Module,AuthenticationGuard } from 'microsoft-adal-angular6';
@@ -33,8 +31,6 @@ import { AddLocationComponent } from './add-location/add-location.component';
     AddRoomComponent,
     DeleteRoomComponent,
     UpdateRoomComponent,
-    AboutComponent,
-    ContactComponent,
     AddLocationComponent
   ],
   imports: [
