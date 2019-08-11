@@ -6,18 +6,23 @@ describe('ApiService', () => {
   let injector: TestBed;
   let service: ApiService;
   let httpMock: HttpTestingController;
-  beforeEach(() =>{
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [ApiService]
     });
-  injector = getTestBed();
-  service = injector.get(ApiService);
-  httpMock = injector.get(HttpTestingController);  
+    injector = getTestBed();
+    service = injector.get(ApiService);
+    httpMock = injector.get(HttpTestingController);
   });
 
-it('should be created', () => {
-  const service: ApiService = TestBed.get(ApiService);
-  expect(service).toBeTruthy();
-});
+  afterEach(() => {
+    httpMock.verify();
+  });
+
+  it('should be created', () => {
+    const service: ApiService = TestBed.get(ApiService);
+    expect(service).toBeTruthy();
+  });
+
 });
