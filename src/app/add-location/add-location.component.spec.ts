@@ -48,6 +48,7 @@ describe('AddLocationComponent', () => {
   });
   //onNgInit()
   it('should initialize formgourp by calling onNgInit()', () => {
+    console.log(component.locationGroup);
     component.locationGroup.controls['Address'].setValue(LocationData.Address);
     component.locationGroup.controls['State'].setValue(LocationData.State);
     component.locationGroup.controls['City'].setValue(LocationData.City);
