@@ -16,7 +16,7 @@ const routes: Routes = [
   //{ path: "home", component: HomeComponent, canActivate: [AuthenticationGuard] },
   { path: "add-room/:id", component: AddRoomComponent },
   { path: "add-location", component: AddLocationComponent},
-  { path: "update-room", component: UpdateRoomComponent },
+  { path: "update-room/:id", component: UpdateRoomComponent },
   { path: "delete-room", component: DeleteRoomComponent },
   { path: "login", component: LoginComponent }
 ];

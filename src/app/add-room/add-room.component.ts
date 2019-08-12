@@ -53,9 +53,7 @@ export class AddRoomComponent implements OnInit {
   getRoomInfo(){
     //httpclient get method
     this.datasvc.getLocationData().subscribe(data => {
-      this.location = data;//assign data to location object
-      this.rooms = true;//set rooms to true because room object existed
-      console.log(this.location);
+      this.location = data;//assign data to location object   
   })
   }
 

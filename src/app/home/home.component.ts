@@ -36,14 +36,17 @@ export class HomeComponent implements OnInit {
     });
     }
     
+    showLocation(id: number) {
+      this.router.navigate(['add-room', id]);
+    }
+
+    updateRoom(id: number) {
+      this.router.navigate(['update-room', id]);
+    }
+
   ngOnInit() {
      // get locations belonging to the provider
-     
      this.getLocationInfo();
      this.getRoomInfo();
-  }
-
-  showLocation(id: number) {
-    this.router.navigate(['add-room', id]);
   }
 }
