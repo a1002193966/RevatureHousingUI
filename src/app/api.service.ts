@@ -10,20 +10,32 @@ import { ProviderLocation } from 'src/Entities/location';
 //   })
 // };
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  })
+};
+
 @Injectable({
   providedIn: 'root'
 })
 
 
+
 export class ApiService {
 
-  private _locationUrl:string="http://localhost:55219/api/locations/";
-  private _RoomUrl:string="http://localhost:55219/api/rooms/";
+  private _locationUrl:string="http://localhost:63998/api/locations/";
+  private _RoomUrl:string="http://localhost:63998/api/rooms/";
+  
 
   constructor(private http : HttpClient) { }
 
   getLocationData(){
     return this.http.get(this._locationUrl);
+  }
+
+  getLocationById(id: number){
+    return this.http.get(this._locationUrl+id)
   }
 
   getRoomData(){
@@ -55,5 +67,9 @@ export class ApiService {
   {
     return this.http.put(this._RoomUrl + obj.RoomID, obj);
   }
+
+  // deleteRoom(id: number): Observable<{}>{
+  //   return this.http.delete(this._RoomUrl+id, httpOptions)
+  // }
 
 }
