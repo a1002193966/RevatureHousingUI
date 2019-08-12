@@ -23,7 +23,7 @@ export class AddLocationComponent implements OnInit {
       Address: ['',[Validators.required]],
       State:['',[Validators.required]],
       City:['',[Validators.required]],
-      Zip:['',[Validators.required]],
+      ZipCode:['',[Validators.required]],
       TrainingCenter:['',[Validators.required]]
 
     })
@@ -52,8 +52,13 @@ export class AddLocationComponent implements OnInit {
       console.log("location Invalid data");
       return;
     }
-    this.PostLocationInfo(this.locationGroup.value);
+    else{
+      this.PostLocationInfo(this.locationGroup.value);
     console.log(this.locationGroup.value);
+    this.locationGroup.reset();
+    this.submitted = false;
+    
+    }
     
   }
 

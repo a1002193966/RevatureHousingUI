@@ -49,10 +49,10 @@
 <!-- ZipCode --> 
      <div class="row justify-content-center">
             <label for="ZIP" class="col-sm-2">Zip:</label>
-            <input type="text" class="from-control col-sm-2" id="ZIP" name="ZipCode" formControlName="Zip">
+            <input type="text" class="from-control col-sm-2" id="ZIP" name="ZipCode" formControlName="ZipCode">
             <!--validation-->
-            <div *ngIf="submitted && locationGroup.controls.Zip.errors">
-                <div class = "alert alert-danger" *ngIf="locationGroup.controls.Zip.errors.required">Zip Code is required</div>
+            <div *ngIf="submitted && locationGroup.controls.ZipCode.errors">
+                <div class = "alert alert-danger" *ngIf="locationGroup.controls.ZipCode.errors.required">Zip Code is required</div>
             </div>
     </div>
 <!-- Training Center --> 
