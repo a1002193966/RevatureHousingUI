@@ -17,37 +17,41 @@ import { ProviderLocation } from 'src/Entities/location';
 
 export class ApiService {
 
+  // tslint:disable-next-line:no-inferrable-types
+  baseUrl: string =  'https://localhost:44361/api';
+  // tslint:disable-next-line:no-inferrable-types
+  roomsUrl: string =  '/Rooms/';
+  // tslint:disable-next-line:no-inferrable-types
+  locationsUrl: string =  '/Locations/';
 
-  constructor(private http : HttpClient) { 
-    
+
+  constructor(private http: HttpClient) { }
+
+  getLocationData() {
+    // return this.http.get("http://localhost:59754/api/locations");
+    return this.http.get(this.baseUrl + this.locationsUrl );
   }
 
-  getLocationData(){
-    return this.http.get("http://localhost:59754/api/locations");
-  }
-  
-
-  postRoomData(obj: Room): Observable<Room>{
+  postRoomData(obj: Room): Observable<Room> {
     console.log(obj);
-  return this.http
-  .post<Room>("http://localhost:59754/api/Rooms", obj
-  );
-
+    // return this.http.post<Room>("http://localhost:59754/api/Rooms", obj);
+    return this.http.post<Room>(this.baseUrl + this.roomsUrl, obj);
   }
 
-  PostLocationData(obj: ProviderLocation): Observable<ProviderLocation>{
+  PostLocationData(obj: ProviderLocation): Observable<ProviderLocation> {
     console.log(obj);
-  return this.http
-  .post<ProviderLocation>("http://localhost:59754/api/locations", obj
-  );
-
+    // return this.http.post<ProviderLocation>("http://localhost:59754/api/locations", obj);
+    return this.http.post<ProviderLocation>(this.baseUrl + this.locationsUrl, obj);
   }
 
+  updateData(obj: Room) {
+    // return this.http.put("http://localhost:59754/api/Rooms/" + obj.RoomID, obj);
+    return this.http.put(this.baseUrl + this.roomsUrl + obj.RoomID, obj);
+  }
 
- 
-  updateData(obj: Room)
-  {
-    return this.http.put("http://localhost:59754/api/Rooms/" + obj.RoomID, obj);
+  setInActive(obj: Room, isActive = false) {
+    obj.IsActive = isActive;
+    return this.http.put(this.baseUrl + this.roomsUrl + obj.RoomID, obj);
   }
 
 }
