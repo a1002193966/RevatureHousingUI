@@ -17,6 +17,7 @@ const header = {
 export class ApiService {
 
 url: string = "https://reqres.in/api/users";
+apiUrl : string = "http://localhost:61279/api";
 
   constructor(private http : HttpClient) { 
     
@@ -26,6 +27,13 @@ url: string = "https://reqres.in/api/users";
     return this.http.get("http://localhost:61965/api/locations");
   }
   
+  getLocations(){
+    return this.http.get(this.apiUrl + "/locations");
+  }
+
+  getRooms(){
+    return this.http.get(this.apiUrl + "/locations");
+  }
 
   postData(obj: Room): Observable<Room>{
     console.log(obj);

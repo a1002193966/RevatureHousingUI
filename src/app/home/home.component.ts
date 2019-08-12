@@ -1,6 +1,7 @@
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '../../Entities/location';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,8 @@ import { Location } from '../../Entities/location';
 })
 export class HomeComponent implements OnInit {
   
+  locs: any;
+
   // test data
   rooms = [1, 2, 3, 4];
   testRoom = {
@@ -46,7 +49,7 @@ export class HomeComponent implements OnInit {
   ]
   
 
-    constructor(private adalSvc: MsAdalAngular6Service) {
+    constructor(private adalSvc: MsAdalAngular6Service, private datasvc: ApiService) {
       console.log(this.adalSvc.userInfo);
       this.adalSvc.acquireToken('https://graph.microsoft.com').subscribe((token: string) => {
         console.log(token);
@@ -57,6 +60,22 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     // get locations belonging to the provider
+    this.getLocations();
+  }
+
+  // Gets location information to display to the page.
+  // This needs to be updated to get locations by ID.
+  getLocations(){
+    this.datasvc.getLocations().subscribe( data =>{
+      this.locs = data;
+      console.log(data);
+    })
+  }
+
+  getRoomsByLocation(){
+    this.datasvc.getRooms().subscribe( data =>{
+
+    })
   }
 
 }
