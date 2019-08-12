@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: "add-room/:id", component: AddRoomComponent },
   { path: "add-location", component: AddLocationComponent},
   { path: "update-room/:id", component: UpdateRoomComponent },
-  { path: "delete-room", component: DeleteRoomComponent },
+  { path: "delete-room/:roomId", component: DeleteRoomComponent },
   { path: "login", component: LoginComponent }
 ];
 

@@ -34,7 +34,8 @@
                         <span id="des">{{room.description}}</span><br>
                         <br>
                         <button id="btn-update" (click)="updateRoom(room.roomID);">Edit</button>
-                        <button id="btn-remove" >Delete</button>
+                        <button id="btn-remove" [routerLink]="['delete-room', room.roomID]">Delete</button>
+
                     </div>                 
                 </div>
             </div>

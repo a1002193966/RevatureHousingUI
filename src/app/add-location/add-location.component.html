@@ -3,10 +3,12 @@
 <!-- Document Name: add-location.component.html-->
 <!-- Author: Luis Concepcion, Jialong Zhang-->
 <!-- Date Created: 8/8/2019 -->
-<!-- Date Updated: 8/8/2019  -->
+<!-- Date Updated: 8/12/2019  -->
 <!-- This web site will display  -->
 <!-- Created NgForm for location that consists of address,state,city,Zipcode -->
 <!-- Used Httpclient get method to communicate with API to retrieve data -->
+<!-- Add validation for Address,State,City,ZipCode,TrainingCenter-->
+<!-- Add ZipCode Validation-->
 <!-- ******************************************************************** -->
 
 <div class="d-flex justify-content-center">
@@ -54,6 +56,7 @@
             <div *ngIf="submitted && locationGroup.controls.ZipCode.errors">
                 <div class = "alert alert-danger" *ngIf="locationGroup.controls.ZipCode.errors.required">Zip Code is required</div>
                 <div class = "alert alert-danger" *ngIf="locationGroup.controls.ZipCode.errors.minlength || locationGroup.controls.ZipCode.errors.maxlength">Zip Code must be 5 digits</div>
+                <div class = "alert alert-danger" *ngIf="locationGroup.controls.ZipCode.errors.pattern && (!locationGroup.controls.ZipCode.errors.minlength && !locationGroup.controls.ZipCode.errors.maxlength)">Invalid Zip Code</div>
             </div>
     </div>
 <!-- Training Center --> 
