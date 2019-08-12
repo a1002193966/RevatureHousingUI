@@ -1,6 +1,7 @@
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { Component, OnInit } from '@angular/core';
 import { ProviderLocation } from '../../Entities/location';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -46,7 +47,8 @@ export class HomeComponent implements OnInit {
   ]
   
 
-    constructor(private adalSvc: MsAdalAngular6Service) {
+    constructor(private adalSvc: MsAdalAngular6Service, 
+      private router: Router) {
       console.log(this.adalSvc.userInfo);
       this.adalSvc.acquireToken('https://graph.microsoft.com').subscribe((token: string) => {
         console.log(token);
@@ -59,4 +61,7 @@ export class HomeComponent implements OnInit {
     // get locations belonging to the provider
   }
 
+  showLocation(id: number) {
+    this.router.navigate(['add-room', id]);
+  }
 }

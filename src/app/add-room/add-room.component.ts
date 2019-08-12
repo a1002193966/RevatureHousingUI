@@ -3,6 +3,8 @@ import { ApiService } from '../api.service';
 import { Room } from 'src/Entities/room';
 import { ProviderLocation } from 'src/Entities/location';
 import { FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { VirtualTimeScheduler } from 'rxjs';
 
 
 
@@ -26,7 +28,10 @@ export class AddRoomComponent implements OnInit {
 
   
  
-  constructor(private datasvc: ApiService, private formBuilder: FormBuilder) { }
+  constructor(private datasvc: ApiService, private formBuilder: FormBuilder, private route: ActivatedRoute) { 
+
+    this.route.params.subscribe(params => this.assignLocationId(params['id']));
+  }
  
   ngOnInit() {
     this.getRoomInfo();//get data when the page is loaded
@@ -42,6 +47,9 @@ export class AddRoomComponent implements OnInit {
     
   }
 
+  assignLocationId(id: number) {
+    this.room.LocationID = id;
+  }
 
  //Get RoomInfo working: Test It 
   getRoomInfo(){

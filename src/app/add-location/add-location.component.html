@@ -53,6 +53,7 @@
             <!--validation-->
             <div *ngIf="submitted && locationGroup.controls.ZipCode.errors">
                 <div class = "alert alert-danger" *ngIf="locationGroup.controls.ZipCode.errors.required">Zip Code is required</div>
+                <div class = "alert alert-danger" *ngIf="locationGroup.controls.ZipCode.errors.minlength || locationGroup.controls.ZipCode.errors.maxlength">Zip Code must be 5 digits</div>
             </div>
     </div>
 <!-- Training Center --> 
