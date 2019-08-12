@@ -62,7 +62,8 @@ describe('AddLocationComponent', () => {
     expect(component.locationGroup.controls['ZipCode'].value).toBe("");
     expect(component.locationGroup.controls['TrainingCenter'].value).toBe("");
   })
-  //onSubmit()
+
+//#region OnSubmit()
   it('should  set submitted to true and show all error message', () => {
     component.OnSubmit();
     expect(component.submitted).toBeTruthy();
@@ -135,7 +136,97 @@ describe('AddLocationComponent', () => {
     expect(error[0].nativeElement.textContent).toBe(errorList[3]);
   });
 
-  it('should only show Zip Code is required', () => {
+  it('should only show Zip Code must be 5 digits when input is less than 5 digit', () => {
+    //input some data to form
+    component.locationGroup.controls['Address'].setValue(LocationData.Address);
+    component.locationGroup.controls['State'].setValue(LocationData.State);
+    component.locationGroup.controls['City'].setValue(LocationData.City);
+    component.locationGroup.controls['ZipCode'].setValue("321");
+    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
+    component.OnSubmit();
+    fixture.detectChanges();
+
+    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    expect(error.length).toBe(1);
+    expect(error[0].nativeElement.textContent).toBe("Zip Code must be 5 digits");
+  });
+
+  it('should only show Zip Code must be 5 digits when input is more than 5 digit', () => {
+    //input some data to form
+    component.locationGroup.controls['Address'].setValue(LocationData.Address);
+    component.locationGroup.controls['State'].setValue(LocationData.State);
+    component.locationGroup.controls['City'].setValue(LocationData.City);
+    component.locationGroup.controls['ZipCode'].setValue("3212321312");
+    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
+    component.OnSubmit();
+    fixture.detectChanges();
+
+    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    expect(error.length).toBe(1);
+    expect(error[0].nativeElement.textContent).toBe("Zip Code must be 5 digits");
+  });
+
+  it('should only show Zip Code must be 5 digits when input is more than 5 digit', () => {
+    //input some data to form
+    component.locationGroup.controls['Address'].setValue(LocationData.Address);
+    component.locationGroup.controls['State'].setValue(LocationData.State);
+    component.locationGroup.controls['City'].setValue(LocationData.City);
+    component.locationGroup.controls['ZipCode'].setValue("3212321312");
+    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
+    component.OnSubmit();
+    fixture.detectChanges();
+
+    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    expect(error.length).toBe(1);
+    expect(error[0].nativeElement.textContent).toBe("Zip Code must be 5 digits");
+  });
+
+  it('should only show Zip Code must be 5 digits when input is more than 5 letter', () => {
+    //input some data to form
+    component.locationGroup.controls['Address'].setValue(LocationData.Address);
+    component.locationGroup.controls['State'].setValue(LocationData.State);
+    component.locationGroup.controls['City'].setValue(LocationData.City);
+    component.locationGroup.controls['ZipCode'].setValue("fewwfwefwwe");
+    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
+    component.OnSubmit();
+    fixture.detectChanges();
+
+    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    expect(error.length).toBe(1);
+    expect(error[0].nativeElement.textContent).toBe("Zip Code must be 5 digits");
+  });
+
+  it('should only show Zip Code must be 5 digits when input is less than 5 letter', () => {
+    //input some data to form
+    component.locationGroup.controls['Address'].setValue(LocationData.Address);
+    component.locationGroup.controls['State'].setValue(LocationData.State);
+    component.locationGroup.controls['City'].setValue(LocationData.City);
+    component.locationGroup.controls['ZipCode'].setValue("f");
+    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
+    component.OnSubmit();
+    fixture.detectChanges();
+
+    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    expect(error.length).toBe(1);
+    expect(error[0].nativeElement.textContent).toBe("Zip Code must be 5 digits");
+  });
+
+  it('should only show Invalid Zip Code when input is alphabet', () => {
+    //input some data to form
+    component.locationGroup.controls['Address'].setValue(LocationData.Address);
+    component.locationGroup.controls['State'].setValue(LocationData.State);
+    component.locationGroup.controls['City'].setValue(LocationData.City);
+    component.locationGroup.controls['ZipCode'].setValue("abcde");
+    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
+    component.OnSubmit();
+    fixture.detectChanges();
+
+    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    expect(error.length).toBe(1);
+    expect(error[0].nativeElement.textContent).toBe("Invalid Zip Code");
+  });
+
+  it('should only show TrainingCenter is required', () => {
     //input some data to form
     component.locationGroup.controls['Address'].setValue(LocationData.Address);
     component.locationGroup.controls['State'].setValue(LocationData.State);
@@ -147,8 +238,7 @@ describe('AddLocationComponent', () => {
     const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
     expect(error.length).toBe(1);
     expect(error[0].nativeElement.textContent).toBe(errorList[4]);
-  });
-
+  });  
 
   it('it should not have error message and should call postLocationInfo', () => {
     //input some data to form
@@ -174,7 +264,7 @@ describe('AddLocationComponent', () => {
     expect(component.locationGroup.controls['TrainingCenter'].value).toBe(null);
 
   });
-
+//#endregion
 
   //PostRoomInfo
   //need change
@@ -199,4 +289,5 @@ describe('AddLocationComponent', () => {
     button.click();
     expect(component.OnSubmit).toHaveBeenCalled();
   })
+
 });

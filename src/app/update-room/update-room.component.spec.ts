@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UpdateRoomComponent } from './update-room.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('UpdateRoomComponent', () => {
   let component: UpdateRoomComponent;
@@ -11,7 +13,10 @@ describe('UpdateRoomComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ UpdateRoomComponent ],
       imports:[
-        HttpClientTestingModule
+        RouterTestingModule,
+        FormsModule,
+        HttpClientTestingModule,
+        ReactiveFormsModule
       ]
     })
     .compileComponents();
