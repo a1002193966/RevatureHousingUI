@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Room } from 'src/Entities/room';
 import { ProviderLocation } from 'src/Entities/location';
-import { NgForm, FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
-import { FormsModule }   from '@angular/forms';
-import { DatePipe } from '@angular/common';
+import { FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
+
+
 
 
 
@@ -42,8 +42,6 @@ export class AddRoomComponent implements OnInit {
     
   }
 
-  
- 
 
  //Get RoomInfo working: Test It 
   getRoomInfo(){

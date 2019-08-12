@@ -14,8 +14,6 @@ import { DeleteRoomComponent } from './delete-room/delete-room.component';
 import { UpdateRoomComponent } from './update-room/update-room.component';
 import { ApiService } from './api.service';
 import {HttpClientModule} from '@angular/common/http';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { StickyNavModule } from 'ng2-sticky-nav';
 import { MsAdalAngular6Module,AuthenticationGuard } from 'microsoft-adal-angular6';
@@ -35,9 +33,8 @@ import { DatePipe } from '@angular/common';
     AddRoomComponent,
     DeleteRoomComponent,
     UpdateRoomComponent,
-    AboutComponent,
-    ContactComponent,
-    AddLocationComponent
+    AddLocationComponent,
+  
   ],
   imports: [
     BrowserModule,

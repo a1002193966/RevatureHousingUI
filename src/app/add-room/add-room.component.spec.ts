@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddRoomComponent } from './add-room.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 
 describe('AddRoomComponent', () => {
   let component: AddRoomComponent;
@@ -8,7 +11,13 @@ describe('AddRoomComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddRoomComponent ]
+      declarations: [ 
+        AddRoomComponent 
+      ],
+      imports:[
+        FormsModule,
+        HttpClientTestingModule
+      ]
     })
     .compileComponents();
   }));
@@ -19,10 +28,12 @@ describe('AddRoomComponent', () => {
   });
 
 
-//   //ngOnInit test
-//   it('should call getRoomInfo in ngOnInit',()=>{
-//     spyOn(component,'getRoomInfo');
-//     fixture.detectChanges();
-//     expect(component.getRoomInfo).toHaveBeenCalled();
-//   })
+  //ngOnInit test
+  it('should call getRoomInfo in ngOnInit',()=>{
+    spyOn(component,'getRoomInfo');
+    fixture.detectChanges();
+    expect(component.getRoomInfo).toHaveBeenCalled();
+  })
+
+  
  });
