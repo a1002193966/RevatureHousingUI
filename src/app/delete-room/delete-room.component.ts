@@ -29,7 +29,7 @@ export class DeleteRoomComponent implements OnInit {
       console.log(data)
       this.room = data
       
-      this.getLocationInfo(data.locationID);
+      this.getLocationInfo(this.room.locationID);
     })
     }
 
