@@ -8,8 +8,6 @@ import { VirtualTimeScheduler } from 'rxjs';
 
 
 
-
-
 @Component({
   selector: 'app-add-room',
   templateUrl: './add-room.component.html',
@@ -25,7 +23,7 @@ export class AddRoomComponent implements OnInit {
   submitted: boolean = false;
   success: boolean = false;
   StartDate: Date;
-
+  LocationID: number;
   
  
   constructor(private datasvc: ApiService, private formBuilder: FormBuilder, private route: ActivatedRoute) { 
@@ -34,7 +32,7 @@ export class AddRoomComponent implements OnInit {
   }
  
   ngOnInit() {
-    this.getRoomInfo();//get data when the page is loaded
+   // this.getRoomInfo();//get data when the page is loaded
 
     this.mygroup = this.formBuilder.group({
        Type:['',[Validators.required]],
@@ -48,17 +46,17 @@ export class AddRoomComponent implements OnInit {
   }
 
   assignLocationId(id: number) {
-    this.room.LocationID = id;
+    this.LocationID = id;
   }
 
  //Get RoomInfo working: Test It 
   getRoomInfo(){
     //httpclient get method
-  //   this.datasvc.getLocationData().subscribe(data => {
-  //     this.location = data;//assign data to location object
-  //     this.rooms = true;//set rooms to true because room object existed
-  //     console.log(this.location);
-  // })
+    this.datasvc.getLocationData().subscribe(data => {
+      this.location = data;//assign data to location object
+      this.rooms = true;//set rooms to true because room object existed
+      console.log(this.location);
+  })
   }
 
   
@@ -68,7 +66,7 @@ export class AddRoomComponent implements OnInit {
     value.IsActive = true;
     value.RoomID = 0;
     value.CurrentOccupancy = value.MaxOccupancy;
-    value.LocationID = 2;
+    value.LocationID = this.LocationID;
     
      this.datasvc.postRoomData(value).subscribe(data => {
       //post success
