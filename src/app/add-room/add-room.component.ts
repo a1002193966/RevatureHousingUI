@@ -44,11 +44,11 @@ export class AddRoomComponent implements OnInit {
  //Get RoomInfo working: Test It 
   getRoomInfo(){
     //httpclient get method
-  //   this.datasvc.getLocationData().subscribe(data => {
-  //     this.location = data;//assign data to location object
-  //     this.rooms = true;//set rooms to true because room object existed
-  //     console.log(this.location);
-  // })
+    this.datasvc.getLocationData().subscribe(data => {
+      this.location = data;//assign data to location object
+      this.rooms = true;//set rooms to true because room object existed
+      console.log(this.location);
+  })
   }
 
   
@@ -58,7 +58,7 @@ export class AddRoomComponent implements OnInit {
     value.IsActive = true;
     value.RoomID = 0;
     value.CurrentOccupancy = value.MaxOccupancy;
-    value.LocationID = 2;
+    value.LocationID = 6;
     
      this.datasvc.postRoomData(value).subscribe(data => {
       //post success

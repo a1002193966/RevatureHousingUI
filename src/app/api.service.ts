@@ -21,12 +21,16 @@ export class ApiService {
   getLocationData(){
     return this.http.get("http://localhost:55219/api/locations");
   }
+
+  getRoomData(){
+    return this.http.get("http://localhost:55219/api/rooms");
+  }
   
 
   postRoomData(obj: Room): Observable<Room>{
     console.log(obj);
   return this.http
-  .post<Room>("http://localhost:55219/api/Rooms", obj
+  .post<Room>("http://localhost:55219/api/rooms", obj
   );
 
   }

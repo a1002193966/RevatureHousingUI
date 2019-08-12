@@ -20,26 +20,27 @@
         
             </div>
         
-            <div class="room-info">
-                <div class="room-card" *ngFor="let room of rooms;">
+            <div class="room-info" *ngFor="let room of roomList;">
+                <div class="room-card" *ngIf="room.locationID==location.locationID">
+                    
                     <img id="room-img" src="https://techcrunch.com/wp-content/uploads/2019/03/blueground-apartment-2-2-2.jpg?w=730&crop=1">
                 
                     <div class="room-detail">
-                        <span id="txt">Room #:</span> {{testRoom.RoomNumber}}<br>
-                        <span id="txt">Gender:</span> {{testRoom.Gender}}<br>
-                        <span id="txt">Occupancy: </span><b>{{testRoom.CurrentOccupancy}}</b> of <b>{{testRoom.MaxOccupancy}}</b><br>
-                        <span id="txt">Start Date:</span> {{testRoom.StartDate}} <br>
-                        <span id="txt">End Date: </span> {{testRoom.EndDate}}<br>
-                        <span id="des">{{testRoom.Description}}</span><br>
+                        <span id="txt">Room #:</span> {{room.roomNumber}}<br>
+                        <span id="txt">Gender:</span> {{room.gender}}<br>
+                        <span id="txt">Occupancy: </span><b>{{room.currentOccupancy}}</b> of <b>{{room.maxOccupancy}}</b><br>
+                        <span id="txt">Start Date:</span> {{room.startDate | date:shortDate}} <br>
+                        <span id="txt">End Date: </span> {{room.endDate | date:shortDate}}<br>
+                        <span id="des">{{room.description}}</span><br>
                         <br>
                         <button id="btn-update" routerLink="update-room">Edit</button>
                         <button id="btn-remove" routerLink="delete-room">Delete</button>
-                    </div>
+                    </div>                 
                 </div>
             </div>
-            <div class="btn-show">
+            <!-- <div class="btn-show">
                 <a href="#" id="btn-showall"> Show all rooms available ></a>
-            </div>
+            </div> -->
         </div>
 
 </div>

@@ -11,6 +11,7 @@ import { ApiService } from '../api.service';
 export class HomeComponent implements OnInit {
 
   locationList: object;
+  roomList: object;
   
     constructor(private adalSvc: MsAdalAngular6Service, private datasvc: ApiService) {
       console.log(this.adalSvc.userInfo);
@@ -28,12 +29,16 @@ export class HomeComponent implements OnInit {
 
     getRoomInfo()
     {
-
+      this.datasvc.getRoomData().subscribe(data => {
+        this.roomList=data;
+    });
     }
     
   ngOnInit() {
      // get locations belonging to the provider
+     
      this.getLocationInfo();
+     this.getRoomInfo();
   }
 
 }
