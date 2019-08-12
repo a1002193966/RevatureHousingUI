@@ -1,6 +1,8 @@
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { Component, OnInit } from '@angular/core';
 import { ProviderLocation } from '../../Entities/location';
+import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-home',
@@ -8,55 +10,43 @@ import { ProviderLocation } from '../../Entities/location';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  
-  // test data
-  rooms = [1, 2, 3, 4, 5];
-  testRoom = {
-    RoomID: 101,
-    Type: "Apartment",
-    MaxOccupancy: 4,
-    RoomNumber: 11,
-    LocationID: 1001,
-    Gender: "Male",
-    StartDate: new Date().toLocaleDateString(),
-    EndDate: new Date().toLocaleDateString(),
-    CurrentOccupancy: 2,
-    IsActive: true,
-    Description: "A short, optional description of the room"
-  };
-  locations = [
-    {
-      Address: "204 Frank Street",
-      City: "Dallas",
-      State: "Texas",
-      Zip: "16588"
-    },
-    {
-      Address: "123 Main Street",
-      City: "Springfield",
-      State: "Ohio",
-      Zip: "11202"
-    },
-    {
-      Address: "485 Sun Boulevard",
-      City: "Maimi",
-      State: "Florida",
-      Zip: "12064"
-    }
-  ]
-  
 
-    constructor(private adalSvc: MsAdalAngular6Service) {
+  locationList: object;
+  roomList: object;
+  
+    constructor(private adalSvc: MsAdalAngular6Service, private datasvc: ApiService, private router: Router) {
       console.log(this.adalSvc.userInfo);
       this.adalSvc.acquireToken('https://graph.microsoft.com').subscribe((token: string) => {
         console.log(token);
       });
     }
     
-   
+    getLocationInfo(){
+      //httpclient get method
+      this.datasvc.getLocationData().subscribe(data => {
+        this.locationList=data;//assign data to location object
+        console.log(this.locationList);
+    });
+    }
+
+    getRoomInfo()
+    {
+      this.datasvc.getRoomData().subscribe(data => {
+        this.roomList=data;
+    });
+    }
+    
+    showLocation(id: number) {
+      this.router.navigate(['add-room', id]);
+    }
+
+    updateRoom(id: number) {
+      this.router.navigate(['update-room', id]);
+    }
 
   ngOnInit() {
-    // get locations belonging to the provider
+     // get locations belonging to the provider
+     this.getLocationInfo();
+     this.getRoomInfo();
   }
-
 }

@@ -3,8 +3,8 @@ import { ApiService } from '../api.service';
 import { Room } from 'src/Entities/room';
 import { ProviderLocation } from 'src/Entities/location';
 import { FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
-
-
+import { ActivatedRoute } from '@angular/router';
+import { VirtualTimeScheduler } from 'rxjs';
 
 
 
@@ -23,13 +23,16 @@ export class AddRoomComponent implements OnInit {
   submitted: boolean = false;
   success: boolean = false;
   StartDate: Date;
-
+  LocationID: number;
   
  
-  constructor(private datasvc: ApiService, private formBuilder: FormBuilder) { }
+  constructor(private datasvc: ApiService, private formBuilder: FormBuilder, private route: ActivatedRoute) { 
+
+    this.route.params.subscribe(params => this.assignLocationId(params['id']));
+  }
  
   ngOnInit() {
-    this.getRoomInfo();//get data when the page is loaded
+   // this.getRoomInfo();//get data when the page is loaded
 
     this.mygroup = this.formBuilder.group({
        Type:['',[Validators.required]],
@@ -42,15 +45,16 @@ export class AddRoomComponent implements OnInit {
     
   }
 
+  assignLocationId(id: number) {
+    this.LocationID = id;
+  }
 
  //Get RoomInfo working: Test It 
   getRoomInfo(){
     //httpclient get method
-  //   this.datasvc.getLocationData().subscribe(data => {
-  //     this.location = data;//assign data to location object
-  //     this.rooms = true;//set rooms to true because room object existed
-  //     console.log(this.location);
-  // })
+    this.datasvc.getLocationData().subscribe(data => {
+      this.location = data;//assign data to location object   
+  })
   }
 
   
@@ -60,6 +64,7 @@ export class AddRoomComponent implements OnInit {
     value.IsActive = true;
     value.RoomID = 0;
     value.CurrentOccupancy = value.MaxOccupancy;
+    value.LocationID = this.LocationID;
     
      this.datasvc.postRoomData(value).subscribe(data => {
       //post success
@@ -92,6 +97,8 @@ export class AddRoomComponent implements OnInit {
          this.success = true;
          this.postRoomInfo(this.mygroup.value);
          console.log(this.mygroup.value);
+         this.mygroup.reset();
+         this.submitted = false;
 
        }
       
