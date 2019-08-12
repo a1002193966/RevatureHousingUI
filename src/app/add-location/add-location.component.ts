@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { ProviderLocation } from 'src/Entities/location';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'dev-add-location',
@@ -8,12 +9,24 @@ import { ProviderLocation } from 'src/Entities/location';
   styleUrls: ['./add-location.component.scss']
 })
 export class AddLocationComponent implements OnInit {
+  
+  locationGroup: FormGroup;
+  submitted: boolean = false;
+  
 
   
-  constructor(private datasvc: ApiService) { }
+  constructor(private datasvc: ApiService, private formBuilder: FormBuilder) { }
   
 
   ngOnInit() {
+    this.locationGroup = this.formBuilder.group({
+      Address: ['',[Validators.required]],
+      State:['',[Validators.required]],
+      City:['',[Validators.required]],
+      Zip:['',[Validators.required]],
+      TrainingCenter:['',[Validators.required]]
+
+    })
   }
 
   PostLocationInfo(obj: ProviderLocation){
@@ -31,6 +44,17 @@ export class AddLocationComponent implements OnInit {
       console.log(obj);
     } 
     //console.log(value);
+  }
+
+  OnSubmit(){
+    this.submitted = true;
+    if(this.locationGroup.invalid){
+      console.log("location Invalid data");
+      return;
+    }
+    this.PostLocationInfo(this.locationGroup.value);
+    console.log(this.locationGroup.value);
+    
   }
 
 }

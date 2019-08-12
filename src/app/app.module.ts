@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Pipe } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,11 +14,13 @@ import { DeleteRoomComponent } from './delete-room/delete-room.component';
 import { UpdateRoomComponent } from './update-room/update-room.component';
 import { ApiService } from './api.service';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { StickyNavModule } from 'ng2-sticky-nav';
 import { MsAdalAngular6Module,AuthenticationGuard } from 'microsoft-adal-angular6';
 import { environment } from '../environments/environment';
 import { AddLocationComponent } from './add-location/add-location.component';
+import { DatePipe } from '@angular/common';
+
 
 
 
@@ -31,13 +33,15 @@ import { AddLocationComponent } from './add-location/add-location.component';
     AddRoomComponent,
     DeleteRoomComponent,
     UpdateRoomComponent,
-    AddLocationComponent
+    AddLocationComponent,
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),//withConfig: remove warning message when using formcontrolname and ngModel
     StickyNavModule,
     MsAdalAngular6Module.forRoot({
       tenant: environment.tenant,
@@ -49,7 +53,7 @@ import { AddLocationComponent } from './add-location/add-location.component';
       cacheLocation: 'localStorage'
     })
   ],
-  providers: [Room, Provider, ProviderLocation, ApiService, AuthenticationGuard],
+  providers: [Room, Provider, ProviderLocation, ApiService, AuthenticationGuard,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
