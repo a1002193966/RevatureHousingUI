@@ -60,6 +60,7 @@ export class AddRoomComponent implements OnInit {
     value.IsActive = true;
     value.RoomID = 0;
     value.CurrentOccupancy = value.MaxOccupancy;
+    value.LocationID = 2;
     
      this.datasvc.postRoomData(value).subscribe(data => {
       //post success
@@ -92,6 +93,8 @@ export class AddRoomComponent implements OnInit {
          this.success = true;
          this.postRoomInfo(this.mygroup.value);
          console.log(this.mygroup.value);
+         this.mygroup.reset();
+         this.submitted = false;
 
        }
       
