@@ -27,10 +27,14 @@ apiUrl : string = "http://localhost:61279/api";
     return this.http.get(this.apiUrl + "/locations");
   }
   
+  // Get locations associated to the provider using providerID.
+  // Currently returns all locations, getting by providerId must be implemented.
   getLocations(){
     return this.http.get(this.apiUrl + "/locations");
   }
 
+  // Get rooms for a location using locationID.
+  // Currently gets all rooms and does not have a locationID parameter.
   getRooms(){
     return this.http.get(this.apiUrl + "/rooms");
   }
@@ -46,7 +50,7 @@ apiUrl : string = "http://localhost:61279/api";
   PostLocationData(obj: ProviderLocation): Observable<ProviderLocation>{
     console.log(obj);
   return this.http
-  .post<ProviderLocation>("http://localhost:59754/api/locations", obj
+  .post<ProviderLocation>(this.apiUrl + "/locations", obj
   );
 
   }
@@ -55,7 +59,7 @@ apiUrl : string = "http://localhost:61279/api";
  
   updateData(obj: Room)
   {
-    return this.http.put("http://localhost:59754/api/Rooms/" + obj.RoomID, obj);
+    return this.http.put(this.apiUrl + "/Rooms/" + obj.RoomID, obj);
   }
 
 }

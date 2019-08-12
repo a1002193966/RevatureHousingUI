@@ -56,10 +56,8 @@ export class HomeComponent implements OnInit {
       });
     }
     
-   
-
+  
   ngOnInit() {
-    // get locations belonging to the provider
     this.getLocations();
   }
 
@@ -72,6 +70,8 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  // Gets room information associated to a location.
+  // The getRooms() method in api service is currently incomplete.
   getRoomsByLocation(){
     this.datasvc.getRooms().subscribe( data =>{
 
