@@ -4,11 +4,7 @@ import { Room } from 'src/Entities/room';
 import { Observable } from 'rxjs';
 import { ProviderLocation } from 'src/Entities/location';
 
-// const header = {
-//   header: new HttpHeaders({
-//     'Content-Type': 'application/json'
-//   })
-// };
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,28 +28,24 @@ export class ApiService {
   
   getRoomById(id: number)
   {
-    return this.http.get(this._RoomUrl+id);
+    return this.http.get<Room>(this._RoomUrl+id);
   }
 
   postRoomData(obj: Room): Observable<Room>{
-    console.log(obj);
   return this.http
   .post<Room>(this._RoomUrl, obj
   );
   }
 
   PostLocationData(obj: ProviderLocation): Observable<ProviderLocation>{
-    console.log(obj);
   return this.http
   .post<ProviderLocation>(this._locationUrl, obj
   );
   }
 
 
- 
-  updateData(obj: Room)
-  {
-    return this.http.put(this._RoomUrl + obj.RoomID, obj);
+  updateData(id: number, obj: Room): Observable<Room>{
+    return this.http.put<Room>(this._RoomUrl+id, obj);
   }
 
 }
