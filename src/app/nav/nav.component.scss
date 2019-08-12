@@ -4,6 +4,7 @@
     font-size: 12px;
     overflow: hidden;  
     opacity: 0.9;
+    z-index: 10;
     border-bottom: 1px solid gray;
 }
 
@@ -13,12 +14,12 @@
 }
 
 .menubar{
-    width: 80%;
+    width: 60%;
     background-color: white;
 }
 
 .revlogo{
-    width: 20%;
+    width: 40%;
     cursor: pointer;
     background-color: white;
 }
@@ -26,7 +27,7 @@
 .menubar ul{
     float: right;
     padding-top: 53px;
-    margin-right: 20vw;
+    margin-right: 10%;
 }
 
 .menubar li{
@@ -50,8 +51,9 @@
 }
 
 .revlogo img{
-    float: right;
+    float: left;
     padding-top: 30px !important;
+    margin-left: 15%;
 }
 
 #btn-login{
@@ -83,5 +85,5 @@
 }
 
 .content{
-    height: 5vh;
+    height: 4vh;
 }

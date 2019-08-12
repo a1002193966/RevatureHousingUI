@@ -7,3 +7,31 @@
 body{
     background-color: white;
 }
+
+footer{
+    float: left;
+    width: 100%;
+    background-color: #535e63;
+    color: white;
+    padding: 50px;
+}
+
+footer a{
+    color: white;
+}
+
+footer a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.contact{
+    text-align: center;
+}
+
+#copy-right{
+    float: right;
+}
+hr{
+    background-color: white;
+}

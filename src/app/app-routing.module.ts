@@ -5,18 +5,20 @@ import { AddRoomComponent } from './add-room/add-room.component';
 import { UpdateRoomComponent } from './update-room/update-room.component';
 import { DeleteRoomComponent } from './delete-room/delete-room.component';
 import { LoginComponent } from './login/login.component';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
+import { AuthenticationGuard } from 'microsoft-adal-angular6';
+import { AddLocationComponent } from './add-location/add-location.component';
 
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+
+  { path: "", component: HomeComponent},
+  //Will redirect users to azure login
+  //{ path: "home", component: HomeComponent, canActivate: [AuthenticationGuard] },
   { path: "add-room", component: AddRoomComponent },
+  { path: "add-location", component: AddLocationComponent},
   { path: "update-room", component: UpdateRoomComponent },
   { path: "delete-room", component: DeleteRoomComponent },
-  { path: "login", component: LoginComponent },
-  { path: "about", component: AboutComponent },
-  { path: "contact", component: ContactComponent}
+  { path: "login", component: LoginComponent }
 ];
 
 @NgModule({

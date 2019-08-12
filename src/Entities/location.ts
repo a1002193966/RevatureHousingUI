@@ -1,4 +1,4 @@
-export class Location {
+export class ProviderLocation {
 
     //Primary Key
     LocationID : number;

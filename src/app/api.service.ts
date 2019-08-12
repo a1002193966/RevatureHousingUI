@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Room } from 'src/Entities/room';
 import { Observable } from 'rxjs';
+import { ProviderLocation } from 'src/Entities/location';
 
-const header = {
-  header: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-};
+// const header = {
+//   header: new HttpHeaders({
+//     'Content-Type': 'application/json'
+//   })
+// };
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +17,14 @@ const header = {
 
 export class ApiService {
 
-url: string = "https://reqres.in/api/users";
 apiUrl : string = "http://localhost:61279/api";
 
   constructor(private http : HttpClient) { 
     
   }
 
-  getData(){
-    return this.http.get("http://localhost:61965/api/locations");
+  getLocationData(){
+    return this.http.get(this.apiUrl + "/locations");
   }
   
   getLocations(){
@@ -32,24 +32,30 @@ apiUrl : string = "http://localhost:61279/api";
   }
 
   getRooms(){
-    return this.http.get(this.apiUrl + "/locations");
+    return this.http.get(this.apiUrl + "/rooms");
   }
 
-  postData(obj: Room): Observable<Room>{
+  postRoomData(obj: Room): Observable<Room>{
     console.log(obj);
   return this.http
-  .post<Room>("http://localhost:61965/api/Rooms", obj
+  .post<Room>(this.apiUrl + "/Rooms", obj
   );
 
   }
 
-  getRoomData(){
-    return this.http.get(this.url);
+  PostLocationData(obj: ProviderLocation): Observable<ProviderLocation>{
+    console.log(obj);
+  return this.http
+  .post<ProviderLocation>("http://localhost:59754/api/locations", obj
+  );
+
   }
 
-  updateData(obj: object)
+
+ 
+  updateData(obj: Room)
   {
-    return this.http.put(this.url, JSON.stringify(obj));
+    return this.http.put("http://localhost:59754/api/Rooms/" + obj.RoomID, obj);
   }
 
 }

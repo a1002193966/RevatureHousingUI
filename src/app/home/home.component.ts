@@ -1,7 +1,7 @@
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { Component, OnInit } from '@angular/core';
-import { Location } from '../../Entities/location';
 import { ApiService } from '../api.service';
+import { ProviderLocation } from '../../Entities/location';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   locs: any;
 
   // test data
-  rooms = [1, 2, 3, 4];
+  rooms = [1, 2, 3, 4, 5];
   testRoom = {
     RoomID: 101,
     Type: "Apartment",
