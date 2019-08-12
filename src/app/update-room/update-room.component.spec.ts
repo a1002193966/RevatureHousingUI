@@ -26,4 +26,15 @@ describe('UpdateRoomComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  
+//update-room
+    // //NumTenants not >  NumBeds when adding room
+    // it('should check if NumTenants is greater than NumBeds',async(()=>{
+    //   fixture.detectChanges();
+    //   spyOn(component,'postRoomInfo');
+    //   fixture.debugElement.query(By.css(''))
+    //   expect(component.room).toBeTruthy();
+  
+    // }));
 });
