@@ -11,48 +11,55 @@ import { Room } from 'src/Entities/room';
 export class AddRoomComponent implements OnInit {
   room: Room;
   location: Object;
+  // tslint:disable-next-line:no-inferrable-types
   rooms: boolean = false;
   constructor(private datasvc: ApiService) { }
 
   ngOnInit() {
-    this.getRoomInfo();//get data when the page is loaded
+    this.getRoomInfo(); // get data when the page is loaded
   }
 
 
- //Get RoomInfo working: Test It 
-  getRoomInfo(){
-    //httpclient get method
+ // Get RoomInfo working: Test It
+  getRoomInfo() {
+    // httpclient get method
     this.datasvc.getLocationData().subscribe(data => {
-      this.location = data;//assign data to location object
-      this.rooms = true;//set rooms to true because room object existed
+      this.location = data; // assign data to location object
+      this.rooms = true; // set rooms to true because room object existed
       console.log(this.location);
-  })
+  });
   }
 
- 
-  postRoomInfo(value: Room){
+
+  postRoomInfo(value: Room) {
     console.log(value);
     value.IsActive = true;
     value.RoomID = 0;
-    
-     this.datasvc.postRoomData(value).subscribe(data => {
-      //post success
-      console.log(data);
-      console.log("Post success");
 
-    }), error => {
-      //httpclient post error handling 
-      console.log("Error", error);
-      console.log(value);
-    } 
-    //console.log(value);
+    const myObserver = {
+      next: data => console.log('Post success: ' + data),
+      error: err => console.error('Error: ' + err + '\n' + value)
+    };
+
+    this.datasvc.postRoomData(value).subscribe(myObserver);
+    //    data => {
+    //     // post success
+    //     console.log(data);
+    //     console.log('Post success');
+    //     }),
+    //     error => {
+    //     // httpclient post error handling
+    //     console.log('Error: ', error);
+    //     console.log(value);
+    // };
+    // console.log(value);
   }
 
 
   onSubmit(value: any) {
-    //get the value by its property
+    // get the value by its property
     console.log(value);
-    console.log("Name: " + value.NumBeds);
+    console.log('Name: ' + value.NumBeds);
   }
 
 }

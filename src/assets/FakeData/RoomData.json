@@ -1,0 +1,54 @@
+[
+    {
+        "roomId": 1,
+        "type": "One Bed Room",
+        "maxOccupancy": 1,
+        "roomNumber": "1B",
+        "currentOccupancy": 0,
+        "gender": "Male",
+        "startDate": 2019-10-02,
+        "encDate": 2019-30-04,
+        "isActive": true,
+        "description": "",
+        "locationId": 1
+    },
+    {
+        "roomId": 2,
+        "type": "Two Bed Room",
+        "maxOccupancy": 2,
+        "roomNumber": "1C",
+        "currentOccupancy": 1,
+        "gender": "Female",
+        "startDate": 2019-10-02,
+        "encDate": 2019-30-04,
+        "isActive": true,
+        "description": "",
+        "locationId": 1
+    },
+    {
+        "roomId": 3,
+        "type": "One Bed Room",
+        "maxOccupancy": 1,
+        "roomNumber": "1A",
+        "currentOccupancy": 0,
+        "gender": "Male",
+        "startDate": 2019-10-02,
+        "encDate": 2019-30-04,
+        "isActive": true,
+        "description": "",
+        "locationId": 1
+    },
+    {
+        "roomId": 4,
+        "type": "Two Bed Room",
+        "maxOccupancy": 2,
+        "roomNumber": "2C",
+        "currentOccupancy": 1,
+        "gender": "Alternative",
+        "startDate": 2019-10-02,
+        "encDate": 2019-30-04,
+        "isActive": true,
+        "description": "",
+        "locationId": 2
+    }
+]

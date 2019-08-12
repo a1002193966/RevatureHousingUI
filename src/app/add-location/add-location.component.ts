@@ -9,28 +9,35 @@ import { ProviderLocation } from 'src/Entities/location';
 })
 export class AddLocationComponent implements OnInit {
 
-  
+
   constructor(private datasvc: ApiService) { }
-  
 
   ngOnInit() {
   }
 
-  PostLocationInfo(obj: ProviderLocation){
+
+
+  PostLocationInfo(obj: ProviderLocation) {
     obj.ProviderID = 1;
     console.log(obj);
-    
-     this.datasvc.PostLocationData(obj).subscribe(data => {
-      //post location success
-      console.log(data);
-      console.log("Post success");
 
-    }), error => {
-      //post location error handling 
-      console.log("Error", error);
-      console.log(obj);
-    } 
-    //console.log(value);
+    const myObserver = {
+      next: data => console.log('Post success: ' + data),
+      error: err => console.error('Error: ' + err + '\n' + obj)
+    };
+
+    this.datasvc.PostLocationData(obj).subscribe( myObserver);
+      //  data => {
+      // // post location success
+      // console.log(data);
+      // console.log('Post success');
+
+      // }), error => {
+      // // post location error handling
+      // console.log('Error', error);
+      // console.log(obj);
+      // };
+    // console.log(value);
   }
 
 }

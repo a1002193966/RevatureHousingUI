@@ -1,0 +1,18 @@
+[
+    {
+        "providerId": 1,
+        "first": "Suzy",
+        "last": "Sand",
+        "phone": "4074562233",
+        "companyName": "Canadian Bacon",
+        "email": "Best@Apt.com"
+      },
+      {
+        "providerId": 2,
+        "first": "Rain",
+        "last": "Cloud",
+        "phone": "5556124949",
+        "companyName": "US Ham",
+        "email": "Only@Apt.com"
+      }
+]
