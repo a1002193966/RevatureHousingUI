@@ -1,6 +1,7 @@
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { Component, OnInit } from '@angular/core';
 import { ProviderLocation } from '../../Entities/location';
+import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -11,8 +12,9 @@ import { ApiService } from '../api.service';
 export class HomeComponent implements OnInit {
 
   locationList: object;
+  roomList: object;
   
-    constructor(private adalSvc: MsAdalAngular6Service, private datasvc: ApiService) {
+    constructor(private adalSvc: MsAdalAngular6Service, private datasvc: ApiService, private router: Router) {
       console.log(this.adalSvc.userInfo);
       this.adalSvc.acquireToken('https://graph.microsoft.com').subscribe((token: string) => {
         console.log(token);
@@ -23,17 +25,28 @@ export class HomeComponent implements OnInit {
       //httpclient get method
       this.datasvc.getLocationData().subscribe(data => {
         this.locationList=data;//assign data to location object
+        console.log(this.locationList);
     });
     }
 
     getRoomInfo()
     {
-
+      this.datasvc.getRoomData().subscribe(data => {
+        this.roomList=data;
+    });
     }
     
+    showLocation(id: number) {
+      this.router.navigate(['add-room', id]);
+    }
+
+    updateRoom(id: number) {
+      this.router.navigate(['update-room', id]);
+    }
+
   ngOnInit() {
      // get locations belonging to the provider
      this.getLocationInfo();
+     this.getRoomInfo();
   }
-
 }

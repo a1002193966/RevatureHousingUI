@@ -7,6 +7,7 @@
 <!-- This web site will display  -->
 <!-- Created NgForm for room that consists of room type,number of beds,location,room number, gender, start date, and end date -->
 <!-- Used Httpclient get method to communicate with API to retrieve data -->
+<!-- Add validation for room type, number of beds, Room Number,Gender, StartDate,EndDate-->
 <!-- ******************************************************************** -->
 <div class="d-flex justify-content-center">
         <h1 class="pb-1">Add a Room</h1>
@@ -48,18 +49,6 @@
         </div>
     </div>
 
-<!-- Location drop down list -->
-
-    <!-- <div class="form-group" id="L1">
-        <div class="row justify-content-center">
-                <label for="Location" class="col-sm-2">Location:</label>
-                <select class="form-control col-sm-2" id="Location" name="LocationID" *ngIf = "rooms" required  >
-                  <option  *ngFor = "let room of location" > {{room.locationID}} </option>
-                </select>
-        </div>    
-    </div> -->
-
-    
  <!-- Room Number -->  
     <div class="form-group">
         <div class="row justify-content-center">

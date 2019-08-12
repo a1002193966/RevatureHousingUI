@@ -16,25 +16,36 @@ import { ProviderLocation } from 'src/Entities/location';
 
 
 export class ApiService {
+
+  private _locationUrl:string="http://localhost:55219/api/locations/";
+  private _RoomUrl:string="http://localhost:55219/api/rooms/";
+
   constructor(private http : HttpClient) { }
 
   getLocationData(){
-    return this.http.get("http://localhost:55219/api/locations");
+    return this.http.get(this._locationUrl);
+  }
+
+  getRoomData(){
+    return this.http.get(this._RoomUrl);
   }
   
+  getRoomById(id: number)
+  {
+    return this.http.get(this._RoomUrl+id);
+  }
 
   postRoomData(obj: Room): Observable<Room>{
     console.log(obj);
   return this.http
-  .post<Room>("http://localhost:55219/api/Rooms", obj
+  .post<Room>(this._RoomUrl, obj
   );
-
   }
 
   PostLocationData(obj: ProviderLocation): Observable<ProviderLocation>{
     console.log(obj);
   return this.http
-  .post<ProviderLocation>("http://localhost:55219/api/locations", obj
+  .post<ProviderLocation>(this._locationUrl, obj
   );
   }
 
@@ -42,7 +53,7 @@ export class ApiService {
  
   updateData(obj: Room)
   {
-    return this.http.put("http://localhost:55219/api/Rooms/" + obj.RoomID, obj);
+    return this.http.put(this._RoomUrl + obj.RoomID, obj);
   }
 
 }
