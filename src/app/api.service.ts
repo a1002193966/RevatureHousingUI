@@ -52,7 +52,6 @@ apiUrl : string = "http://localhost:61279/api";
   return this.http
   .post<ProviderLocation>(this.apiUrl + "/locations", obj
   );
-
   }
 
 

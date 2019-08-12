@@ -5,14 +5,13 @@
         <button id="btn-addLoc" routerLink="add-location">Add New Location</button>
     </div>
     
-    <!-- Outer ngFor to display all provider locations-->
-    <div class="display-info" *ngFor="let location of locations;">
+    <div class="display-info" *ngFor="let location of locationList;">
 
             <div class="loc-info">
                 
                 <div class="address">
-                    <h4 id="location-address">{{location.Address}}</h4>
-                    <h5>{{location.City}}, {{location.State}} {{location.Zip}}</h5>
+                    <h4 id="location-address">{{location.address}}</h4>
+                    <h5>{{location.city}}, {{location.state}} {{location.zip}}</h5>
                 </div>
         
                 <div class="btn-room">
