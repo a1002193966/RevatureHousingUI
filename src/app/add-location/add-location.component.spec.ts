@@ -21,6 +21,7 @@ describe('AddLocationComponent', () => {
         ReactiveFormsModule
       ]
     })
+
     .compileComponents();
   }));
 

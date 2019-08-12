@@ -6,8 +6,6 @@ import { FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
 
 
 
-
-
 @Component({
   selector: 'app-add-room',
   templateUrl: './add-room.component.html',

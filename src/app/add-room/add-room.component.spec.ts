@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddRoomComponent } from './add-room.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-
 
 describe('AddRoomComponent', () => {
   let component: AddRoomComponent;
@@ -11,9 +11,7 @@ describe('AddRoomComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
-        AddRoomComponent 
-      ],
+      declarations: [ AddRoomComponent ],
       imports:[
         FormsModule,
         HttpClientTestingModule,
@@ -28,13 +26,39 @@ describe('AddRoomComponent', () => {
     component = fixture.componentInstance;
   });
 
+  
 
-  //ngOnInit test
+//ngOnInit test
   it('should call getRoomInfo in ngOnInit',()=>{
-    spyOn(component,'getRoomInfo');
+  spyOn(component,'getRoomInfo');
+  fixture.detectChanges();
+  expect(component.getRoomInfo).toHaveBeenCalled();
+ })
+
+   //submit button
+   it('should call the onSubmit method', async(()=>{
     fixture.detectChanges();
-    expect(component.getRoomInfo).toHaveBeenCalled();
-  })
+    spyOn(component,'postRoomInfo');
+    fixture.debugElement.query(By.css('input[type=submit]'));
+    fixture.debugElement.query(By.css('input[type=submit]')).nativeElement.click();
+    expect(component.postRoomInfo).toHaveBeenCalledTimes(1);
+  }));
 
   
+  //show location
+  it('should show Location',async(()=>{
+
+  }));
+
+  //get-room info
+  it('should getRoomInfo',async(()=>{
+
+  }));
+  //post-room info
+  it('should post-roomInfor',async(()=>{
+
+  }));
  });
+
+
+ 
