@@ -16,21 +16,17 @@ import { ProviderLocation } from 'src/Entities/location';
 
 
 export class ApiService {
-
-
-  constructor(private http : HttpClient) { 
-    
-  }
+  constructor(private http : HttpClient) { }
 
   getLocationData(){
-    return this.http.get("http://localhost:59754/api/locations");
+    return this.http.get("http://localhost:55219/api/locations");
   }
   
 
   postRoomData(obj: Room): Observable<Room>{
     console.log(obj);
   return this.http
-  .post<Room>("http://localhost:59754/api/Rooms", obj
+  .post<Room>("http://localhost:55219/api/Rooms", obj
   );
 
   }
@@ -38,16 +34,15 @@ export class ApiService {
   PostLocationData(obj: ProviderLocation): Observable<ProviderLocation>{
     console.log(obj);
   return this.http
-  .post<ProviderLocation>("http://localhost:59754/api/locations", obj
+  .post<ProviderLocation>("http://localhost:55219/api/locations", obj
   );
-
   }
 
 
  
   updateData(obj: Room)
   {
-    return this.http.put("http://localhost:59754/api/Rooms/" + obj.RoomID, obj);
+    return this.http.put("http://localhost:55219/api/Rooms/" + obj.RoomID, obj);
   }
 
 }
