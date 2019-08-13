@@ -3,7 +3,7 @@
 <!-- Document Name: add-room.component.html-->
 <!-- Author: Luis Concepcion, Jialong Zhang-->
 <!-- Date Created: 8/7/2019 -->
-<!-- Date Updated: 8/8/2019  -->
+<!-- Date Updated: 8/13/2019  -->
 <!-- This web site will display  -->
 <!-- Created NgForm for room that consists of room type,number of beds,location,room number, gender, start date, and end date -->
 <!-- Used Httpclient get method to communicate with API to retrieve data -->
@@ -25,15 +25,15 @@
 
             <div>
                 <label class="">Room Type:</label>
-                    <input type="radio" class="" name="Type" id ="Apartment" value="Apartment" formControlName="Type">
-                    <label for="Apartment" class="">Apartment</label>
-                    <input type="radio" class="" name="Type" id ="Dorm" value="Dorm" formControlName="Type" >
-                    <label for="Dorm" class="">Dorm</label>
+                <input type="radio" class="" name="Type" id ="Apartment" value="Apartment" formControlName="Type">
+                <label for="Apartment" class="">Apartment</label>
+                <input type="radio" class="" name="Type" id ="Dorm" value="Dorm" formControlName="Type" >
+                <label for="Dorm" class="">Dorm</label>
 
-                        <!--validation-->
-                    <div *ngIf="submitted && mygroup.controls.Type.errors">
-                        <div class = "" *ngIf="mygroup.controls.Type.errors.required">Room Type is required</div>
-                    </div>
+                <!--validation-->
+                <div *ngIf="submitted && mygroup.controls.Type.errors">
+                    <div class = "" *ngIf="mygroup.controls.Type.errors.required">Room Type is required</div>
+                </div>
             </div>
             <br>
 
@@ -41,20 +41,19 @@
             <div class = "">
 
                 <label for="NumBeds" class="">Number of Beds:</label>
-                <input type="number" class=""  name="MaxOccupancy" id="NumBeds"  formControlName="MaxOccupancy" >
+                <input type="number" class=""  name="MaxOccupancy" id="NumBeds"  formControlName="MaxOccupancy" placeholder="Enter Number of Beds">
                 <!--validation-->
                 <div *ngIf="submitted && mygroup.controls.MaxOccupancy.errors">
                         <div class = "" *ngIf="mygroup.controls.MaxOccupancy.errors.required">Number of Beds is required</div>
                         <div class = "" *ngIf="mygroup.controls.MaxOccupancy.errors.min">Number of Beds must be greater than 0</div>
                 </div>
-
             </div>
             <br>
         
             <!-- Room Number -->  
             <div class="">
                     <label for="InternalAddress" class="">Room number:</label>
-                    <input type="text" class="" id="InternalAddress" name="RoomNumber" formControlName="RoomNumber">
+                    <input type="text" class="" id="InternalAddress" name="RoomNumber" formControlName="RoomNumber" placeholder="Enter Room Number">
                         <!--validation-->
                     <div *ngIf="submitted && mygroup.controls.RoomNumber.errors">
                         <div class = "" *ngIf="mygroup.controls.RoomNumber.errors.required" >Room Number is required</div>
@@ -83,7 +82,7 @@
             <div class="">
                 <div class="">
                     <label for="StartDate" class="">Start Date:</label>
-                    <input type="date"  class="" id="StartDate" name="StartDate" formControlName="StartDate" [(ngModel)]="StartDate" max="{{EndDate}}">
+                    <input type="date"  class="" id="StartDate" name="StartDate" formControlName="StartDate" [(ngModel)]="StartDate" max="{{EndDate}}" [value]="">
                     
                     <!--validation-->
                     <div *ngIf="submitted && mygroup.controls.StartDate.errors">
@@ -105,7 +104,16 @@
                     </div>
             </div>
         
-            <br><br>
+            <br>
+
+            <!-- Description -->  
+            <div class="">
+                <label for="Description" class="">Description:</label>
+                <textarea class="" id="Description" name="Description" formControlName="Description" placeholder="Enter Description"></textarea>
+            </div>
+
+            <br><br><br>
+
         <!-- Submit Button -->  
             <div class="">
                 <div class="">
@@ -114,10 +122,9 @@
                 </div>
             </div>
         </form>
-        <!-- Submmited Validation Message-->
+
 
     </div>
-        
 </div>
 
 
