@@ -1,3 +1,6 @@
+import { ProviderLocation } from 'src/Entities/location';
+import { Room } from 'src/Entities/room';
+
 export const LocationData = {
     Address: "abc ",
     State: "NY",
@@ -16,15 +19,30 @@ export const LocationErrorList = {
     ]
 }
 
-export const RoomData={
-    RoomID :1,
-    Type : "room type",
-    MaxOccupancy : 4,
-    RoomNumber : "room number A",
-    Gender : "Male",
-    StartDate : new Date('2019/8/13'),
-    EndDate : new Date('2019/9/13'),
-    CurrentOccupancy : 2,
-    IsActive : true,
-    Description : "nothing in description"
+export class MockProvider extends ProviderLocation{
+    LocationID= 3; 
+    Address= '123 Main Street';
+    City= 'Queens'; 
+    State= 'New York';
+    ZipCode= '11111';
+    TrainingCenter= 'Queens College';
+    ProviderID= 1;
+}
+export class MockRoom extends Room{
+     
+
+    //Primary Key
+    RoomID = 1;
+    Type = 'dorm';
+    MaxOccupancy = 4;
+    RoomNumber = '101';
+    Gender = 'male';
+    StartDate = new Date('2019/08/10');
+    EndDate =  new Date('2019/11/11');
+    CurrentOccupancy = 2;
+    IsActive = true;
+    Description = 'this is a mock room';
+
+    //Foreign Key
+    LocationID = 1;
 }
