@@ -20,8 +20,8 @@ const httpOptions = {
 
 export class ApiService {
 
-  private _locationUrl:string="http://localhost:55219/api/locations/";
-  private _RoomUrl:string="http://localhost:55219/api/rooms/";
+  private _locationUrl:string="http://localhost:59754/api/locations/";
+  private _RoomUrl:string="http://localhost:59754/api/rooms/";
   
 
   constructor(private http : HttpClient) { }
@@ -57,6 +57,8 @@ export class ApiService {
 
 
   updateRoomData(obj: Room): Observable<void>{
+    console.log(obj);
+    console.log(obj.RoomID);
     return this.http.put<void>(`${this._RoomUrl}${obj.RoomID}`, obj, httpOptions);
   }
 
