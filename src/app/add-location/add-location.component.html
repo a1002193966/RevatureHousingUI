@@ -13,11 +13,11 @@
 
 <div class="d-flex justify-content-center">
     <h1 class="pb-1">Add a Location</h1>
-
 </div>
  <!-- Add Location form -->     
      <!-- Address --> 
 <form [formGroup]="locationGroup" (ngSubmit) = "OnSubmit()">
+
     <div class="form-group" id="LocationForm">
         <div class="row justify-content-center">
                 <label for="Address" class="col-sm-2">Address:</label>
@@ -69,11 +69,12 @@
         <div class = "alert alert-danger" *ngIf="locationGroup.controls.TrainingCenter.errors.required">Training Center is required</div>
     </div>
 </div>
-<!-- Training Center --> 
+
     <div>
         <input type="submit" value="Submit" class="btn btn-primary">
+        <button routerLink="" class="btn btn-secondary" >Go Back</button>
     </div>
-
 </div>
 </form>
+
      
