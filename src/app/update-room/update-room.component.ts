@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
 })
 export class UpdateRoomComponent implements OnInit {
 
-  room: any;
+  room: Object;
   roomId: number;
   mygroup: FormGroup;
   submitted: boolean=false;
@@ -28,12 +28,16 @@ export class UpdateRoomComponent implements OnInit {
     this.mygroup = this.formBuilder.group({
       Type:['',[Validators.required]],
       MaxOccupancy:['',[Validators.required,Validators.min(1)]],
+      Occupancy:['',[Validators.required,Validators.min(1)]],
       RoomNumber:['',[Validators.required]],
       Gender:['',[Validators.required]],
       StartDate:['',[Validators.required]],
       EndDate:['',[Validators.required]]
    })
-
+   console.log("ROOM ID");
+   console.log(this.roomId);
+   console.log("ROOM OBJ");
+   console.log(this.room);
   }
 
   assignRoomId(id: number)
@@ -50,17 +54,14 @@ export class UpdateRoomComponent implements OnInit {
 
 }
 
-  updateRoomInfo(room: any){
-    this.datasvc.updateData(this.roomId, room).subscribe(data => {
-      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+  updateRoomInfo(room: Room){
+    this.datasvc.updateRoomData(room).subscribe(data => {
       console.log(data);
     });
   }
 
   onSubmit() {
-    //add room submit
-    this.room.IsActive = true;
-    this.room.CurrentOccupancy = this.room.MaxOccupancy;
+    //update room submit
     this.submitted = true;
        if(this.mygroup.invalid){
          console.log("room Invalid data");

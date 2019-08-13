@@ -21,7 +21,7 @@
             </div>
         
             <div class="room-info" *ngFor="let room of roomList;">
-                <div class="room-card" *ngIf="room.locationID==location.locationID">
+                <div class="room-card" *ngIf="room.locationID==location.locationID && room.isActive">
                     
                     <img id="room-img" src="https://techcrunch.com/wp-content/uploads/2019/03/blueground-apartment-2-2-2.jpg?w=730&crop=1">
                 

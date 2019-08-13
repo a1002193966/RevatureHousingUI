@@ -49,6 +49,21 @@
         </div>
     </div>
 
+    <!-- Current Occupancy -->
+    <div class = "form-group">
+        <div class="row justify-content-center">
+            <label for="CurrentOccupancy" class="col-sm-2">Current Occupancy:</label>
+            <input type="number" class="form-control col-sm-2 "  name="CurrentOccupancy" id="CurrentOccupancy"  formControlName="CurrentOccupancy" [value] = "room.currentOccupancy">
+            
+            <!--validation-->
+            <div *ngIf="submitted && mygroup.controls.CurrentOccupancy.errors">
+                <div class = "alert alert-danger" *ngIf="mygroup.controls.CurrentOccupancy.errors.required">Number of Beds is required</div>
+                <div class = "alert alert-danger" *ngIf="mygroup.controls.CurrentOccupancy.errors.min">Number of Beds must be greater than 0</div>
+            </div>
+        </div>
+    </div>
+    
+
  <!-- Room Number -->  
     <div class="form-group">
         <div class="row justify-content-center">
@@ -106,11 +121,21 @@
             </div>
     </div>
 
-    
+    <div class="form-group">
+        <div class="row justify-content-center">
+            <label for="Description" class="col-sm-2">Description</label>
+            <textarea class="form-control col-sm-2" id="Description" name="Description" for="Description"></textarea>
+        </div>
+    </div>
+
+    <input type="number" for="RoomID" [value]="roomId" hidden>
+    <input type="text" for="IsActive" value="true" hidden>
 <!-- Submit Button -->  
     <div class="form-group">
         <div class="col text-center">
              <input type="submit" class="btn btn-primary" id="AddRoom" value="Update">
         </div>
     </div>
+
+    
 </form>
