@@ -25,7 +25,7 @@ export class AddLocationComponent implements OnInit {
       State:['',[Validators.required, Validators.min(2),Validators.max(2)]],
       City:['',[Validators.required]],
       ZipCode:['',[Validators.required,Validators.minLength(5),Validators.maxLength(5), Validators.pattern('[0-9]*')]],
-      TrainingCenter:['',[Validators.required]]
+      TrainingCenter:['',[Validators.minLength(1)]]
 
     })
   }

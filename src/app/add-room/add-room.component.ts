@@ -35,7 +35,7 @@ export class AddRoomComponent implements OnInit {
    // this.getRoomInfo();//get data when the page is loaded
 
     this.mygroup = this.formBuilder.group({
-       Type:['',[Validators.required]],
+       Type:['',[Validators.required,]],
        MaxOccupancy:['',[Validators.required,Validators.min(1)]],
        RoomNumber:['',[Validators.required]],
        Gender:['',[Validators.required]],

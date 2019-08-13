@@ -35,7 +35,7 @@
                 <!--validation-->
                 <div *ngIf="submitted && locationGroup.controls.State.errors">
                     <div class = "alert alert-danger" *ngIf="locationGroup.controls.State.errors.required">State is required</div>
-                    <div class = "alert alert-danger" *ngIf="locationGroup.controls.State.errors.minlength || locationGroup.controls.State.maxlength">Invalid State</div>
+                    <div class = "alert alert-danger" *ngIf="locationGroup.controls.State.errors.minlength || locationGroup.controls.State.errors.maxlength">Invalid State</div>
                </div>
     </div>
     <br>
@@ -66,7 +66,7 @@
     <input type="text" class="from-control col-sm-2" id="TrainingCenter" name="TrainingCenter" formControlName="TrainingCenter" placeholder="Enter TrainingCenter">
     <!--validation-->
     <div *ngIf="submitted && locationGroup.controls.TrainingCenter.errors">
-        <div class = "alert alert-danger" *ngIf="locationGroup.controls.TrainingCenter.errors.required">Training Center is required</div>
+        <div class = "alert alert-danger" *ngIf="locationGroup.controls.TrainingCenter.errors.minlength || this.locationGroup.controls.TrainingCenter.value =='' ">Training Center is required</div>
     </div>
 </div>
 <!-- Training Center --> 
