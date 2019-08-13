@@ -37,8 +37,7 @@ export class ApiService {
 
   postRoomData(obj: Room): Observable<Room>{
     console.log(obj);
-  return this.http
-  .post<Room>(this._RoomUrl, obj
+  return this.http.post<Room>(this._RoomUrl, obj
   );
   }
 
