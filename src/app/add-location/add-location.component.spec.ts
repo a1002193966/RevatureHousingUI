@@ -7,8 +7,6 @@ import { By } from '@angular/platform-browser';
 import { ApiService } from '../api.service';
 import { ApiServiceMock } from '../testing/mock/mock-api-service';
 import { ProviderLocation } from 'src/Entities/location';
-import { throwError } from 'rxjs/internal/observable/throwError';
-import { observable } from 'rxjs';
 
 /*
   1. waiting for some more validation
