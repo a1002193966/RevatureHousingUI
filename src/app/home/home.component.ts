@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
       //httpclient get method
       this.datasvc.getLocationData().subscribe(data => {
         this.locationList=data;//assign data to location object
-        console.log(this.locationList);
     });
     }
 

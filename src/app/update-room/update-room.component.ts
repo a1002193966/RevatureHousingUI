@@ -3,6 +3,7 @@ import { ApiService } from '../api.service';
 import { Room } from 'src/Entities/room';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-update-room',
@@ -13,23 +14,30 @@ export class UpdateRoomComponent implements OnInit {
 
   room: Object;
   roomId: number;
-  formGroup: FormGroup;
+  mygroup: FormGroup;
   submitted: boolean=false;
+
 
   constructor(private datasvc: ApiService, private route: ActivatedRoute, private formBuilder: FormBuilder) { 
     this.route.params.subscribe(params => this.assignRoomId(params['id']));
   }
 
   ngOnInit() {
+
     this.getRoomInfo();
-    this.formGroup = this.formBuilder.group({
+    this.mygroup = this.formBuilder.group({
       Type:['',[Validators.required]],
       MaxOccupancy:['',[Validators.required,Validators.min(1)]],
+      Occupancy:['',[Validators.required,Validators.min(1)]],
       RoomNumber:['',[Validators.required]],
       Gender:['',[Validators.required]],
       StartDate:['',[Validators.required]],
       EndDate:['',[Validators.required]]
    })
+   console.log("ROOM ID");
+   console.log(this.roomId);
+   console.log("ROOM OBJ");
+   console.log(this.room);
   }
 
   assignRoomId(id: number)
@@ -41,27 +49,30 @@ export class UpdateRoomComponent implements OnInit {
   {
     this.datasvc.getRoomById(this.roomId).subscribe(data => {
       this.room = data;
-      console.log(data);
-      console.log(this.room);
-    }) 
-  }
 
-  updateRoomInfo(value: Room){
-    this.datasvc.updateData(value);
+    }); 
+
+}
+
+  updateRoomInfo(room: Room){
+    this.datasvc.updateRoomData(room).subscribe(data => {
+      console.log(data);
+    });
   }
 
   onSubmit() {
-    //add room submit
+    //update room submit
     this.submitted = true;
-       if(this.formGroup.invalid){
+       if(this.mygroup.invalid){
          console.log("room Invalid data");
          return;
        }else{
-         //success       
-         this.updateRoomInfo(this.formGroup.value);
-         console.log(this.formGroup.value)
+         //success            
+         this.updateRoomInfo(this.mygroup.value);
+         console.log(this.mygroup.value)
          this.submitted = false;
        }
-      
   }
+
+  
 }

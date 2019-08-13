@@ -4,26 +4,34 @@ import { Room } from 'src/Entities/room';
 import { Observable } from 'rxjs';
 import { ProviderLocation } from 'src/Entities/location';
 
-// const header = {
-//   header: new HttpHeaders({
-//     'Content-Type': 'application/json'
-//   })
-// };
+
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 
 
+
 export class ApiService {
 
   private _locationUrl:string="http://localhost:55219/api/locations/";
   private _RoomUrl:string="http://localhost:55219/api/rooms/";
+  
 
   constructor(private http : HttpClient) { }
 
   getLocationData(){
     return this.http.get(this._locationUrl);
+  }
+
+  getLocationById(id: number){
+    return this.http.get(this._locationUrl+id)
   }
 
   getRoomData(){
@@ -32,27 +40,26 @@ export class ApiService {
   
   getRoomById(id: number)
   {
-    return this.http.get(this._RoomUrl+id);
+    return this.http.get<Room>(`${this._RoomUrl}${id}`);
   }
 
   postRoomData(obj: Room): Observable<Room>{
-    console.log(obj);
-  return this.http.post<Room>(this._RoomUrl, obj
-  );
+  return this.http.post<Room>(this._RoomUrl, obj);
   }
 
   PostLocationData(obj: ProviderLocation): Observable<ProviderLocation>{
-    console.log(obj);
   return this.http
   .post<ProviderLocation>(this._locationUrl, obj
   );
   }
 
 
- 
-  updateData(obj: Room)
-  {
-    return this.http.put(this._RoomUrl + obj.RoomID, obj);
+  updateRoomData(obj: Room): Observable<void>{
+    return this.http.put<void>(`${this._RoomUrl}${obj.RoomID}`, obj, httpOptions);
+  }
+
+  deleteRoom(id: number): Observable<{}>{
+    return this.http.delete(this._RoomUrl+id, httpOptions)
   }
 
 }

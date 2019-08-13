@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ModuleWithComponentFactories } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AddRoomComponent', () => {
   let component: AddRoomComponent;
@@ -15,7 +16,8 @@ describe('AddRoomComponent', () => {
       imports:[
         FormsModule,
         HttpClientTestingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterTestingModule
       ]
     })
     .compileComponents();

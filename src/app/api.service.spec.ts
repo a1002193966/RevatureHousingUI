@@ -101,10 +101,10 @@ describe('ApiService', () => {
       req.flush(room);
   
     });
-    it('updateData() should change the data of the room object ', () =>{
+    it('updateRoomData() should change the data of the room object ', () =>{
       const room = new MockRoom();
       
-        service.updateData(room).subscribe((res) => {
+        service.updateRoomData(room).subscribe((res) => {
           expect(res).toEqual(room);
         });
         const req = httpMock.expectOne('http://localhost:55219/api/rooms/' + room.RoomID);
