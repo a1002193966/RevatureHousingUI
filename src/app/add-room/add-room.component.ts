@@ -3,8 +3,8 @@ import { ApiService } from '../api.service';
 import { Room } from 'src/Entities/room';
 import { ProviderLocation } from 'src/Entities/location';
 import { FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { VirtualTimeScheduler } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 
 
@@ -26,7 +26,7 @@ export class AddRoomComponent implements OnInit {
   LocationID: number;
   
  
-  constructor(private datasvc: ApiService, private formBuilder: FormBuilder, private route: ActivatedRoute) { 
+  constructor(private datasvc: ApiService, private formBuilder: FormBuilder, private route: ActivatedRoute,private router: Router) { 
 
     this.route.params.subscribe(params => this.assignLocationId(params['id']));
   }
@@ -40,7 +40,8 @@ export class AddRoomComponent implements OnInit {
        RoomNumber:['',[Validators.required]],
        Gender:['',[Validators.required]],
        StartDate:['',[Validators.required]],
-       EndDate:['',[Validators.required]]
+       EndDate:['',[]],
+       Description:['',[]]
     })
     
   }
@@ -80,12 +81,6 @@ export class AddRoomComponent implements OnInit {
   }
 
 
-  // addOneDay(){
-  //   this.StartDate = new Date();
-  //   this.StartDate.setDate(this.StartDate.getDate() + 1);
-  //   console.log(this.datePipe.transform(this.StartDate,"yyyy-MM-dd"));
-  // }
-
   onSubmit() {
     //add room submit
     this.submitted = true;
@@ -99,6 +94,7 @@ export class AddRoomComponent implements OnInit {
          console.log(this.mygroup.value);
          this.mygroup.reset();
          this.submitted = false;
+         this.router.navigate(['']); // redirect to home
 
        }
       
