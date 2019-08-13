@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
       //httpclient get method
       this.datasvc.getLocationData().subscribe(data => {
         this.locationList=data;//assign data to location object
-        console.log(this.locationList);
     });
     }
 
@@ -36,14 +35,17 @@ export class HomeComponent implements OnInit {
     });
     }
     
+    showLocation(id: number) {
+      this.router.navigate(['add-room', id]);
+    }
+
+    updateRoom(id: number) {
+      this.router.navigate(['update-room', id]);
+    }
+
   ngOnInit() {
      // get locations belonging to the provider
-     
      this.getLocationInfo();
      this.getRoomInfo();
-  }
-
-  showLocation(id: number) {
-    this.router.navigate(['add-room', id]);
   }
 }

@@ -23,7 +23,7 @@ export class AddLocationComponent implements OnInit {
       Address: ['',[Validators.required]],
       State:['',[Validators.required]],
       City:['',[Validators.required]],
-      ZipCode:['',[Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+      ZipCode:['',[Validators.required,Validators.minLength(5),Validators.maxLength(5), Validators.pattern('[0-9]*')]],
       TrainingCenter:['',[Validators.required]]
 
     })
@@ -61,5 +61,8 @@ export class AddLocationComponent implements OnInit {
     }
     
   }
+
+
+  
 
 }
