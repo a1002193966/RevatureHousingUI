@@ -19,7 +19,6 @@ import { StickyNavModule } from 'ng2-sticky-nav';
 import { MsAdalAngular6Module,AuthenticationGuard } from 'microsoft-adal-angular6';
 import { environment } from '../environments/environment';
 import { AddLocationComponent } from './add-location/add-location.component';
-import { DatePipe } from '@angular/common';
 
 
 
@@ -53,7 +52,7 @@ import { DatePipe } from '@angular/common';
       cacheLocation: 'localStorage'
     })
   ],
-  providers: [Room, Provider, ProviderLocation, ApiService, AuthenticationGuard,DatePipe],
+  providers: [Room, Provider, ProviderLocation, ApiService, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

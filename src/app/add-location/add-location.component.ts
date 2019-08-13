@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { ProviderLocation } from 'src/Entities/location';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dev-add-location',
@@ -15,13 +16,13 @@ export class AddLocationComponent implements OnInit {
   
 
   
-  constructor(private datasvc: ApiService, private formBuilder: FormBuilder) { }
+  constructor(private datasvc: ApiService, private formBuilder: FormBuilder, private router: Router) { }
   
 
   ngOnInit() {
     this.locationGroup = this.formBuilder.group({
       Address: ['',[Validators.required]],
-      State:['',[Validators.required]],
+      State:['',[Validators.required, Validators.min(2),Validators.max(2)]],
       City:['',[Validators.required]],
       ZipCode:['',[Validators.required,Validators.minLength(5),Validators.maxLength(5), Validators.pattern('[0-9]*')]],
       TrainingCenter:['',[Validators.required]]
@@ -57,6 +58,7 @@ export class AddLocationComponent implements OnInit {
     console.log(this.locationGroup.value);
     this.locationGroup.reset();
     this.submitted = false;
+    this.router.navigate(['']); // redirect to home
     
     }
     
