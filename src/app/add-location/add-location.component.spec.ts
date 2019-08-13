@@ -13,6 +13,7 @@ import { ProviderLocation } from 'src/Entities/location';
   a.intonly for zipcode
   b.status and city validation
 */
+
 describe('AddLocationComponent', () => {
   let component: AddLocationComponent;
   let fixture: ComponentFixture<AddLocationComponent>;
