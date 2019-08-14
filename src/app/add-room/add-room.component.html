@@ -14,8 +14,8 @@
 
     <div class="container-addroom-inner">
 
-        <div class="">
-            <h1 class="">Add a Room</h1>
+        <div>
+            <h1>Add a Room</h1>
         </div>
         <br><br>
         
@@ -24,7 +24,7 @@
         <form [formGroup]="mygroup" (ngSubmit)="onSubmit()" id="RoomForm">
 
             <div>
-                <label class="">Room Type:</label>
+                <label>Room Type:</label>
                 <input type="radio" class="" name="Type" id ="Apartment" value="Apartment" formControlName="Type">
                 <label for="Apartment" class="">Apartment</label>
                 <input type="radio" class="" name="Type" id ="Dorm" value="Dorm" formControlName="Type" >
@@ -32,64 +32,62 @@
 
                 <!--validation-->
                 <div *ngIf="submitted && mygroup.controls.Type.errors">
-                    <div class = "" *ngIf="mygroup.controls.Type.errors.required">Room Type is required</div>
+                    <div class = "validate" *ngIf="mygroup.controls.Type.errors.required">Room Type is required</div>
                 </div>
             </div>
             <br>
 
         <!-- Number of Beds -->
-            <div class = "">
-
+            <div>
                 <label for="NumBeds" class="">Number of Beds:</label>
                 <input type="number" class=""  name="MaxOccupancy" id="NumBeds"  formControlName="MaxOccupancy" placeholder="Enter Number of Beds">
                 <!--validation-->
                 <div *ngIf="submitted && mygroup.controls.MaxOccupancy.errors">
-                        <div class = "" *ngIf="mygroup.controls.MaxOccupancy.errors.required">Number of Beds is required</div>
-                        <div class = "" *ngIf="mygroup.controls.MaxOccupancy.errors.min">Number of Beds must be greater than 0</div>
+                        <div class = "validate" *ngIf="mygroup.controls.MaxOccupancy.errors.required">Number of Beds is required</div>
+                        <div class = "validate" *ngIf="mygroup.controls.MaxOccupancy.errors.min">Number of Beds must be greater than 0</div>
                 </div>
             </div>
             <br>
         
             <!-- Room Number -->  
-            <div class="">
-                    <label for="InternalAddress" class="">Room number:</label>
-                    <input type="text" class="" id="InternalAddress" name="RoomNumber" formControlName="RoomNumber" placeholder="Enter Room Number">
-                        <!--validation-->
-                    <div *ngIf="submitted && mygroup.controls.RoomNumber.errors">
-                        <div class = "" *ngIf="mygroup.controls.RoomNumber.errors.required" >Room Number is required</div>
-                    </div>
+            <div>
+                <label for="InternalAddress" class="">Room number:</label>
+                <input type="text" class="" id="InternalAddress" name="RoomNumber" formControlName="RoomNumber" placeholder="Enter Room Number">
+                    <!--validation-->
+                <div *ngIf="submitted && mygroup.controls.RoomNumber.errors">
+                    <div class = "validate" *ngIf="mygroup.controls.RoomNumber.errors.required" >Room Number is required</div>
+                </div>
             </div>
             <br>
 
             <!-- Gender -->  
-            <fieldset class="">
-                    <div class="">
-                        <label class="">Gender:</label>
-                            <input type="radio" class="" name="Gender" id ="Male" value="Male" formControlName="Gender">
-                            <label for="Male" class="">Male</label>
-                            <input type="radio" class="" name="Gender" id ="Female" value="Female" formControlName="Gender">
-                            <label for="Female" class="">Female</label> 
+          
+            <div >
+                <label class="">Gender:</label>
+                <input type="radio" class="" name="Gender" id ="Male" value="Male" formControlName="Gender">
+                <label for="Male" class="">Male</label>
+                <input type="radio" class="" name="Gender" id ="Female" value="Female" formControlName="Gender">
+                <label for="Female" class="">Female</label> 
 
-                            <!--validation-->
-                            <div *ngIf="submitted && mygroup.controls.Gender.errors">
-                                <div class = "" *ngIf="mygroup.controls.Gender.errors.required">Gender is required</div>
-                            </div>        
-                    </div>
-            </fieldset>
+                <!--validation-->
+                <div *ngIf="submitted && mygroup.controls.Gender.errors">
+                    <div class = "validate" *ngIf="mygroup.controls.Gender.errors.required">Gender is required</div>
+                </div>        
+            </div>
             <br>
 
         <!-- Start Date -->  
-            <div class="">
-                <div class="">
-                    <label for="StartDate" class="">Start Date:</label>
-                    <input type="date"  class="" id="StartDate" name="StartDate" formControlName="StartDate" [(ngModel)]="StartDate" max="{{EndDate}}" [value]="">
-                    
-                    <!--validation-->
-                    <div *ngIf="submitted && mygroup.controls.StartDate.errors">
-                        <div class = "" *ngIf="mygroup.controls.StartDate.errors.required">StartDate is required</div>
-                    </div>
+           
+            <div>
+                <label for="StartDate" class="">Start Date:</label>
+                <input type="date"  class="" id="StartDate" name="StartDate" formControlName="StartDate" [(ngModel)]="StartDate" max="{{EndDate}}" [value]="">
+                
+                <!--validation-->
+                <div *ngIf="submitted && mygroup.controls.StartDate.errors">
+                    <div class = "validate" *ngIf="mygroup.controls.StartDate.errors.required">StartDate is required</div>
                 </div>
             </div>
+           
             <br>
             
         <!-- End Date -->  
@@ -100,25 +98,26 @@
                     </div>
             </div>
         
+            <div>
+                <label for="EndDate" class="">End Date:</label>
+                <input type="date" class="" id="EndDate" name="EndDate" formControlName="EndDate" min="{{StartDate}}" [(ngModel)]="EndDate">
+            </div>
             <br>
 
             <!-- Description -->  
-            <div class="">
+            <div>
                 <label for="Description" class="">Description:</label>
                 <textarea class="" id="Description" name="Description" formControlName="Description" placeholder="Enter Description"></textarea>
             </div>
 
             <br><br><br>
 
-        <!-- Submit Button -->  
             <div class="">
-                <div class="">
-                    <button class="btn-buttons" type="button" routerLink="">Go Back</button>
-                    <button class="btn-buttons" type="submit" >Submit</button>
-                </div>
+                <button class="btn-buttons" type="button" routerLink="">Go Back</button>
+                <button class="btn-buttons" type="submit" >Submit</button>
             </div>
+          
         </form>
-
 
     </div>
 </div>

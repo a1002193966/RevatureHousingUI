@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { ProviderLocation } from 'src/Entities/location';
 
 
-
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -15,7 +14,6 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-
 
 
 export class ApiService {
@@ -44,9 +42,7 @@ export class ApiService {
   }
 
   postRoomData(obj: Room): Observable<Room>{
-  return this.http
-  .post<Room>(this._RoomUrl, obj
-  );
+    return this.http.post<Room>(this._RoomUrl, obj);
   }
 
   PostLocationData(obj: ProviderLocation): Observable<ProviderLocation>{
@@ -55,15 +51,11 @@ export class ApiService {
   );
   }
 
-
   updateRoomData(obj: Room): Observable<void>{
-    console.log(obj);
-    console.log(obj.RoomID);
     return this.http.put<void>(`${this._RoomUrl}${obj.RoomID}`, obj, httpOptions);
   }
 
   deleteRoom(id: number): Observable<{}>{
     return this.http.delete(this._RoomUrl+id, httpOptions)
   }
-
 }
