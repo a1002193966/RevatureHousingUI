@@ -15,7 +15,7 @@
 <div class="container-addloc">
     <div class="container-addloc-inner">
         <div class="title-addloc">
-            <h1 class="pb-1">Add a Location</h1>
+            <h1>Add a Location</h1>
         </div>
         <br><br>
         <!-- Add Location form -->     
@@ -26,7 +26,7 @@
                 <input type="text" name = "Address" id="Address" formControlName="Address" placeholder="Enter Address">
                 <!--validation-->
                 <div *ngIf="submitted && locationGroup.controls.Address.errors">
-                    <div class = "" *ngIf="locationGroup.controls.Address.errors.required">Address is required</div>
+                    <div class = "validate" *ngIf="locationGroup.controls.Address.errors.required">Address is required</div>
                 </div>
             </div>
             <br>
@@ -36,8 +36,8 @@
                 <input type="text" name="State" id="State" formControlName="State" placeholder="Enter State">
                 <!--validation-->
                 <div *ngIf="submitted && locationGroup.controls.State.errors">
-                    <div class = "alert alert-danger" *ngIf="locationGroup.controls.State.errors.required">State is required</div>
-                    <div class = "alert alert-danger" *ngIf="locationGroup.controls.State.errors.minlength || locationGroup.controls.State.maxlength">Invalid State</div>
+                    <div class = "validate" *ngIf="locationGroup.controls.State.errors.required">State is required</div>
+                    <div class = "validate" *ngIf="locationGroup.controls.State.errors.minlength || locationGroup.controls.State.maxlength">Invalid State</div>
                 </div>
             </div>
             <br>
@@ -47,7 +47,7 @@
                 <input type="text" id="City" name="City" formControlName="City" placeholder="Enter City">
                 <!--validation-->
                 <div *ngIf="submitted && locationGroup.controls.City.errors">
-                    <div class = "" *ngIf="locationGroup.controls.City.errors.required">City is required</div>
+                    <div class = "validate" *ngIf="locationGroup.controls.City.errors.required">City is required</div>
                 </div>
             </div>
             <br>
@@ -57,9 +57,9 @@
                 <input type="text" class="" id="ZIP" name="ZipCode" formControlName="ZipCode" placeholder="Enter ZipCode">
                 <!--validation-->
                 <div *ngIf="submitted && locationGroup.controls.ZipCode.errors">
-                    <div class = "" *ngIf="locationGroup.controls.ZipCode.errors.required">Zip Code is required</div>
-                    <div class = "" *ngIf="locationGroup.controls.ZipCode.errors.minlength || locationGroup.controls.ZipCode.errors.maxlength">Zip Code must be 5 digits</div>
-                    <div class = "" *ngIf="locationGroup.controls.ZipCode.errors.pattern && (!locationGroup.controls.ZipCode.errors.minlength && !locationGroup.controls.ZipCode.errors.maxlength)">Invalid Zip Code</div>
+                    <div class = "validate" *ngIf="locationGroup.controls.ZipCode.errors.required">Zip Code is required</div>
+                    <div class = "validate" *ngIf="locationGroup.controls.ZipCode.errors.minlength || locationGroup.controls.ZipCode.errors.maxlength">Zip Code must be 5 digits</div>
+                    <div class = "validate" *ngIf="locationGroup.controls.ZipCode.errors.pattern && (!locationGroup.controls.ZipCode.errors.minlength && !locationGroup.controls.ZipCode.errors.maxlength)">Invalid Zip Code</div>
                 </div>
             </div>
             <br>
@@ -69,7 +69,7 @@
                 <input type="text" id="TrainingCenter" name="TrainingCenter" formControlName="TrainingCenter" placeholder="Enter Center Name">
                 <!--validation-->
                 <div *ngIf="submitted && locationGroup.controls.TrainingCenter.errors">
-                    <div class = "" *ngIf="locationGroup.controls.TrainingCenter.errors.required">Training Center is required</div>
+                    <div class = "validate" *ngIf="locationGroup.controls.TrainingCenter.errors.required">Training Center is required</div>
                 </div>
             </div>
       
