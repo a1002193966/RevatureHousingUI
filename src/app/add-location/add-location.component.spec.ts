@@ -7,6 +7,7 @@ import { By } from '@angular/platform-browser';
 import { ApiService } from '../api.service';
 import { ApiServiceMock } from '../testing/mock/mock-api-service';
 import { ProviderLocation } from 'src/Entities/location';
+import { RouterTestingModule } from '@angular/router/testing';
 
 /*
   1. waiting for some more validation
@@ -27,7 +28,8 @@ describe('AddLocationComponent', () => {
       imports: [
         FormsModule,
         HttpClientTestingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterTestingModule
       ],
       providers: [
         { provide: ApiService, useClass: ApiServiceMock }
@@ -49,7 +51,6 @@ describe('AddLocationComponent', () => {
   });
   //onNgInit()
   it('should initialize formgourp by calling onNgInit()', () => {
-    console.log(component.locationGroup);
     component.locationGroup.controls['Address'].setValue(LocationData.Address);
     component.locationGroup.controls['State'].setValue(LocationData.State);
     component.locationGroup.controls['City'].setValue(LocationData.City);
