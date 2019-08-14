@@ -1,36 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteRoomComponent } from './delete-room.component';
-<<<<<<< HEAD
-import {RouterTestingModule}  from '@angular/router/testing'
-=======
+
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ApiService } from '../api.service';
 import { ApiServiceMock } from '../testing/mock/mock-api-service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
-import { LocationData, MockRoom, } from '../testing/dummyData';
+import { LocationObject, RoomObject, } from '../testing/dummyData';
 import { By } from '@angular/platform-browser';
 
 
->>>>>>> origin/UITest
 describe('DeleteRoomComponent', () => {
   let component: DeleteRoomComponent;
   let fixture: ComponentFixture<DeleteRoomComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-<<<<<<< HEAD
-      declarations: [ DeleteRoomComponent ],
-      imports:[
-
-        
-         
-        RouterTestingModule
-      ]
-
-=======
       declarations: [DeleteRoomComponent],
       imports: [
         RouterTestingModule,
@@ -38,11 +25,13 @@ describe('DeleteRoomComponent', () => {
       ],
       providers: [
         { provide: ApiService, useClass: ApiServiceMock },
-        {provide: ActivatedRoute,useValue: {
-          paramMap: of({ get: (key) => 1})
-      }}
+        {
+          provide: ActivatedRoute, useValue: {
+            paramMap: of({ get: (key) => 1 })
+          }
+        }
       ]
->>>>>>> origin/UITest
+
     })
       .compileComponents();
   }));
@@ -50,11 +39,6 @@ describe('DeleteRoomComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DeleteRoomComponent);
     component = fixture.componentInstance;
-    //mock getRoomInfo
-    spyOn(component,'getRoomInfo')
-    //assign dummy data for room and location for html
-    component.location= LocationData;
-    component.room=MockRoom;
     fixture.detectChanges();
   });
 
@@ -63,11 +47,91 @@ describe('DeleteRoomComponent', () => {
   });
 
   //#region html
-  it('click delete button should call deleteroom with roomID to',()=>{
-    spyOn(component,'deleteRoom');
-    const button = fixture.debugElement.query(By.css('button.delete-btn')).nativeElement;
-    button.click();
+  it('click delete button should call deleteroom with roomID to', () => {
+    spyOn(component, 'deleteRoom');
+    const button = fixture.debugElement.queryAll(By.css('button.btn-buttons'));
+    button[1].nativeElement.click();
     expect(component.deleteRoom).toHaveBeenCalledWith(1);
+  })
+
+  // it('should show corredct data in html file',()=>{
+  //   const span = fixture.debugElement.queryAll(By.css('span'));
+  //   //include all span
+  //   expect(span.length).toBe(9);
+
+  //   //manually check each data
+  //   expect(span[1].nativeElement.textContent).toBe(LocationObject.address);
+  //   expect(span[2].nativeElement.textContent).toBe(`${LocationObject.city}, ${LocationObject.state} ${LocationObject.zip}`);
+  // })
+  //#endregion
+
+  //#reigion component.ts
+
+  //onNgInit
+  it('should call getRoomInfo() and assign roomID', () => {
+    //reset the roomID first,since it already assign in beforeEach()
+    spyOn(component,'getRoomInfo');
+    component.roomID = 0;
+    component.ngOnInit();
+    expect(component.roomID).toBe(1);
+    expect(component.getRoomInfo).toHaveBeenCalled();
+  })
+
+  //getRoomInfo()
+  it('should assign value to romm and call getLocationInfo()',()=>{
+    //reset value
+    component.room=null;
+    spyOn(component,'getLocationInfo');
+    component.getRoomInfo();
+    
+    expect(component.room).toEqual(RoomObject);
+    expect(component.getLocationInfo).toHaveBeenCalledWith(RoomObject.locationID);
+  })
+
+  
+  it('should should not assign value to room',()=>{
+    //reset room
+    component.room=null;
+    spyOn(component,'getLocationInfo');
+    //force return error
+    const xService = fixture.debugElement.injector.get(ApiService);
+    xService['apiError']=true;
+    component.getRoomInfo();
+    expect(component.room).toBeFalsy();
+    //this expectation will throw error failed 
+    expect(component.getLocationInfo).toHaveBeenCalledTimes(0);
+  })
+
+  //getLocatoinInfo
+  it('should assign value to location',()=>{
+    //reset value
+    component.location=null;
+    component.getLocationInfo(1);
+
+    expect(component.location).toEqual(LocationObject);
+
+  })
+
+  it('should not assign value to location',()=>{
+    component.location=null;
+    //force return error
+    const xService = fixture.debugElement.injector.get(ApiService);
+    xService['apiError']=true;
+
+    expect(component.location).toBeFalsy();
+  })
+
+  //deleteRoom()
+  it('should call deleteRoom in service and redirect to home page',()=>{
+    const xService = fixture.debugElement.injector.get(ApiService);
+    spyOn(xService,'deleteRoom').and.returnValue(of());
+    const routerstub = TestBed.get(Router);
+    spyOn(routerstub, 'navigate');
+
+    component.deleteRoom(1);
+
+    expect(xService.deleteRoom).toHaveBeenCalledWith(1);
+    expect(routerstub.navigate).toHaveBeenCalledWith(['']);
   })
   //#endregion
 });

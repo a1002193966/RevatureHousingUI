@@ -7,12 +7,8 @@ import { By } from '@angular/platform-browser';
 import { ApiService } from '../api.service';
 import { ApiServiceMock } from '../testing/mock/mock-api-service';
 import { ProviderLocation } from 'src/Entities/location';
-<<<<<<< HEAD
 import {RouterTestingModule} from '@angular/router/testing';
-=======
-import { RouterTestingModule } from '@angular/router/testing';
-
->>>>>>> origin/UITest
+import { Router } from '@angular/router';
 /*
   1. waiting for some more validation
   a.intonly for zipcode
@@ -23,6 +19,14 @@ describe('AddLocationComponent', () => {
   let component: AddLocationComponent;
   let fixture: ComponentFixture<AddLocationComponent>;
   let errorList: string[];
+
+  function formSetup(){
+    component.locationGroup.controls['Address'].setValue(LocationData.Address);
+    component.locationGroup.controls['State'].setValue(LocationData.State);
+    component.locationGroup.controls['City'].setValue(LocationData.City);
+    component.locationGroup.controls['ZipCode'].setValue(LocationData.ZipCode);
+    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
+  }
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -55,11 +59,7 @@ describe('AddLocationComponent', () => {
   });
   //onNgInit()
   it('should initialize formgourp by calling onNgInit()', () => {
-    component.locationGroup.controls['Address'].setValue(LocationData.Address);
-    component.locationGroup.controls['State'].setValue(LocationData.State);
-    component.locationGroup.controls['City'].setValue(LocationData.City);
-    component.locationGroup.controls['ZipCode'].setValue(LocationData.ZipCode);
-    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
+    formSetup();
 
     component.ngOnInit();
     expect(component.locationGroup.controls['Address'].value).toBe("");
@@ -75,7 +75,7 @@ describe('AddLocationComponent', () => {
     expect(component.submitted).toBeTruthy();
     //change in html
     fixture.detectChanges();
-    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    const error = fixture.debugElement.queryAll(By.css('div.validate'));
     //check total number of error content showed
     expect(error.length).toBe(5);
 
@@ -87,186 +87,145 @@ describe('AddLocationComponent', () => {
 
   it('should only show address is required', () => {
     //input some data to form
-    component.locationGroup.controls['State'].setValue(LocationData.State);
-    component.locationGroup.controls['City'].setValue(LocationData.City);
-    component.locationGroup.controls['ZipCode'].setValue(LocationData.ZipCode);
-    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
+    formSetup();
+    component.locationGroup.controls['Address'].setValue('');
+
     component.OnSubmit();
     fixture.detectChanges();
 
-    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    const error = fixture.debugElement.queryAll(By.css('div.validate'));
     expect(error.length).toBe(1);
-    expect(error[0].nativeElement).toBe(errorList[0]);
+    expect(error[0].nativeElement.textContent).toBe(errorList[0]);
   });
 
   it('should only show State is required', () => {
     //input some data to form
-    component.locationGroup.controls['Address'].setValue(LocationData.Address);
-    component.locationGroup.controls['City'].setValue(LocationData.City);
-    component.locationGroup.controls['ZipCode'].setValue(LocationData.ZipCode);
-    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
+    formSetup();
+    component.locationGroup.controls['State'].setValue('');
     component.OnSubmit();
     fixture.detectChanges();
 
-    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    const error = fixture.debugElement.queryAll(By.css('div.validate'));
     expect(error.length).toBe(1);
     expect(error[0].nativeElement.textContent).toBe(errorList[1]);
   });
 
   it('should only show City is required', () => {
     //input some data to form
-    component.locationGroup.controls['Address'].setValue(LocationData.Address);
-    component.locationGroup.controls['State'].setValue(LocationData.State);
-    component.locationGroup.controls['ZipCode'].setValue(LocationData.ZipCode);
-    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
+    formSetup();
+    component.locationGroup.controls['City'].setValue('');
     component.OnSubmit();
     fixture.detectChanges();
 
-    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    const error = fixture.debugElement.queryAll(By.css('div.validate'));
     expect(error.length).toBe(1);
     expect(error[0].nativeElement.textContent).toBe(errorList[2]);
   });
 
   it('should only show Zip Code is required', () => {
     //input some data to form
-    component.locationGroup.controls['Address'].setValue(LocationData.Address);
-    component.locationGroup.controls['State'].setValue(LocationData.State);
-    component.locationGroup.controls['City'].setValue(LocationData.City);
-    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
+    formSetup();
+    component.locationGroup.controls['ZipCode'].setValue('');
     component.OnSubmit();
     fixture.detectChanges();
 
-    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    const error = fixture.debugElement.queryAll(By.css('div.validate'));
     expect(error.length).toBe(1);
     expect(error[0].nativeElement.textContent).toBe(errorList[3]);
   });
 
   it('should only show Zip Code must be 5 digits when input is less than 5 digit', () => {
     //input some data to form
-    component.locationGroup.controls['Address'].setValue(LocationData.Address);
-    component.locationGroup.controls['State'].setValue(LocationData.State);
-    component.locationGroup.controls['City'].setValue(LocationData.City);
+    formSetup();
     component.locationGroup.controls['ZipCode'].setValue("321");
-    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
     component.OnSubmit();
     fixture.detectChanges();
 
-    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    const error = fixture.debugElement.queryAll(By.css('div.validate'));
     expect(error.length).toBe(1);
     expect(error[0].nativeElement.textContent).toBe("Zip Code must be 5 digits");
   });
 
   it('should only show Zip Code must be 5 digits when input is more than 5 digit', () => {
     //input some data to form
-    component.locationGroup.controls['Address'].setValue(LocationData.Address);
-    component.locationGroup.controls['State'].setValue(LocationData.State);
-    component.locationGroup.controls['City'].setValue(LocationData.City);
+    formSetup();
     component.locationGroup.controls['ZipCode'].setValue("3212321312");
-    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
     component.OnSubmit();
     fixture.detectChanges();
 
-    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    const error = fixture.debugElement.queryAll(By.css('div.validate'));
     expect(error.length).toBe(1);
     expect(error[0].nativeElement.textContent).toBe("Zip Code must be 5 digits");
   });
 
-  it('should only show Zip Code must be 5 digits when input is more than 5 digit', () => {
-    //input some data to form
-    component.locationGroup.controls['Address'].setValue(LocationData.Address);
-    component.locationGroup.controls['State'].setValue(LocationData.State);
-    component.locationGroup.controls['City'].setValue(LocationData.City);
-    component.locationGroup.controls['ZipCode'].setValue("3212321312");
-    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
-    component.OnSubmit();
-    fixture.detectChanges();
 
-    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
-    expect(error.length).toBe(1);
-    expect(error[0].nativeElement.textContent).toBe("Zip Code must be 5 digits");
-  });
 
   it('should only show Zip Code must be 5 digits when input is more than 5 letter', () => {
     //input some data to form
-    component.locationGroup.controls['Address'].setValue(LocationData.Address);
-    component.locationGroup.controls['State'].setValue(LocationData.State);
-    component.locationGroup.controls['City'].setValue(LocationData.City);
+    formSetup();
     component.locationGroup.controls['ZipCode'].setValue("fewwfwefwwe");
-    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
     component.OnSubmit();
     fixture.detectChanges();
 
-    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    const error = fixture.debugElement.queryAll(By.css('div.validate'));
     expect(error.length).toBe(1);
     expect(error[0].nativeElement.textContent).toBe("Zip Code must be 5 digits");
   });
 
   it('should only show Zip Code must be 5 digits when input is less than 5 letter', () => {
     //input some data to form
-    component.locationGroup.controls['Address'].setValue(LocationData.Address);
-    component.locationGroup.controls['State'].setValue(LocationData.State);
-    component.locationGroup.controls['City'].setValue(LocationData.City);
+    formSetup();
     component.locationGroup.controls['ZipCode'].setValue("f");
-    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
     component.OnSubmit();
     fixture.detectChanges();
 
-    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    const error = fixture.debugElement.queryAll(By.css('div.validate'));
     expect(error.length).toBe(1);
     expect(error[0].nativeElement.textContent).toBe("Zip Code must be 5 digits");
   });
 
   it('should only show Invalid Zip Code when input is alphabet', () => {
     //input some data to form
-    component.locationGroup.controls['Address'].setValue(LocationData.Address);
-    component.locationGroup.controls['State'].setValue(LocationData.State);
-    component.locationGroup.controls['City'].setValue(LocationData.City);
+    formSetup();
     component.locationGroup.controls['ZipCode'].setValue("abcde");
-    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
     component.OnSubmit();
     fixture.detectChanges();
 
-    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    const error = fixture.debugElement.queryAll(By.css('div.validate'));
     expect(error.length).toBe(1);
     expect(error[0].nativeElement.textContent).toBe("Invalid Zip Code");
   });
 
   it('should only show TrainingCenter is required', () => {
     //input some data to form
-    component.locationGroup.controls['Address'].setValue(LocationData.Address);
-    component.locationGroup.controls['State'].setValue(LocationData.State);
-    component.locationGroup.controls['City'].setValue(LocationData.City);
-    component.locationGroup.controls['ZipCode'].setValue(LocationData.ZipCode);
+    formSetup();
+    component.locationGroup.controls['TrainingCenter'].setValue('');
     component.OnSubmit();
     fixture.detectChanges();
 
-    const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
+    const error = fixture.debugElement.queryAll(By.css('div.validate'));
     expect(error.length).toBe(1);
     expect(error[0].nativeElement.textContent).toBe(errorList[4]);
   });
 
   it('it should not have error message and should call postLocationInfo', () => {
     //input some data to form
-    component.locationGroup.controls['Address'].setValue(LocationData.Address);
-    component.locationGroup.controls['State'].setValue(LocationData.State);
-    component.locationGroup.controls['City'].setValue(LocationData.City);
-    component.locationGroup.controls['ZipCode'].setValue(LocationData.ZipCode);
-    component.locationGroup.controls['TrainingCenter'].setValue(LocationData.TrainingCenter);
+    formSetup();
 
 
     //spy on postlicationInfo method
     spyOn(component, 'PostLocationInfo');
+    const routerstub = TestBed.get(Router);
+    spyOn(routerstub, 'navigate');
     component.OnSubmit();
+    console.log("data",LocationData);
     //call PostLocationInfo
     expect(component.PostLocationInfo).toHaveBeenCalledWith(LocationData);
     expect(component.submitted).toBeFalsy();
 
-    //formgroup reset
-    expect(component.locationGroup.controls['Address'].value).toBe(null);
-    expect(component.locationGroup.controls['State'].value).toBe(null);
-    expect(component.locationGroup.controls['City'].value).toBe(null);
-    expect(component.locationGroup.controls['ZipCode'].value).toBe(null);
-    expect(component.locationGroup.controls['TrainingCenter'].value).toBe(null);
+    //expect chnage the router 
+   
+    expect(routerstub.navigate).toHaveBeenCalledWith(['']);
 
   });
   //#endregion
@@ -282,12 +241,25 @@ describe('AddLocationComponent', () => {
     location.Zip = LocationData.ZipCode;
     location.TraningCenter = LocationData.TrainingCenter;
 
+    //spy on window alert
+    spyOn(window,'alert');
     component.PostLocationInfo(location);
 
+    //formgroup reset
+    expect(component.locationGroup.controls['Address'].value).toBe(null);
+    expect(component.locationGroup.controls['State'].value).toBe(null);
+    expect(component.locationGroup.controls['City'].value).toBe(null);
+    expect(component.locationGroup.controls['ZipCode'].value).toBe(null);
+    expect(component.locationGroup.controls['TrainingCenter'].value).toBe(null);
+
+    //window alert
+    expect(window.alert).toHaveBeenCalledWith('Succeeded');
   })
 
   //need change
   it('should get error from post request', () => {
+    //form setup for testing reset() wouldn't be called
+    formSetup();
     //create providerLocation object
     const location = new ProviderLocation();
     location.Address = LocationData.Address;
@@ -298,8 +270,17 @@ describe('AddLocationComponent', () => {
     //get service first
     const xService = fixture.debugElement.injector.get(ApiService);
     xService['apiError']=true;
-    //spyOn(xService, 'PostLocationData').and.returnValue(throwError({status : 404}));
+    //spy on window alert
+    spyOn(window,'alert');
     component.PostLocationInfo(location);
+    //form didn't reset
+    expect(component.locationGroup.controls['Address'].value).toBe(LocationData.Address);
+    expect(component.locationGroup.controls['State'].value).toBe(LocationData.State);
+    expect(component.locationGroup.controls['City'].value).toBe(LocationData.City);
+    expect(component.locationGroup.controls['ZipCode'].value).toBe(LocationData.ZipCode);
+    expect(component.locationGroup.controls['TrainingCenter'].value).toBe(LocationData.TrainingCenter);
+    //window alert
+    expect(window.alert).toHaveBeenCalledWith('Failed');
   })
 
   //html

@@ -1,8 +1,4 @@
 import { ProviderLocation } from 'src/Entities/location';
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/UITest
 import { Room } from 'src/Entities/room';
 
 export const LocationData = {
@@ -12,6 +8,16 @@ export const LocationData = {
     ZipCode: "12345",
     //need change, might not need this properties
     TrainingCenter: "Queen"
+}
+
+export const LocationObject={
+    locationID: 3, 
+    address: '123 Main Street',
+    city: 'Queens', 
+    state: 'New York',
+    zip: '11111',
+    trainingCenter: 'Queens College',
+    providerID: 1,
 }
 
 export const RoomData = {
@@ -38,7 +44,6 @@ export const LocationErrorList = {
     ]
 }
 
-<<<<<<< HEAD
 export const RoomErrorList={
     ErrorList:["Room Type is required",
         "Number of Beds is required",
@@ -50,7 +55,6 @@ export const RoomErrorList={
       
     ]
 }
-=======
 export class MockProvider extends ProviderLocation{
     LocationID= 3; 
     Address= '123 Main Street';
@@ -78,4 +82,22 @@ export class MockRoom extends Room{
     //Foreign Key
     LocationID = 1;
 }
->>>>>>> origin/UITest
+
+export const RoomObject={
+     
+
+    //Primary Key
+    roomID : 1,
+    type : 'dorm',
+    maxOccupancy : 4,
+    roomNumber : '101',
+    gender : 'male',
+    startDate : new Date('2019/08/10'),
+    endDate :  new Date('2019/11/11'),
+    currentOccupancy : 2,
+    isActive : true,
+    description : 'this is a mock room',
+
+    //Foreign Key
+    locationID : 1
+}
