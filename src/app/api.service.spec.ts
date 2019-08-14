@@ -59,18 +59,15 @@ describe('ApiService', () => {
   });
   it('getRoomById() should get room by Id', () => {
     const room = new MockRoom();
-    
-    
-
-    service.getRoomById(room.RoomID).subscribe((res) => {
       
-      expect(res).toEqual(room);
+    service.getRoomById(room.RoomID).subscribe((res) => {
+            expect(res).toEqual(room);
     });
 
     const req = httpMock.expectOne('http://localhost:55219/api/rooms/'+ room.RoomID);
     // expect(req.cancelled).toBeFalsy;
     expect(req.request.method).toBe("GET");
-    req.flush(room.RoomID);
+    req.flush(room);
 
   });
   it('getRoomData() should get rooms', () => {
