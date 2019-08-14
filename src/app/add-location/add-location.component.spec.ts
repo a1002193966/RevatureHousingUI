@@ -7,7 +7,7 @@ import { By } from '@angular/platform-browser';
 import { ApiService } from '../api.service';
 import { ApiServiceMock } from '../testing/mock/mock-api-service';
 import { ProviderLocation } from 'src/Entities/location';
-
+import {RouterTestingModule} from '@angular/router/testing';
 /*
   1. waiting for some more validation
   a.intonly for zipcode
@@ -27,7 +27,8 @@ describe('AddLocationComponent', () => {
       imports: [
         FormsModule,
         HttpClientTestingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterTestingModule
       ],
       providers: [
         { provide: ApiService, useClass: ApiServiceMock }

@@ -1,12 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Room } from 'src/Entities/room';
-import { ProviderLocation } from 'src/Entities/location';
 import { FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
-
-
 
 @Component({
   selector: 'app-add-room',
@@ -70,6 +66,7 @@ export class AddRoomComponent implements OnInit {
      this.datasvc.postRoomData(value).subscribe(data => {
       //post success
       console.log(data);
+     // this.mygroup.reset();
       console.log("Post success");
 
     }), error => {
