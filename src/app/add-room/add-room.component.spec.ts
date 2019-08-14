@@ -4,11 +4,15 @@ import { By } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule, NgControlStatusGroup } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ModuleWithComponentFactories } from '@angular/core';
+<<<<<<< HEAD
 import {RouterTestingModule}  from '@angular/router/testing'
 import {Room} from 'src/Entities/room';
 import {RoomData,RoomErrorList} from '../testing/dummyData'
 import { ApiService } from '../api.service';
 import { ApiServiceMock } from '../testing/mock/mock-api-service';
+=======
+import { RouterTestingModule } from '@angular/router/testing';
+>>>>>>> origin/UITest
 
 describe('AddRoomComponent', () => {
 
@@ -26,9 +30,12 @@ describe('AddRoomComponent', () => {
         HttpClientTestingModule,
         ReactiveFormsModule,
         RouterTestingModule
+<<<<<<< HEAD
       ],
       providers: [
         { provide: ApiService, useClass: ApiServiceMock }
+=======
+>>>>>>> origin/UITest
       ]
 
     })

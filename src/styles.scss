@@ -6,6 +6,7 @@
 
 body{
     background-color: white;
+    font-family: 'Red Hat Display', sans-serif;
 }
 
 footer{
@@ -32,6 +33,20 @@ footer a:hover{
 #copy-right{
     float: right;
 }
+
 hr{
     background-color: white;
+}
+
+.btn-buttons{
+    margin-right: 20px;
+    background-color: cadetblue;
+    color: white;
+    padding: 5px 20px 5px 20px;
+    opacity: 0.7;
+    border-radius: 5px;
+}
+
+.btn-buttons:hover{
+    opacity: 1;
 }

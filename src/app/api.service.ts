@@ -20,8 +20,8 @@ const httpOptions = {
 
 export class ApiService {
 
-  private _locationUrl:string="http://localhost:59754/api/locations/";
-  private _RoomUrl:string="http://localhost:59754/api/rooms/";
+  private _locationUrl:string="http://localhost:55219/api/locations/";
+  private _RoomUrl:string="http://localhost:55219/api/rooms/";
   
 
   constructor(private http : HttpClient) { }
@@ -44,9 +44,7 @@ export class ApiService {
   }
 
   postRoomData(obj: Room): Observable<Room>{
-  return this.http
-  .post<Room>(this._RoomUrl, obj
-  );
+  return this.http.post<Room>(this._RoomUrl, obj);
   }
 
   PostLocationData(obj: ProviderLocation): Observable<ProviderLocation>{

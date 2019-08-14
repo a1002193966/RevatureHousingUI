@@ -7,7 +7,12 @@ import { By } from '@angular/platform-browser';
 import { ApiService } from '../api.service';
 import { ApiServiceMock } from '../testing/mock/mock-api-service';
 import { ProviderLocation } from 'src/Entities/location';
+<<<<<<< HEAD
 import {RouterTestingModule} from '@angular/router/testing';
+=======
+import { RouterTestingModule } from '@angular/router/testing';
+
+>>>>>>> origin/UITest
 /*
   1. waiting for some more validation
   a.intonly for zipcode
@@ -50,7 +55,6 @@ describe('AddLocationComponent', () => {
   });
   //onNgInit()
   it('should initialize formgourp by calling onNgInit()', () => {
-    console.log(component.locationGroup);
     component.locationGroup.controls['Address'].setValue(LocationData.Address);
     component.locationGroup.controls['State'].setValue(LocationData.State);
     component.locationGroup.controls['City'].setValue(LocationData.City);
@@ -65,13 +69,12 @@ describe('AddLocationComponent', () => {
     expect(component.locationGroup.controls['TrainingCenter'].value).toBe("");
   })
 
-//#region OnSubmit()
+  //#region OnSubmit()
   it('should  set submitted to true and show all error message', () => {
     component.OnSubmit();
     expect(component.submitted).toBeTruthy();
     //change in html
     fixture.detectChanges();
-    //need change, more validation
     const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
     //check total number of error content showed
     expect(error.length).toBe(5);
@@ -240,7 +243,7 @@ describe('AddLocationComponent', () => {
     const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
     expect(error.length).toBe(1);
     expect(error[0].nativeElement.textContent).toBe(errorList[4]);
-  });  
+  });
 
   it('it should not have error message and should call postLocationInfo', () => {
     //input some data to form
@@ -266,7 +269,7 @@ describe('AddLocationComponent', () => {
     expect(component.locationGroup.controls['TrainingCenter'].value).toBe(null);
 
   });
-//#endregion
+  //#endregion
 
   //PostRoomInfo
   //need change
@@ -283,6 +286,21 @@ describe('AddLocationComponent', () => {
 
   })
 
+  //need change
+  it('should get error from post request', () => {
+    //create providerLocation object
+    const location = new ProviderLocation();
+    location.Address = LocationData.Address;
+    location.City = LocationData.City;
+    location.State = LocationData.State;
+    location.Zip = LocationData.ZipCode;
+    location.TraningCenter = LocationData.TrainingCenter;
+    //get service first
+    const xService = fixture.debugElement.injector.get(ApiService);
+    xService['apiError']=true;
+    //spyOn(xService, 'PostLocationData').and.returnValue(throwError({status : 404}));
+    component.PostLocationInfo(location);
+  })
 
   //html
   it('click submit button should call OnSubmit()', () => {
