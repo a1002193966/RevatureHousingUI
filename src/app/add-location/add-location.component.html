@@ -11,69 +11,73 @@
 <!-- Add ZipCode Validation-->
 <!-- ******************************************************************** -->
 
-<div class="d-flex justify-content-center">
-    <h1 class="pb-1">Add a Location</h1>
 
-</div>
- <!-- Add Location form -->     
-     <!-- Address --> 
-<form [formGroup]="locationGroup" (ngSubmit) = "OnSubmit()">
-    <div class="form-group" id="LocationForm">
-        <div class="row justify-content-center">
-                <label for="Address" class="col-sm-2">Address:</label>
-                <input type="text" class="from-control col-sm-2" name = "Address" id="Address" formControlName="Address" placeholder="Enter Address">
+<div class="container-addloc">
+    <div class="container-addloc-inner">
+        <div class="title-addloc">
+            <h1 class="pb-1">Add a Location</h1>
+        </div>
+        <br><br>
+        <!-- Add Location form -->     
+            <!-- Address --> 
+        <form [formGroup]="locationGroup" (ngSubmit) = "OnSubmit()" id="LocationForm">
+            <div>       
+                <label for="Address" >Address:</label>
+                <input type="text" name = "Address" id="Address" formControlName="Address" placeholder="Enter Address">
                 <!--validation-->
                 <div *ngIf="submitted && locationGroup.controls.Address.errors">
-                    <div class = "alert alert-danger" *ngIf="locationGroup.controls.Address.errors.required">Address is required</div>
+                    <div class = "" *ngIf="locationGroup.controls.Address.errors.required">Address is required</div>
                 </div>
-         </div>
-         <br>
-<!-- State --> 
-    <div class="row justify-content-center">
-                <label for="State" class="col-sm-2">State:</label>
-                <input type="text" class="from-control col-sm-2" name="State" id="State" formControlName="State" placeholder="Enter State">
+            </div>
+            <br>
+        <!-- State --> 
+            <div>
+                <label for="State" >State:</label>
+                <input type="text" name="State" id="State" formControlName="State" placeholder="Enter State">
                 <!--validation-->
                 <div *ngIf="submitted && locationGroup.controls.State.errors">
                     <div class = "alert alert-danger" *ngIf="locationGroup.controls.State.errors.required">State is required</div>
                     <div class = "alert alert-danger" *ngIf="locationGroup.controls.State.errors.minlength || locationGroup.controls.State.maxlength">Invalid State</div>
-               </div>
-    </div>
-    <br>
-<!-- City --> 
-    <div class="row justify-content-center">
-            <label for="City" class="col-sm-2">City:</label>
-            <input type="text" class="from-control col-sm-2" id="City"  name="City" formControlName="City" placeholder="Enter City">
-            <!--validation-->
-            <div *ngIf="submitted && locationGroup.controls.City.errors">
-                <div class = "alert alert-danger" *ngIf="locationGroup.controls.City.errors.required">City is required</div>
+                </div>
             </div>
-    </div>
-     <br>
-<!-- ZipCode --> 
-     <div class="row justify-content-center">
-            <label for="ZIP" class="col-sm-2">Zip:</label>
-            <input type="text" class="from-control col-sm-2" id="ZIP" name="ZipCode" formControlName="ZipCode" placeholder="Enter Zip Code">
-            <!--validation-->
-            <div *ngIf="submitted && locationGroup.controls.ZipCode.errors">
-                <div class = "alert alert-danger" *ngIf="locationGroup.controls.ZipCode.errors.required">Zip Code is required</div>
-                <div class = "alert alert-danger" *ngIf="locationGroup.controls.ZipCode.errors.minlength || locationGroup.controls.ZipCode.errors.maxlength">Zip Code must be 5 digits</div>
-                <div class = "alert alert-danger" *ngIf="locationGroup.controls.ZipCode.errors.pattern && (!locationGroup.controls.ZipCode.errors.minlength && !locationGroup.controls.ZipCode.errors.maxlength)">Invalid Zip Code</div>
+            <br>
+        <!-- City --> 
+            <div>
+                <label for="City" >City:</label>
+                <input type="text" id="City" name="City" formControlName="City" placeholder="Enter City">
+                <!--validation-->
+                <div *ngIf="submitted && locationGroup.controls.City.errors">
+                    <div class = "" *ngIf="locationGroup.controls.City.errors.required">City is required</div>
+                </div>
             </div>
-    </div>
-<!-- Training Center --> 
-<div class="row justify-content-center">
-    <label for="TrainingCenter" class="col-sm-2">TrainingCenter:</label>
-    <input type="text" class="from-control col-sm-2" id="TrainingCenter" name="TrainingCenter" formControlName="TrainingCenter" placeholder="Enter TrainingCenter">
-    <!--validation-->
-    <div *ngIf="submitted && locationGroup.controls.TrainingCenter.errors">
-        <div class = "alert alert-danger" *ngIf="locationGroup.controls.TrainingCenter.errors.required">Training Center is required</div>
+            <br>
+        <!-- ZipCode --> 
+            <div>
+                <label for="ZIP" class="">Zip:</label>
+                <input type="text" class="" id="ZIP" name="ZipCode" formControlName="ZipCode" placeholder="Enter ZipCode">
+                <!--validation-->
+                <div *ngIf="submitted && locationGroup.controls.ZipCode.errors">
+                    <div class = "" *ngIf="locationGroup.controls.ZipCode.errors.required">Zip Code is required</div>
+                    <div class = "" *ngIf="locationGroup.controls.ZipCode.errors.minlength || locationGroup.controls.ZipCode.errors.maxlength">Zip Code must be 5 digits</div>
+                    <div class = "" *ngIf="locationGroup.controls.ZipCode.errors.pattern && (!locationGroup.controls.ZipCode.errors.minlength && !locationGroup.controls.ZipCode.errors.maxlength)">Invalid Zip Code</div>
+                </div>
+            </div>
+            <br>
+        <!-- Training Center --> 
+            <div>
+                <label for="TrainingCenter" class="">Training Center:</label>
+                <input type="text" id="TrainingCenter" name="TrainingCenter" formControlName="TrainingCenter" placeholder="Enter Center Name">
+                <!--validation-->
+                <div *ngIf="submitted && locationGroup.controls.TrainingCenter.errors">
+                    <div class = "" *ngIf="locationGroup.controls.TrainingCenter.errors.required">Training Center is required</div>
+                </div>
+            </div>
+      
+            <br><br>
+            <div>
+                <button class="btn-buttons" type="button" routerLink="">Go Back</button>
+                <button class="btn-buttons" type="submit" >Submit</button>
+            </div>
+        </form>
     </div>
 </div>
-<!-- Training Center --> 
-    <div>
-        <input type="submit" value="Submit" class="btn btn-primary">
-    </div>
-
-</div>
-</form>
-     

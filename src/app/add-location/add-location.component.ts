@@ -37,13 +37,17 @@ export class AddLocationComponent implements OnInit {
      this.datasvc.PostLocationData(obj).subscribe(data => {
       //post location success
       console.log(data);
-      console.log("Post success");
+      
+      this.locationGroup.reset();
+      alert("Succeeded");
+      
 
-    }), error => {
+    }, error => {
       //post location error handling 
       console.log("Error", error);
       console.log(obj);
-    } 
+      alert("Failed");
+    }) 
     //console.log(value);
   }
 
@@ -56,7 +60,6 @@ export class AddLocationComponent implements OnInit {
     else{
       this.PostLocationInfo(this.locationGroup.value);
     console.log(this.locationGroup.value);
-    this.locationGroup.reset();
     this.submitted = false;
     this.router.navigate(['']); // redirect to home
     
