@@ -14,68 +14,62 @@
     <div class="container-updateroom-inner">
 
         <div >
-            <h1 class="pb-1">Update Room Info</h1>
+            <h1>Update Room Info</h1>
         </div>
         <br><br>
 
 <!-- *********************************Form*********************************** -->
 <!-- Room Type-->
         <form [formGroup]="mygroup" (ngSubmit)="onSubmit()" id="RoomForm"> 
-                <div >
-                    <label>Room Type:</label>         
-                        <input type="radio" class="" name="Type" id ="Apartment" value="Apartment" formControlName="Type" [checked]="rm.Type=='Apartment'" [ngModel] = "rm.Type">
-                        <label for="Apartment" class="">Apartment</label>
-                        <input type="radio" class="" name="Type" id ="Dorm" value="Dorm" formControlName="Type" [checked]="rm.Type=='Dorm'" [ngModel] = "rm.Type">
-                        <label for="Dorm" class="">Dorm</label>
-                </div>
-                <br>
+            <div>
+                <label>Room Type:</label>         
+                <input type="radio" class="" name="Type" id ="Apartment" value="Apartment" formControlName="Type" [checked]="rm.Type=='Apartment'" [ngModel] = "rm.Type">
+                <label for="Apartment" class="">Apartment</label>
+                <input type="radio" class="" name="Type" id ="Dorm" value="Dorm" formControlName="Type" [checked]="rm.Type=='Dorm'" [ngModel] = "rm.Type">
+                <label for="Dorm" class="">Dorm</label>
+            </div>
+            <br>
 
-        <!-- Number of Beds -->
-            <div class = "">
-                <div class="">
-                        <label for="NumBeds" class="">Number of Beds:</label>
-                        <input type="number" class=""  name="MaxOccupancy" id="NumBeds"  formControlName="MaxOccupancy"  [ngModel] = "rm.MaxOccupancy">
-                        
-                        <!--validation-->
-                        <div *ngIf="submitted && mygroup.controls.MaxOccupancy.errors">
-                                <div class = "" *ngIf="mygroup.controls.MaxOccupancy.errors.required">Number of Beds is required</div>
-                                <div class = "" *ngIf="mygroup.controls.MaxOccupancy.errors.min">Number of Beds must be greater than 0</div>
-                        </div>
-
+            <!-- Number of Beds -->
+            <div>
+                <label for="NumBeds" class="">Number of Beds:</label>
+                <input type="number" class=""  name="MaxOccupancy" id="NumBeds"  formControlName="MaxOccupancy"  [ngModel] = "rm.MaxOccupancy">
+                
+                <!--validation-->
+                <div *ngIf="submitted && mygroup.controls.MaxOccupancy.errors">
+                    <div class = "validate" *ngIf="mygroup.controls.MaxOccupancy.errors.required">Number of Beds is required</div>
+                    <div class = "validate" *ngIf="mygroup.controls.MaxOccupancy.errors.min">Number of Beds must be greater than 0</div>
                 </div>
             </div>
+            
             <br>
 
             <!-- Current Occupancy -->
-            <div class = "">
-                <div class="">
-                    <label for="CurrentOccupancy" class="">Current Occupancy:</label>
-                    <input type="number" class=""  name="CurrentOccupancy" id="CurrentOccupancy"  formControlName="CurrentOccupancy" [ngModel] = "rm.CurrentOccupancy">
-                    
-                    <!--validation-->
-                    <div *ngIf="submitted && mygroup.controls.CurrentOccupancy.errors">
-                            <div class = "" *ngIf="mygroup.controls.CurrentOccupancy.errors.required">Number of Beds is required</div>
-                        <div class = "" *ngIf="mygroup.controls.CurrentOccupancy.errors.min">Number of Beds must be greater than 0</div>
-                    </div>
+            <div>
+                <label for="CurrentOccupancy" class="">Current Occupancy:</label>
+                <input type="number" class=""  name="CurrentOccupancy" id="CurrentOccupancy"  formControlName="CurrentOccupancy" [ngModel] = "rm.CurrentOccupancy">
+                
+                <!--validation-->
+                <div *ngIf="submitted && mygroup.controls.CurrentOccupancy.errors">
+                    <div class = "validate" *ngIf="mygroup.controls.CurrentOccupancy.errors.required">Number of Beds is required</div>
+                    <div class = "validate" *ngIf="mygroup.controls.CurrentOccupancy.errors.min">Number of Beds must be greater than 0</div>
                 </div>
             </div>
             <br>
 
-        <!-- Room Number -->  
-            <div class="">
-                <div class="">
-                    <label for="InternalAddress" class="">Room number:</label>
-                    <input type="text" class="" id="InternalAddress" name="RoomNumber" formControlName="RoomNumber" [ngModel]="rm.RoomNumber">
-                    <!--validation-->
-                    <div *ngIf="submitted && mygroup.controls.RoomNumber.errors">
-                        <div class = "" *ngIf="mygroup.controls.RoomNumber.errors.required" >Room Number is required</div>
-                    </div>
+            <!-- Room Number -->  
+            <div>
+                <label for="InternalAddress" class="">Room number:</label>
+                <input type="text" class="" id="InternalAddress" name="RoomNumber" formControlName="RoomNumber" [ngModel]="rm.RoomNumber">
+                <!--validation-->
+                <div *ngIf="submitted && mygroup.controls.RoomNumber.errors">
+                    <div class = "validate" *ngIf="mygroup.controls.RoomNumber.errors.required" >Room Number is required</div>
                 </div>
             </div>
             <br>
 
-        <!-- Gender -->  
-            <div class="">
+            <!-- Gender -->  
+            <div>
                 <label class="">Gender:</label>
                 <input type="radio" class="" name="Gender" id ="Male" value="Male" formControlName="Gender" [checked]="rm.Gender=='Male'" [ngModel] = "rm.Gender">
                 <label for="Male" class="">Male</label>
@@ -83,51 +77,44 @@
                 <label for="Female" class="">Female</label> 
             </div>
             <br>
-        <!-- Start Date -->  
-            <div class="">
-                <div class="">
-                    <label for="StartDate" class="">Start Date:</label>
-                    <input type="date" class="" id="StartDate" name="StartDate" formControlName="StartDate" 
-                        [ngModel] = "rm.StartDate | date:'yyyy-MM-dd'" max="this.rm.EndDate">
-                    
-                    
-                    <!--validation-->
-                    <div *ngIf="submitted && mygroup.controls.StartDate.errors">
-                        <div class = "" *ngIf="mygroup.controls.StartDate.errors.required">StartDate is required</div>
-                    </div>
+
+            <!-- Start Date -->  
+            <div>
+                <label for="StartDate" class="">Start Date:</label>
+                <input type="date" class="" id="StartDate" name="StartDate" formControlName="StartDate" 
+                    [ngModel] = "rm.StartDate | date:'yyyy-MM-dd'" max="this.rm.EndDate">
+                
+                <!--validation-->
+                <div *ngIf="submitted && mygroup.controls.StartDate.errors">
+                    <div class = "validate" *ngIf="mygroup.controls.StartDate.errors.required">StartDate is required</div>
                 </div>
             </div>
             <br>
-        <!-- End Date -->  
-            <div class="">
-                    <div class="">
-                        <label for="EndDate" class="">End Date:</label>
-                        <input type="date" class="" id="EndDate" name="EndDate" formControlName="EndDate" 
-                        [ngModel]="rm.EndDate | date:'yyyy-MM-dd'" min="this.rm.StartDate | date:'yyyy-MM-dd'">
-                        <!--validation-->
-                        <div *ngIf="submitted && mygroup.controls.EndDate.errors">
-                            <div class = "" *ngIf="mygroup.controls.EndDate.errors.required">EndDate is required</div>
-                        </div>
-                    </div>
+
+            <!-- End Date -->  
+            <div>
+                <label for="EndDate" class="">End Date:</label>
+                <input type="date" class="" id="EndDate" name="EndDate" formControlName="EndDate" 
+                [ngModel]="rm.EndDate | date:'yyyy-MM-dd'" min="this.rm.StartDate | date:'yyyy-MM-dd'">
+                <!--validation-->
+                <div *ngIf="submitted && mygroup.controls.EndDate.errors">
+                    <div class = "validate" *ngIf="mygroup.controls.EndDate.errors.required">EndDate is required</div>
+                </div>
             </div>
             <br>
-        <!-- Description -->  
+
+            <!-- Description -->  
             <div class="">
-                <div class="">
-                    <label for="Description" class="">Description</label>
-                    <textarea class="" id="Description" name="Description" for="Description" formControlName="Description" [ngModel] = "rm.Description"></textarea>
-                </div>
+                <label for="Description" class="">Description</label>
+                <textarea id="Description" name="Description" for="Description" formControlName="Description" [ngModel] = "rm.Description"></textarea>
             </div>
             <br><br>
             
 
             <div class="">
-                <div class="">
-                    <button class="btn-buttons" type="button" routerLink="">Go Back</button>
-                    <button class="btn-buttons" type="submit" >Update</button>
-                </div>
+                <button class="btn-buttons" type="button" routerLink="">Go Back</button>
+                <button class="btn-buttons" type="submit" >Update</button>
             </div>
-
             
         </form>
     </div>

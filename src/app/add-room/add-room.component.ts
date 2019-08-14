@@ -26,7 +26,7 @@ export class AddRoomComponent implements OnInit {
   LocationID: number;
   
  
-  constructor(private datasvc: ApiService, private formBuilder: FormBuilder, private route: ActivatedRoute,private router: Router) { 
+  constructor(private datasvc: ApiService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) { 
 
     this.route.params.subscribe(params => this.assignLocationId(params['id']));
   }

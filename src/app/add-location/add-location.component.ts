@@ -13,11 +13,8 @@ export class AddLocationComponent implements OnInit {
   
   locationGroup: FormGroup;
   submitted: boolean = false;
-  
 
-  
   constructor(private datasvc: ApiService, private formBuilder: FormBuilder, private router: Router) { }
-  
 
   ngOnInit() {
     this.locationGroup = this.formBuilder.group({
@@ -26,18 +23,13 @@ export class AddLocationComponent implements OnInit {
       City:['',[Validators.required]],
       ZipCode:['',[Validators.required,Validators.minLength(5),Validators.maxLength(5), Validators.pattern('[0-9]*')]],
       TrainingCenter:['',[Validators.required]]
-
     })
   }
 
   PostLocationInfo(obj: ProviderLocation){
     obj.ProviderID = 1;
-    console.log(obj);
-    
      this.datasvc.PostLocationData(obj).subscribe(data => {
-      //post location success
-      console.log(data);
-      
+      //post location success    
       this.locationGroup.reset();
       alert("Succeeded");
       
@@ -45,7 +37,6 @@ export class AddLocationComponent implements OnInit {
     }, error => {
       //post location error handling 
       console.log("Error", error);
-      console.log(obj);
       alert("Failed");
     }) 
     //console.log(value);
@@ -54,20 +45,12 @@ export class AddLocationComponent implements OnInit {
   OnSubmit(){
     this.submitted = true;
     if(this.locationGroup.invalid){
-      console.log("location Invalid data");
       return;
     }
     else{
       this.PostLocationInfo(this.locationGroup.value);
-    console.log(this.locationGroup.value);
     this.submitted = false;
-    this.router.navigate(['']); // redirect to home
-    
+    this.router.navigate(['']); // redirect to home 
     }
-    
   }
-
-
-  
-
 }
