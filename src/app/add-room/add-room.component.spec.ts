@@ -192,8 +192,30 @@ it('should post room info into database', () => {
 
 })
 
+//need change
+it('should get error from post request', () => {
+  //create providerLocation object
+  const room = new Room();
+  room.Type = RoomData.Type;
+  room.MaxOccupancy = RoomData.MaxOccupancy;
+  room.RoomNumber = RoomData.RoomNumber;
+  room.Gender = RoomData.Gender;
+  room.StartDate = RoomData.StartDate;
+  //get service first
+  const xService = fixture.debugElement.injector.get(ApiService);
+  xService['apiError']=true;
+  
+  component.postRoomInfo(room);
+})
 
 
+ //html
+ it('click submit button should call OnSubmit()', () => {
+  spyOn(component, 'onSubmit');
+  const button = fixture.debugElement.query(By.css('button[type=submit]')).nativeElement;
+  button.click();
+  expect(component.onSubmit).toHaveBeenCalled();
+})
 
 //html
 it('click submit button should call OnSubmit()', () => {
