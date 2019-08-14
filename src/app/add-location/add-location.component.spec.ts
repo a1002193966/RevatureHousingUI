@@ -94,7 +94,7 @@ describe('AddLocationComponent', () => {
 
     const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
     expect(error.length).toBe(1);
-    expect(error[0].nativeElement.textContent).toBe(errorList[0]);
+    expect(error[0].nativeElement).toBe(errorList[0]);
   });
 
   it('should only show State is required', () => {
@@ -303,7 +303,7 @@ describe('AddLocationComponent', () => {
   //html
   it('click submit button should call OnSubmit()', () => {
     spyOn(component, 'OnSubmit');
-    const button = fixture.debugElement.query(By.css('input[type=submit]')).nativeElement;
+    const button = fixture.debugElement.query(By.css('button[type=submit]')).nativeElement;
     button.click();
     expect(component.OnSubmit).toHaveBeenCalled();
   })

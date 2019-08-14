@@ -1,18 +1,31 @@
-<div class="room-details">
-    <span>Address: </span>   
-    <span>{{location.address}}</span><br>
-    <span>{{location.city}}, {{location.state}} {{location.zip}}</span>
-    <br>        
-    <span id="txt">Room #:</span> {{room.roomNumber}}<br>
-    <span id="txt">Gender:</span> {{room.gender}}<br>
-    <span id="txt">Occupancy: </span><b>{{room.currentOccupancy}}</b> of <b>{{room.maxOccupancy}}</b><br>
-    <span id="txt">Start Date:</span> {{room.startDate | date:shortDate}} <br>
-    <span id="txt">End Date: </span> {{room.endDate | date:shortDate}}<br>
-    <span id="des">{{room.description}}</span><br>
-   
-    <p>Are you sure you want to Delete this room?</p>
-    <button class="delete-btn" (click)="deleteRoom(room.roomID)">Delete</button>
-    <button class="delete-btn" routerLink="">Go Back</button>
+<div class="container-deleteroom">
+    
+    <div class="container-deleteroom-inner">
+
+        <span>Address: </span>   
+        <span>{{location.address}}</span>
+        <br><br>
+        <span>{{location.city}}, {{location.state}} {{location.zip}}</span>
+        <br><br>
+        <span id="txt">Room #:</span> {{room.roomNumber}}
+        <br><br>
+        <span id="txt">Gender:</span> {{room.gender}}
+        <br><br>
+        <span id="txt">Occupancy: </span><b>{{room.currentOccupancy}}</b> of <b>{{room.maxOccupancy}}</b>
+        <br><br>
+        <span id="txt">Start Date:</span> {{room.startDate | date:shortDate}} 
+        <br><br>
+        <span id="txt">End Date: </span> {{room.endDate | date:shortDate}}
+        <br><br>
+        <span id="des">{{room.description}}</span>
+        <br><br>
+        
+        <p id="txt-confirm">Are you sure you want to Delete this room?</p>
+        
+        <button class="btn-buttons" routerLink="">Go Back</button>
+        <button class="btn-buttons" (click)="deleteRoom(room.roomID)">Delete</button>
+
+    </div>
 
 </div>                 
 
