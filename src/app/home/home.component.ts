@@ -49,6 +49,4 @@ export class HomeComponent implements OnInit {
       this.getLocationInfo()
      }, 500)
   }
-
-
 }
