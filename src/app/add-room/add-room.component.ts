@@ -68,6 +68,8 @@ export class AddRoomComponent implements OnInit {
       //httpclient post error handling 
       console.log("Error", error);
     } )
+
+
     //console.log(value);
   }
 

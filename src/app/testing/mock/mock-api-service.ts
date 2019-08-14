@@ -19,6 +19,13 @@ export class ApiServiceMock {
       return throwError( new Error("failed") );
     }     
   }
+  postRoomData(obj:any){
+    if(!this.apiError)
+      return of("success");
+      else{
+        return throwError(new Error("failed"));
+      }
+  }
 
   getRoomById(id: number)
   {

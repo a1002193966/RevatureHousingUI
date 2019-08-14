@@ -54,15 +54,15 @@ describe('DeleteRoomComponent', () => {
     expect(component.deleteRoom).toHaveBeenCalledWith(1);
   })
 
-  // it('should show corredct data in html file',()=>{
-  //   const span = fixture.debugElement.queryAll(By.css('span'));
-  //   //include all span
-  //   expect(span.length).toBe(9);
+  it('should show corredct data in html file',()=>{
+    const span = fixture.debugElement.queryAll(By.css('span'));
+    //include all span
+    expect(span.length).toBe(8);
 
-  //   //manually check each data
-  //   expect(span[1].nativeElement.textContent).toBe(LocationObject.address);
-  //   expect(span[2].nativeElement.textContent).toBe(`${LocationObject.city}, ${LocationObject.state} ${LocationObject.zip}`);
-  // })
+    //manually check each data
+    expect(span[1].nativeElement.textContent).toBe(`Address: ${LocationObject.address}`);
+    expect(span[2].nativeElement.textContent).toBe(`${LocationObject.city}, ${LocationObject.state} ${LocationObject.zip}`);
+  })
   //#endregion
 
   //#reigion component.ts
