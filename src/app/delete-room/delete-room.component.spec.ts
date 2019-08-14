@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteRoomComponent } from './delete-room.component';
+<<<<<<< HEAD
+import {RouterTestingModule}  from '@angular/router/testing'
+=======
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ApiService } from '../api.service';
@@ -11,12 +14,23 @@ import { LocationData, MockRoom, } from '../testing/dummyData';
 import { By } from '@angular/platform-browser';
 
 
+>>>>>>> origin/UITest
 describe('DeleteRoomComponent', () => {
   let component: DeleteRoomComponent;
   let fixture: ComponentFixture<DeleteRoomComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+<<<<<<< HEAD
+      declarations: [ DeleteRoomComponent ],
+      imports:[
+
+        
+         
+        RouterTestingModule
+      ]
+
+=======
       declarations: [DeleteRoomComponent],
       imports: [
         RouterTestingModule,
@@ -28,6 +42,7 @@ describe('DeleteRoomComponent', () => {
           paramMap: of({ get: (key) => 1})
       }}
       ]
+>>>>>>> origin/UITest
     })
       .compileComponents();
   }));

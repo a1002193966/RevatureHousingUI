@@ -7,8 +7,12 @@ import { By } from '@angular/platform-browser';
 import { ApiService } from '../api.service';
 import { ApiServiceMock } from '../testing/mock/mock-api-service';
 import { ProviderLocation } from 'src/Entities/location';
+<<<<<<< HEAD
+import {RouterTestingModule} from '@angular/router/testing';
+=======
 import { RouterTestingModule } from '@angular/router/testing';
 
+>>>>>>> origin/UITest
 /*
   1. waiting for some more validation
   a.intonly for zipcode
