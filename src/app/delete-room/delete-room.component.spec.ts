@@ -7,7 +7,8 @@ import { ApiService } from '../api.service';
 import { ApiServiceMock } from '../testing/mock/mock-api-service';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
-import { LocationData, RoomData } from '../testing/dummyData';
+import { LocationData, MockRoom, } from '../testing/dummyData';
+import { By } from '@angular/platform-browser';
 
 
 describe('DeleteRoomComponent', () => {
@@ -38,11 +39,19 @@ describe('DeleteRoomComponent', () => {
     spyOn(component,'getRoomInfo')
     //assign dummy data for room and location for html
     component.location= LocationData;
-    component.room=RoomData;
+    component.room=MockRoom;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  //#region html
+  it('click delete button should call deleteroom with roomID to',()=>{
+    spyOn(component,'deleteRoom');
+    const button = fixture.debugElement.query(By.css('button')).nativeElement;
+    console.log("delete",button);
+  })
+  //#endregion
 });
