@@ -25,7 +25,7 @@ describe('DeleteRoomComponent', () => {
       providers: [
         { provide: ApiService, useClass: ApiServiceMock },
         {provide: ActivatedRoute,useValue: {
-          paramMap: of({ get: (key) => 'value' })
+          paramMap: of({ get: (key) => 1})
       }}
       ]
     })
@@ -50,8 +50,9 @@ describe('DeleteRoomComponent', () => {
   //#region html
   it('click delete button should call deleteroom with roomID to',()=>{
     spyOn(component,'deleteRoom');
-    const button = fixture.debugElement.query(By.css('button')).nativeElement;
-    console.log("delete",button);
+    const button = fixture.debugElement.query(By.css('button.delete-btn')).nativeElement;
+    button.click();
+    expect(component.deleteRoom).toHaveBeenCalledWith(1);
   })
   //#endregion
 });

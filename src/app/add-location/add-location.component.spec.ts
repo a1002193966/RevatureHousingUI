@@ -71,7 +71,6 @@ describe('AddLocationComponent', () => {
     expect(component.submitted).toBeTruthy();
     //change in html
     fixture.detectChanges();
-    //need change, more validation
     const error = fixture.debugElement.queryAll(By.css('div.alert.alert-danger'));
     //check total number of error content showed
     expect(error.length).toBe(5);
