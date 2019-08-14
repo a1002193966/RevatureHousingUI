@@ -9,6 +9,7 @@ import { ApiServiceMock } from '../testing/mock/mock-api-service';
 import { ProviderLocation } from 'src/Entities/location';
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router } from '@angular/router';
+import { of } from 'rxjs';
 /*
   1. waiting for some more validation
   a.intonly for zipcode
@@ -231,7 +232,6 @@ describe('AddLocationComponent', () => {
   //#endregion
 
   //PostRoomInfo
-  //need change
   it('should post room info into database', () => {
     //create providerLocation object
     const location = new ProviderLocation();
@@ -241,8 +241,6 @@ describe('AddLocationComponent', () => {
     location.Zip = LocationData.ZipCode;
     location.TraningCenter = LocationData.TrainingCenter;
 
-    //spy on window alert
-    spyOn(window,'alert');
     component.PostLocationInfo(location);
 
     //formgroup reset
@@ -252,11 +250,8 @@ describe('AddLocationComponent', () => {
     expect(component.locationGroup.controls['ZipCode'].value).toBe(null);
     expect(component.locationGroup.controls['TrainingCenter'].value).toBe(null);
 
-    //window alert
-    expect(window.alert).toHaveBeenCalledWith('Succeeded');
   })
 
-  //need change
   it('should get error from post request', () => {
     //form setup for testing reset() wouldn't be called
     formSetup();
@@ -270,9 +265,9 @@ describe('AddLocationComponent', () => {
     //get service first
     const xService = fixture.debugElement.injector.get(ApiService);
     xService['apiError']=true;
-    //spy on window alert
-    spyOn(window,'alert');
+    spyOn(xService,'PostLocationData').and.returnValue(of());
     component.PostLocationInfo(location);
+    location.LocationID=1;
     //form didn't reset
     expect(component.locationGroup.controls['Address'].value).toBe(LocationData.Address);
     expect(component.locationGroup.controls['State'].value).toBe(LocationData.State);
@@ -280,7 +275,7 @@ describe('AddLocationComponent', () => {
     expect(component.locationGroup.controls['ZipCode'].value).toBe(LocationData.ZipCode);
     expect(component.locationGroup.controls['TrainingCenter'].value).toBe(LocationData.TrainingCenter);
     //window alert
-    expect(window.alert).toHaveBeenCalledWith('Failed');
+    expect(xService.PostLocationData).toHaveBeenCalledWith(location);
   })
 
   //html
