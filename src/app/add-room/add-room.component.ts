@@ -57,11 +57,8 @@ export class AddRoomComponent implements OnInit {
       this.location = data;//assign data to location object   
   })
   }
-
-  
  
   postRoomInfo(value: Room){
-    console.log(value);
     value.IsActive = true;
     value.RoomID = 0;
     value.CurrentOccupancy = value.MaxOccupancy;
@@ -69,14 +66,12 @@ export class AddRoomComponent implements OnInit {
     
      this.datasvc.postRoomData(value).subscribe(data => {
       //post success
-      console.log(data);
       console.log("Post success");
 
-    }), error => {
+    }, error => {
       //httpclient post error handling 
       console.log("Error", error);
-      console.log(value);
-    } 
+    } )
     //console.log(value);
   }
 
@@ -85,9 +80,10 @@ export class AddRoomComponent implements OnInit {
     //add room submit
     this.submitted = true;
        if(this.mygroup.invalid){
-         console.log("room Invalid data");
+         //console.log("room Invalid data");
          return;
-       }else{
+       }else
+       {
          //success
          this.success = true;
          this.postRoomInfo(this.mygroup.value);
