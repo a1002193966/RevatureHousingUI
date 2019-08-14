@@ -31,13 +31,13 @@ export class AddLocationComponent implements OnInit {
      this.datasvc.PostLocationData(obj).subscribe(data => {
       //post location success    
       this.locationGroup.reset();
-      alert("Succeeded");
+  
       
 
     }, error => {
       //post location error handling 
       console.log("Error", error);
-      alert("Failed");
+     
     }) 
     //console.log(value);
   }
