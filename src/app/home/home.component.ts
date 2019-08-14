@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
     {
       this.datasvc.getRoomData().subscribe(data => {
         this.roomList=data;
+        console.log(data);
     });
     }
     
