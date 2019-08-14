@@ -69,11 +69,11 @@ export class AddRoomComponent implements OnInit {
      // this.mygroup.reset();
       console.log("Post success");
 
-    }), error => {
+    }, error => {
       //httpclient post error handling 
       console.log("Error", error);
       console.log(value);
-    } 
+    }) 
     //console.log(value);
   }
 

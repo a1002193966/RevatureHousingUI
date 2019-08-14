@@ -18,11 +18,8 @@ export const RoomData = {
     RoomNumber:"1",
     Gender:"F",
     StartDate: new Date('2019/08/10'),
-    EndDate: new Date('2019/11/11'),
-    Description:"abc",
-    IsActive : true,
-    CurrentOccupancy : 4,
-    
+    EndDate: undefined,
+    Description : ''
 
 }
 
@@ -40,9 +37,9 @@ export const RoomErrorList={
         "Number of Beds is required",
         "Room Number is required",
         "Gender is required",
-        "StartDate is required",
-        "EndDate is required",
-       // "Description is required"
+        "StartDate is required"
+        
+       
       
     ]
 }
