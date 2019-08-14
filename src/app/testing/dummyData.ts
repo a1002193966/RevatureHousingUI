@@ -1,8 +1,5 @@
 import { ProviderLocation } from 'src/Entities/location';
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/UITest
 import { Room } from 'src/Entities/room';
 
 export const LocationData = {
@@ -38,7 +35,6 @@ export const LocationErrorList = {
     ]
 }
 
-<<<<<<< HEAD
 export const RoomErrorList={
     ErrorList:["Room Type is required",
         "Number of Beds is required",
@@ -50,7 +46,7 @@ export const RoomErrorList={
       
     ]
 }
-=======
+
 export class MockProvider extends ProviderLocation{
     LocationID= 3; 
     Address= '123 Main Street';
@@ -78,4 +74,4 @@ export class MockRoom extends Room{
     //Foreign Key
     LocationID = 1;
 }
->>>>>>> origin/UITest
+

@@ -39,14 +39,14 @@ export class AddLocationComponent implements OnInit {
       console.log(data);
       
       this.locationGroup.reset();
-      alert("Succeeded");
+     // alert("Succeeded");
       
 
     }, error => {
       //post location error handling 
       console.log("Error", error);
       console.log(obj);
-      alert("Failed");
+     // alert("Failed");
     }) 
     //console.log(value);
   }
