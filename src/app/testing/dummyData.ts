@@ -32,6 +32,20 @@ export const RoomData = {
 
 }
 
+export const UpdateRoomData = {
+  
+    Type:"apartment",
+    MaxOccupancy:2 ,
+    CurrentOccupancy:2,
+    RoomNumber:"1",
+    Gender:"F",
+    StartDate: new Date('2019/08/10'),
+    EndDate: undefined,
+    Description : '',
+    LocationData:2
+
+}
+
 export const LocationErrorList = {
     ErrorList: ["Address is required",
         "State is required",
@@ -47,6 +61,21 @@ export const RoomErrorList={
         "Room Number is required",
         "Gender is required",
         "StartDate is required"
+        
+       
+      
+    ]
+}
+
+
+export const UpdateRoomErrorList={
+    ErrorList:["Room Type is required",
+        "Number of Beds is required",
+        "Number of Beds is required",
+        "Room Number is required",
+        "Gender is required",
+        "StartDate is required",
+        "EndDate is required"
         
        
       
@@ -82,6 +111,7 @@ export class MockRoom extends Room{
 }
 
 export const RoomObject={
+
      
 
     //Primary Key
@@ -98,4 +128,5 @@ export const RoomObject={
 
     //Foreign Key
     locationID : 1
+
 }
