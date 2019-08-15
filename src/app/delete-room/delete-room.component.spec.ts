@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { LocationObject, RoomObject, } from '../testing/dummyData';
 import { By } from '@angular/platform-browser';
+import { formatDate } from '@angular/common';
 
 
 describe('DeleteRoomComponent', () => {
@@ -54,14 +55,23 @@ describe('DeleteRoomComponent', () => {
     expect(component.deleteRoom).toHaveBeenCalledWith(1);
   })
 
-  it('should show corredct data in html file',()=>{
+  it('should show correct data in html file',()=>{
     const span = fixture.debugElement.queryAll(By.css('span'));
     //include all span
     expect(span.length).toBe(8);
-
+    //date time format to short date
+    //but somehow, the actual format it show is mediumDate
+    const startDate =formatDate(RoomObject.startDate,'mediumDate','en-US');
+    const endDate = formatDate(RoomObject.endDate,'mediumDate','en-US');
     //manually check each data
-    expect(span[1].nativeElement.textContent).toBe(`Address: ${LocationObject.address}`);
-    expect(span[2].nativeElement.textContent).toBe(`${LocationObject.city}, ${LocationObject.state} ${LocationObject.zip}`);
+    expect(span[0].nativeElement.textContent).toBe(`Address: ${LocationObject.address}`);
+    expect(span[1].nativeElement.textContent).toBe(`${LocationObject.city}, ${LocationObject.state} ${LocationObject.zip}`);
+    expect(span[2].nativeElement.textContent).toBe(`Room #: ${RoomObject.roomNumber}`);
+    expect(span[3].nativeElement.textContent).toBe(`Gender: ${RoomObject.gender}`);
+    expect(span[4].nativeElement.textContent).toBe(`Occupancy: ${RoomObject.currentOccupancy} of ${RoomObject.maxOccupancy}`);
+    expect(span[5].nativeElement.textContent).toBe(`Start Date: ${startDate} `);
+    expect(span[6].nativeElement.textContent).toBe(`End Date: ${endDate}`);
+    expect(span[7].nativeElement.textContent).toBe(`${RoomObject.description}`);
   })
   //#endregion
 
