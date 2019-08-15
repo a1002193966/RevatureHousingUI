@@ -34,12 +34,6 @@ export class HomeComponent implements OnInit {
         this.roomList=data;
     });
     }
-    getRoomInfoByLocation(id: number){
-      this.datasvc.getRoomsByLocationId(id).subscribe(data=>{
-        console.log(data)
-      })
-    }
-    
     
     showLocation(id: number) {
       this.router.navigate(['add-room', id]);
@@ -53,7 +47,7 @@ export class HomeComponent implements OnInit {
      // get locations belonging to the provider
      setTimeout(()=>{
       this.getLocationInfo()
-     }, 500)
+     }, 300)
   }
   
 }
