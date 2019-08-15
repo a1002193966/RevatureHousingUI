@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {  of, throwError, Observable } from 'rxjs';
+import { RoomObject, LocationObject } from '../dummyData';
 
 
 
@@ -29,9 +30,22 @@ export class ApiServiceMock {
   getRoomById(id: number)
   {
     if(!this.apiError)
-      return of("success");
+      return of(RoomObject);
     else{
-      return throwError( new Error("failed") );
+      return of();
     }     
   }
+
+  getLocationById(id:number){
+    if(!this.apiError)
+      return of(LocationObject);
+    else
+      return of();
+  }
+
+  deleteRoom(id:number){
+    return of();
+  }
+
+
 }

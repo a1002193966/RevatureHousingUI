@@ -165,13 +165,13 @@ it('it should not have error message and should call postRoomInfo', () => {
   expect(component.postRoomInfo).toHaveBeenCalledWith(RoomData);
   expect(component.submitted).toBeFalsy();
 
+
   //formgroup reset
   expect(component.mygroup.controls['Type'].value).toBe(null);
   expect(component.mygroup.controls['MaxOccupancy'].value).toBe(null);
   expect(component.mygroup.controls['RoomNumber'].value).toBe(null);
   expect(component.mygroup.controls['Gender'].value).toBe(null);
   expect(component.mygroup.controls['StartDate'].value).toBe(null);
- 
 
 });
 // //#endregion

@@ -1,5 +1,4 @@
 import { ProviderLocation } from 'src/Entities/location';
-
 import { Room } from 'src/Entities/room';
 
 export const LocationData = {
@@ -115,34 +114,19 @@ export const RoomObject={
 
      
 
-
-
     //Primary Key
-
     roomID : 1,
-
     type : 'dorm',
-
     maxOccupancy : 4,
-
     roomNumber : '101',
-
     gender : 'male',
-
     startDate : new Date('2019/08/10'),
-
     endDate :  new Date('2019/11/11'),
-
     currentOccupancy : 2,
-
     isActive : true,
-
     description : 'this is a mock room',
 
-
-
     //Foreign Key
-
     locationID : 1
 
 }
