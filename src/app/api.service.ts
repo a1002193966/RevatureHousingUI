@@ -18,8 +18,13 @@ const httpOptions = {
 
 export class ApiService {
 
+<<<<<<< HEAD
   private _locationUrl:string="http://localhost:53856/api/locations/";
   private _RoomUrl:string="http://localhost:53856/api/rooms/";
+=======
+  private _locationUrl:string="http://localhost:55749/api/locations/";
+  private _RoomUrl:string="http://localhost:55749/api/rooms/";
+>>>>>>> c99307eaf2b87beb4786700c12a20106bdb4efa2
   
 
   constructor(private http : HttpClient) { }
@@ -28,7 +33,7 @@ export class ApiService {
     return this.http.get(this._locationUrl);
   }
 
-  getLocationById(id: number){
+  getLocationById(id: any){
     return this.http.get(this._locationUrl+id)
   }
 
@@ -41,9 +46,14 @@ export class ApiService {
     return this.http.get<Room>(`${this._RoomUrl}${id}`);
   }
 
+  getRoomsByLocationId(id: number){
+    return this.http.get(this._RoomUrl+"location/"+id)
+  }
+
   postRoomData(obj: Room): Observable<Room>{
     return this.http.post<Room>(this._RoomUrl, obj);
   }
+
 
   PostLocationData(obj: ProviderLocation): Observable<ProviderLocation>{
   return this.http

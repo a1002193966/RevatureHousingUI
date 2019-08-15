@@ -1,6 +1,5 @@
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { Component, OnInit, ɵConsole } from '@angular/core';
-import { ProviderLocation } from '../../Entities/location';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
@@ -49,8 +48,7 @@ export class HomeComponent implements OnInit {
      // get locations belonging to the provider
      setTimeout(()=>{
       this.getLocationInfo()
-     }, 500)
+     }, 300)
   }
-
-
+  
 }
