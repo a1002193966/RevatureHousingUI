@@ -31,20 +31,14 @@ export class AddLocationComponent implements OnInit {
      this.datasvc.PostLocationData(obj).subscribe(data => {
       //post location success    
       this.locationGroup.reset();
-<<<<<<< HEAD
   
       
-=======
->>>>>>> c99307eaf2b87beb4786700c12a20106bdb4efa2
 
     }, error => {
       //post location error handling 
       console.log("Error", error);
-<<<<<<< HEAD
      
-=======
 
->>>>>>> c99307eaf2b87beb4786700c12a20106bdb4efa2
     }) 
     //console.log(value);
   }

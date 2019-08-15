@@ -82,7 +82,7 @@
             <div>
                 <label for="StartDate" class="">Start Date:</label>
                 <input type="date" class="" id="StartDate" name="StartDate" formControlName="StartDate" 
-                    [ngModel] = "rm.StartDate | date:'yyyy-MM-dd'" max="this.rm.EndDate">
+                    [ngModel] = "rm.StartDate | date:'yyyy-MM-dd'" max="{{rm.EndDate | date:'yyyy-MM-dd'}}">
                 
                 <!--validation-->
                 <div *ngIf="submitted && mygroup.controls.StartDate.errors">
@@ -95,15 +95,7 @@
             <div>
                 <label for="EndDate" class="">End Date:</label>
                 <input type="date" class="" id="EndDate" name="EndDate" formControlName="EndDate" 
-<<<<<<< HEAD
-                [ngModel]="rm.EndDate | date:'yyyy-MM-dd'" min="2019-11-11">
-=======
-                [ngModel]="rm.EndDate | date:'yyyy-MM-dd'" min="rm.StartDate | date:'yyyy-MM-dd'">
-                <!--validation-->
-                <div *ngIf="submitted && mygroup.controls.EndDate.errors">
-                    <div class = "validate" *ngIf="mygroup.controls.EndDate.errors.required">EndDate is required</div>
-                </div>
->>>>>>> c99307eaf2b87beb4786700c12a20106bdb4efa2
+                [ngModel]="rm.EndDate | date:'yyyy-MM-dd'" min="{{rm.StartDate | date:'yyyy-MM-dd'}}">
             </div>
             <br>
 

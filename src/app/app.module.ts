@@ -20,6 +20,7 @@ import { MsAdalAngular6Module,AuthenticationGuard } from 'microsoft-adal-angular
 import { environment } from '../environments/environment';
 import { AddLocationComponent } from './add-location/add-location.component';
 import { ShowByLocationComponent } from './show-by-location/show-by-location.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -51,7 +52,7 @@ import { ShowByLocationComponent } from './show-by-location/show-by-location.com
       cacheLocation: 'localStorage'
     })
   ],
-  providers: [Room, Provider, ProviderLocation, ApiService, AuthenticationGuard],
+  providers: [Room, Provider, ProviderLocation, ApiService, AuthenticationGuard, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
