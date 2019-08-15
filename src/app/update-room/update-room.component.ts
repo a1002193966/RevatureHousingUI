@@ -23,7 +23,7 @@ export class UpdateRoomComponent implements OnInit {
   MO: number;
   rm = new Room();
 
-  constructor(private datasvc: ApiService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router) { 
+  constructor(private datasvc: ApiService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router, private datePipe: DatePipe) { 
     this.route.params.subscribe(params => this.assignRoomId(params['id']));
   }
 
@@ -45,6 +45,7 @@ export class UpdateRoomComponent implements OnInit {
 
   assignRoomId(id: number){ this.roomId=id; }
   
+
   getRoomInfo()
   {
     this.datasvc.getRoomById(this.roomId).subscribe(data => {
@@ -55,10 +56,11 @@ export class UpdateRoomComponent implements OnInit {
       this.rm.CurrentOccupancy = this.rm.MaxOccupancy;
       this.rm.RoomNumber = Object.values(data)[3];
       this.rm.Gender = Object.values(data)[4];
-      this.rm.StartDate = Object.values(data)[5];
+      this.rm.StartDate = Object.values(data)[5] ;
       this.rm.EndDate = Object.values(data)[6];
       this.rm.LocationID = Object.values(data)[11];
       this.rm.Description = Object.values(data)[9];
+      //  =  new Date(this.datePipe.transform(this.rm.StartDate, 'yyyy-MM-dd'));
     }); 
 }
 

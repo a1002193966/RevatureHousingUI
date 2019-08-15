@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
     {
       this.datasvc.getRoomData().subscribe(data => {
         this.roomList=data;
+        console.log(data);
     });
     }
     
@@ -47,7 +48,7 @@ export class HomeComponent implements OnInit {
      // get locations belonging to the provider
      setTimeout(()=>{
       this.getLocationInfo()
-     }, 300)
+     }, 100)
   }
   
 }
