@@ -35,6 +35,7 @@ export class AddLocationComponent implements OnInit {
     }, error => {
       //post location error handling 
       console.log("Error", error);
+
     }) 
     //console.log(value);
   }

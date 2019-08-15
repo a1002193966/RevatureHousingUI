@@ -1,12 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Room } from 'src/Entities/room';
-import { ProviderLocation } from 'src/Entities/location';
 import { FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
-
-
 
 @Component({
   selector: 'app-add-room',
@@ -72,6 +68,8 @@ export class AddRoomComponent implements OnInit {
       //httpclient post error handling 
       console.log("Error", error);
     } )
+
+
     //console.log(value);
   }
 
