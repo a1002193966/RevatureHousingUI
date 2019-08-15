@@ -45,57 +45,57 @@ describe('UpdateRoomComponent', () => {
     errorList = UpdateRoomErrorList.ErrorList;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
 
- //#region html
+//  //#region html
 
- it('click update button should call updateroom with roomID to', () => {
-  spyOn(component, 'onSubmit');
-  const button = fixture.debugElement.query(By.css('button[type=submit]')).nativeElement;
-  button.click();
-  expect(component.onSubmit).toHaveBeenCalled();
-})
-//#endregion
+//  it('click update button should call updateroom with roomID to', () => {
+//   spyOn(component, 'onSubmit');
+//   const button = fixture.debugElement.query(By.css('button[type=submit]')).nativeElement;
+//   button.click();
+//   expect(component.onSubmit).toHaveBeenCalled();
+// })
+// //#endregion
 
-//onNgInit()
-it('should initialize formgroup by calling onNgInit()', () => {
-  fixture.detectChanges();
-  console.log(component.mygroup);
-  //component.mygroup.controls['CurrentOccupancy'].setValue(UpdateRoomData.CurrentOccupancy);
-  component.mygroup.controls['MaxOccupancy'].setValue(UpdateRoomData.MaxOccupancy);
-  component.mygroup.controls['RoomNumber'].setValue(UpdateRoomData.RoomNumber);
-  component.mygroup.controls['Gender'].setValue(UpdateRoomData.Gender);
-  component.mygroup.controls['StartDate'].setValue(UpdateRoomData.StartDate);
+// //onNgInit()
+// it('should initialize formgroup by calling onNgInit()', () => {
+//   fixture.detectChanges();
+//   console.log(component.mygroup);
+//   //component.mygroup.controls['CurrentOccupancy'].setValue(UpdateRoomData.CurrentOccupancy);
+//   component.mygroup.controls['MaxOccupancy'].setValue(UpdateRoomData.MaxOccupancy);
+//   component.mygroup.controls['RoomNumber'].setValue(UpdateRoomData.RoomNumber);
+//   component.mygroup.controls['Gender'].setValue(UpdateRoomData.Gender);
+//   component.mygroup.controls['StartDate'].setValue(UpdateRoomData.StartDate);
  
    
-   component.ngOnInit();
-    expect(component.mygroup.controls['CurrentOccupancy'].value).toBe("");
-    expect(component.mygroup.controls['MaxOccupancy'].value).toBe("");
-    expect(component.mygroup.controls['RoomNumber'].value).toBe("");
-    expect(component.mygroup.controls['Gender'].value).toBe("");
-    expect(component.mygroup.controls['StartDate'].value).toBe("");
-})
+//    component.ngOnInit();
+//     expect(component.mygroup.controls['CurrentOccupancy'].value).toBe("");
+//     expect(component.mygroup.controls['MaxOccupancy'].value).toBe("");
+//     expect(component.mygroup.controls['RoomNumber'].value).toBe("");
+//     expect(component.mygroup.controls['Gender'].value).toBe("");
+//     expect(component.mygroup.controls['StartDate'].value).toBe("");
+// })
 
- //getRoomInfo()
- it('should assign value to room',()=>{
-  //reset value
-  component.room=null;
-  component.getRoomInfo();
-  expect(component.room).toEqual(RoomObject);
+//  //getRoomInfo()
+//  it('should assign value to room',()=>{
+//   //reset value
+//   component.room=null;
+//   component.getRoomInfo();
+//   expect(component.room).toEqual(RoomObject);
  
-})
+// })
 
-it('should not assign value to room',()=>{
-  //reset room
-  component.room=null;
-  //force return error
-  const xService = fixture.debugElement.injector.get(ApiService);
-  xService['apiError']=true;
-  component.getRoomInfo();
-  expect(component.room).toBeFalsy();
-})
+// it('should not assign value to room',()=>{
+//   //reset room
+//   component.room=null;
+//   //force return error
+//   const xService = fixture.debugElement.injector.get(ApiService);
+//   xService['apiError']=true;
+//   component.getRoomInfo();
+//   expect(component.room).toBeFalsy();
+// })
 
 // it('should  set submitted to true and show all error message', () => {
 //   component.onSubmit();
