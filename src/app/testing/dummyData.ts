@@ -11,6 +11,16 @@ export const LocationData = {
     TrainingCenter: "Queen"
 }
 
+export const LocationObject={
+    locationID: 3, 
+    address: '123 Main Street',
+    city: 'Queens', 
+    state: 'New York',
+    zip: '11111',
+    trainingCenter: 'Queens College',
+    providerID: 1,
+}
+
 export const RoomData = {
   
     Type:"apartment",
@@ -20,6 +30,20 @@ export const RoomData = {
     StartDate: new Date('2019/08/10'),
     EndDate: undefined,
     Description : ''
+
+}
+
+export const UpdateRoomData = {
+  
+    Type:"apartment",
+    MaxOccupancy:2 ,
+    CurrentOccupancy:2,
+    RoomNumber:"1",
+    Gender:"F",
+    StartDate: new Date('2019/08/10'),
+    EndDate: undefined,
+    Description : '',
+    LocationData:2
 
 }
 
@@ -38,6 +62,21 @@ export const RoomErrorList={
         "Room Number is required",
         "Gender is required",
         "StartDate is required"
+        
+       
+      
+    ]
+}
+
+
+export const UpdateRoomErrorList={
+    ErrorList:["Room Type is required",
+        "Number of Beds is required",
+        "Number of Beds is required",
+        "Room Number is required",
+        "Gender is required",
+        "StartDate is required",
+        "EndDate is required"
         
        
       
@@ -72,3 +111,38 @@ export class MockRoom extends Room{
     LocationID = 1;
 }
 
+export const RoomObject={
+
+     
+
+
+
+    //Primary Key
+
+    roomID : 1,
+
+    type : 'dorm',
+
+    maxOccupancy : 4,
+
+    roomNumber : '101',
+
+    gender : 'male',
+
+    startDate : new Date('2019/08/10'),
+
+    endDate :  new Date('2019/11/11'),
+
+    currentOccupancy : 2,
+
+    isActive : true,
+
+    description : 'this is a mock room',
+
+
+
+    //Foreign Key
+
+    locationID : 1
+
+}

@@ -210,7 +210,7 @@ it('should get error from post request', () => {
 
 
  //html
- it('click submit button should call OnSubmit()', () => {
+ it('click submit button should call onSubmit()', () => {
   spyOn(component, 'onSubmit');
   const button = fixture.debugElement.query(By.css('button[type=submit]')).nativeElement;
   button.click();
