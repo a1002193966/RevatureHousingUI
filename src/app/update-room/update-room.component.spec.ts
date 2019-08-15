@@ -78,6 +78,14 @@ it('should initialize formgroup by calling onNgInit()', () => {
     expect(component.mygroup.controls['StartDate'].value).toBe("");
 })
 
+//assignRoomId
+it('should assign id',() =>{
+  component.roomId=null;
+  component.assignRoomId(1);
+  expect(component.roomId).toEqual(1);
+
+})
+
  //getRoomInfo()
  it('should assign value to room',()=>{
   //reset value
@@ -97,19 +105,24 @@ it('should not assign value to room',()=>{
   expect(component.room).toBeFalsy();
 })
 
-// it('should  set submitted to true and show all error message', () => {
-//   component.onSubmit();
-//   expect(component.submitted).toBeTruthy();
-//   component.mygroup.controls.roomID
-//   //change in html
-//   fixture.detectChanges();
-//   const error = fixture.debugElement.queryAll(By.css('div.validate'));
-//   //check total number of error content showed
-//   expect(error.length).toBe(9);
+//updateRoomInfo
+it('should update room info'),() =>{
+  component.updateRoomData(1);
+  expect(component.room).toEqual(RoomObject);
+}
+it('should  set submitted to true and show all error message', () => {
+  component.onSubmit();
+  expect(component.submitted).toBeTruthy();
+  component.mygroup.controls.roomID
+  //change in html
+  fixture.detectChanges();
+  const error = fixture.debugElement.queryAll(By.css('div.validate'));
+  //check total number of error content showed
+  expect(error.length).toBe(9);
 
-//   for (let i = 0; i < error.length; i++) {
-//     expect(error[i].nativeElement.textContent).toBe(errorList[i]);
-//   }
+  for (let i = 0; i < error.length; i++) {
+    expect(error[i].nativeElement.textContent).toBe(errorList[i]);
+  }
 
-// });
+});
  });

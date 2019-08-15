@@ -43,7 +43,7 @@ export class AddRoomComponent implements OnInit {
   }
 
   assignLocationId(id: number) {
-    this.LocationID = id;
+    this.LocationID = id; 
   }
 
  //Get RoomInfo working: Test It 
