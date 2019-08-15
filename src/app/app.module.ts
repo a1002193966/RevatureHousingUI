@@ -19,8 +19,7 @@ import { StickyNavModule } from 'ng2-sticky-nav';
 import { MsAdalAngular6Module,AuthenticationGuard } from 'microsoft-adal-angular6';
 import { environment } from '../environments/environment';
 import { AddLocationComponent } from './add-location/add-location.component';
-
-
+import { ShowByLocationComponent } from './show-by-location/show-by-location.component';
 
 
 @NgModule({
@@ -33,7 +32,7 @@ import { AddLocationComponent } from './add-location/add-location.component';
     DeleteRoomComponent,
     UpdateRoomComponent,
     AddLocationComponent,
-  
+    ShowByLocationComponent
   ],
   imports: [
     BrowserModule,
