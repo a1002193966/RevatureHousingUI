@@ -11,6 +11,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./update-room.component.scss']
 })
 export class UpdateRoomComponent implements OnInit {
+  [x: string]: any;
 
   room: Object;
   roomId: number;

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LocationObject, RoomObject, UpdateRoomData, } from '../testing/dummyData';
-import { UpdateRoomComponent } from './update-room.component';
+import  { UpdateRoomComponent } from './update-room.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -30,7 +30,7 @@ describe('UpdateRoomComponent', () => {
         { provide: ApiService, useClass: ApiServiceMock },
         {
           provide: ActivatedRoute, useValue: {
-            paramMap: of({ get: (key) => 1 })
+            params: of({ id:1 })
           }
         }
       ]
@@ -51,51 +51,65 @@ describe('UpdateRoomComponent', () => {
 
  //#region html
 
-//  it('click update button should call updateroom with roomID to', () => {
-//   spyOn(component, 'updateRoomInfo');
-//   const button = fixture.debugElement.queryAll(By.css('button.btn-buttons'));
-//   button[1].nativeElement.click();
-//   expect(component.updateRoomInfo).toHaveBeenCalledWith(1);
-// })
-
-// it('should show correct data in html file',()=>{
-//   const span = fixture.debugElement.queryAll(By.css('span'));
-//   //include all span
-//   expect(span.length).toBe(8);
-//   //date time format to short date
-//   //but somehow, the actual format it show is mediumDate
-//   const startDate =formatDate(RoomObject.startDate,'mediumDate','en-US');
-//   const endDate = formatDate(RoomObject.endDate,'mediumDate','en-US');
-//   //manually check each data
-//   expect(span[0].nativeElement.textContent).toBe(`Address: ${LocationObject.address}`);
-//   expect(span[1].nativeElement.textContent).toBe(`${LocationObject.city}, ${LocationObject.state} ${LocationObject.zip}`);
-//   expect(span[2].nativeElement.textContent).toBe(`Room #: ${RoomObject.roomNumber}`);
-//   expect(span[3].nativeElement.textContent).toBe(`Gender: ${RoomObject.gender}`);
-//   expect(span[4].nativeElement.textContent).toBe(`Occupancy: ${RoomObject.currentOccupancy} of ${RoomObject.maxOccupancy}`);
-//   expect(span[5].nativeElement.textContent).toBe(`Start Date: ${startDate} `);
-//   expect(span[6].nativeElement.textContent).toBe(`End Date: ${endDate}`);
-//   expect(span[7].nativeElement.textContent).toBe(`${RoomObject.description}`);
-
-// })
-
+ it('click update button should call updateroom with roomID to', () => {
+  spyOn(component, 'onSubmit');
+  const button = fixture.debugElement.query(By.css('button[type=submit]')).nativeElement;
+  button.click();
+  expect(component.onSubmit).toHaveBeenCalled();
+})
 //#endregion
 
 //onNgInit()
-// it('should initialize formgroup by calling onNgInit()', () => {
-//   fixture.detectChanges();
-//   console.log(component.mygroup);
-//   //component.mygroup.controls['CurrentOccupancy'].setValue(UpdateRoomData.CurrentOccupancy);
-//   component.mygroup.controls['MaxOccupancy'].setValue(UpdateRoomData.MaxOccupancy);
-//   component.mygroup.controls['RoomNumber'].setValue(UpdateRoomData.RoomNumber);
-//   component.mygroup.controls['Gender'].setValue(UpdateRoomData.Gender);
-//   component.mygroup.controls['StartDate'].setValue(UpdateRoomData.StartDate);
+it('should initialize formgroup by calling onNgInit()', () => {
+  fixture.detectChanges();
+  console.log(component.mygroup);
+  //component.mygroup.controls['CurrentOccupancy'].setValue(UpdateRoomData.CurrentOccupancy);
+  component.mygroup.controls['MaxOccupancy'].setValue(UpdateRoomData.MaxOccupancy);
+  component.mygroup.controls['RoomNumber'].setValue(UpdateRoomData.RoomNumber);
+  component.mygroup.controls['Gender'].setValue(UpdateRoomData.Gender);
+  component.mygroup.controls['StartDate'].setValue(UpdateRoomData.StartDate);
  
    
-//    component.ngOnInit();
-//     expect(component.mygroup.controls['CurrentOccupancy'].value).toBe("");
-//     expect(component.mygroup.controls['MaxOccupancy'].value).toBe("");
-//     expect(component.mygroup.controls['RoomNumber'].value).toBe("");
-//     expect(component.mygroup.controls['Gender'].value).toBe("");
-//     expect(component.mygroup.controls['StartDate'].value).toBe("");
-// })
+   component.ngOnInit();
+    expect(component.mygroup.controls['CurrentOccupancy'].value).toBe("");
+    expect(component.mygroup.controls['MaxOccupancy'].value).toBe("");
+    expect(component.mygroup.controls['RoomNumber'].value).toBe("");
+    expect(component.mygroup.controls['Gender'].value).toBe("");
+    expect(component.mygroup.controls['StartDate'].value).toBe("");
+})
+
+ //getRoomInfo()
+ it('should assign value to room',()=>{
+  //reset value
+  component.room=null;
+  component.getRoomInfo();
+  expect(component.room).toEqual(RoomObject);
+ 
+})
+
+it('should not assign value to room',()=>{
+  //reset room
+  component.room=null;
+  //force return error
+  const xService = fixture.debugElement.injector.get(ApiService);
+  xService['apiError']=true;
+  component.getRoomInfo();
+  expect(component.room).toBeFalsy();
+})
+
+// it('should  set submitted to true and show all error message', () => {
+//   component.onSubmit();
+//   expect(component.submitted).toBeTruthy();
+//   component.mygroup.controls.roomID
+//   //change in html
+//   fixture.detectChanges();
+//   const error = fixture.debugElement.queryAll(By.css('div.validate'));
+//   //check total number of error content showed
+//   expect(error.length).toBe(9);
+
+//   for (let i = 0; i < error.length; i++) {
+//     expect(error[i].nativeElement.textContent).toBe(errorList[i]);
+//   }
+
+// });
  });
