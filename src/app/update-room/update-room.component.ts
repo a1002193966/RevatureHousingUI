@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Room } from 'src/Entities/room';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
 import { DatePipe } from '@angular/common';
-
-
 
 @Component({
   selector: 'app-update-room',
@@ -13,6 +11,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./update-room.component.scss']
 })
 export class UpdateRoomComponent implements OnInit {
+  [x: string]: any;
 
   room: Object;
   roomId: number;
@@ -22,16 +21,13 @@ export class UpdateRoomComponent implements OnInit {
   ED: any;
   TYPE: string;
   MO: number;
- rm = new Room();
- 
+  rm = new Room();
 
-
-  constructor(private datasvc: ApiService, private route: ActivatedRoute, private formBuilder: FormBuilder) { 
+  constructor(private datasvc: ApiService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router) { 
     this.route.params.subscribe(params => this.assignRoomId(params['id']));
   }
 
   ngOnInit() {
-
     this.getRoomInfo();
     this.mygroup = this.formBuilder.group({
       RoomID:[''],
@@ -45,26 +41,15 @@ export class UpdateRoomComponent implements OnInit {
       Description: [''],
       LocationID: ['']
    })
-   
-
-
   }
 
-  assignRoomId(id: number)
-  {
-    this.roomId=id;
-    
-
-  }
+  assignRoomId(id: number){ this.roomId=id; }
   
   getRoomInfo()
   {
     this.datasvc.getRoomById(this.roomId).subscribe(data => {
       this.room = data;
-      console.log(Object.keys(data));
-       console.log(Object.values(data));
       this.rm.RoomID = Object.values(data)[0];
-      console.log(this.rm.RoomID);
       this.rm.Type = Object.values(data)[1];
       this.rm.MaxOccupancy = Object.values(data)[2];
       this.rm.CurrentOccupancy = this.rm.MaxOccupancy;
@@ -74,13 +59,11 @@ export class UpdateRoomComponent implements OnInit {
       this.rm.EndDate = Object.values(data)[6];
       this.rm.LocationID = Object.values(data)[11];
       this.rm.Description = Object.values(data)[9];
-
     }); 
-    
 }
+
   updateRoomInfo(room: Room){
     this.datasvc.updateRoomData(room).subscribe(data => {
-      //console.log(data);
     });
   }
 
@@ -91,18 +74,13 @@ export class UpdateRoomComponent implements OnInit {
   
     this.mygroup.controls.LocationID.setValue(this.rm.LocationID);
        if(this.mygroup.invalid){
-         console.log(this.mygroup.value);
-         
-         console.log("room Invalid data");
          return;
-       }else{
-         //success 
-         console.log(this.mygroup.value);           
+       }
+       else{
+         //success         
          this.updateRoomInfo(this.mygroup.value);
-         console.log("Success");
          this.submitted = false;
+         this.router.navigate(['']);
        }
   }
-
-  
 }

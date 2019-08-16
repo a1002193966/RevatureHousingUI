@@ -1,6 +1,6 @@
 
 <div class="home-head">
-    <h1>Display All Properties</h1>
+    <h1>Display All</h1>
     <button id="btn-addLoc" routerLink="add-location">Add New Location</button>
 </div>
 
@@ -8,45 +8,38 @@
     
     <div class="display-info" *ngFor="let location of locationList;">
 
-            <div class="loc-info">
-                
-                <div class="address">
-                    <h4 id="location-address">{{location.address}}</h4>
-                    <h5>{{location.city}}, {{location.state}} {{location.zipCode}}</h5>
-                </div>
-        
-                <div class="btn-room">
-                    <button (click)="showLocation(location.locationID)" id="btn-addRoom" >Add New Room</button>
-                </div>
-        
+        <div class="loc-info">
+            
+            <div class="address">
+                <h4 id="location-address">{{location.address}}</h4>
+                <h5>{{location.city}}, {{location.state}} {{location.zipCode}}</h5>
             </div>
-        
-            <div class="room-rooms">
-                <div class="room-info" *ngFor="let room of roomList;">
-                    <div class="room-card" *ngIf="room.locationID==location.locationID && room.isActive">
-                        
-                        <img id="room-img" src="https://techcrunch.com/wp-content/uploads/2019/03/blueground-apartment-2-2-2.jpg?w=730&crop=1">
-                    
-                        <div class="room-detail">
-                            <span id="txt">Room #:</span> {{room.roomNumber}}<br>
-                            <span id="txt">Room Type:</span> {{room.type}}<br>
-                            <span id="txt">Gender:</span> {{room.gender}}<br>
-                            <span id="txt">Occupancy: </span><b>{{room.currentOccupancy}}</b> of <b>{{room.maxOccupancy}}</b><br>
-                            <span id="txt">Start Date:</span> {{room.startDate | date:shortDate}} <br>
-                            <span id="txt">End Date: </span> {{room.endDate | date:shortDate}}<br>
-                            <span id="des">{{room.description}}</span><br>
-                            <br>
-                            <button id="btn-update" (click)="updateRoom(room.roomID);">Edit</button>
-                            <button id="btn-remove" [routerLink]="['delete-room', room.roomID]">Delete</button>
     
-                        </div>                 
-                    </div>
-                </div>
+            <div class="btn-room">
+                <button (click)="showLocation(location.locationID)" id="btn-addRoom" >Add New Room</button>
             </div>
+    
+        </div>
+    
+        <div class="room-rooms">
+            <div class="room-info" *ngFor="let room of roomList;">
+                <div class="room-card" *ngIf="room.locationID==location.locationID && room.isActive">
+                
+                    <div class="room-detail">
+                        <span id="txt">Room #:</span> {{room.roomNumber}}<br>
+                        <span id="txt">Room Type:</span> {{room.type}}<br>
+                        <span id="txt">Gender:</span> {{room.gender}}<br>
+                        <span id="txt">Occupancy: </span><b>{{room.currentOccupancy}}</b> of <b>{{room.maxOccupancy}}</b><br>
+                        <span id="txt">Start Date:</span> {{room.startDate | date:shortDate}} <br>
+                        <span id="txt">End Date: </span> {{room.endDate | date:shortDate}}<br>
+                        <span id="txt">Description: </span><br> <textarea id="des" [ngModel]="room.description" readonly></textarea><br>
+                        <br>
+                        <button id="btn-update" (click)="updateRoom(room.roomID);">Edit</button>
+                        <button id="btn-remove" [routerLink]="['delete-room', room.roomID]">Unlist</button>
 
-            <div class="btn-show">
-                <a href="#" id="btn-showall"> Show all rooms available ></a>
+                    </div>                 
+                </div>
             </div>
         </div>
-
+    </div>
 </div>

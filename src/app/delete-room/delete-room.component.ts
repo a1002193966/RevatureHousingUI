@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -13,35 +13,31 @@ export class DeleteRoomComponent implements OnInit {
   room: any;
   location: any;
 
-  constructor( private route: ActivatedRoute, private roomSrvc: ApiService) { }
+  constructor( private route: ActivatedRoute, private roomSrvc: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.roomID = params.get('roomId');
     });
-   console.log(this.roomID)
    this.getRoomInfo();
   }
 
   getRoomInfo(){
     this.roomSrvc.getRoomById(this.roomID).subscribe(data =>
-      {
-      console.log(data)
+    {
       this.room = data
-      
       this.getLocationInfo(this.room.locationID);
     })
     }
 
     getLocationInfo(id){
       this.roomSrvc.getLocationById(id).subscribe(data => {
-        console.log(data);
         this.location = data
       })
     }
 
     deleteRoom(id){
-      this.roomSrvc.deleteRoom(id).subscribe()
+      this.roomSrvc.deleteRoom(id).subscribe();
+      this.router.navigate(['']);
     }
-
 }

@@ -1,6 +1,5 @@
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { Component, OnInit, ɵConsole } from '@angular/core';
-import { ProviderLocation } from '../../Entities/location';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
@@ -25,6 +24,7 @@ export class HomeComponent implements OnInit {
       //httpclient get method
       this.datasvc.getLocationData().subscribe(data => {
         this.locationList=data;//assign data to location object
+        this.getRoomInfo();
     });
     }
 
@@ -45,7 +45,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
      // get locations belonging to the provider
-     this.getLocationInfo();
-     this.getRoomInfo();
+     setTimeout(()=>{
+      this.getLocationInfo()
+     }, 300)
   }
+  
 }

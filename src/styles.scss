@@ -7,6 +7,7 @@
 body{
     background-color: white;
     font-family: 'Red Hat Display', sans-serif;
+    min-width: 1150px;
 }
 
 footer{
@@ -49,4 +50,8 @@ hr{
 
 .btn-buttons:hover{
     opacity: 1;
+}
+
+.validate{
+    color: hotpink;
 }

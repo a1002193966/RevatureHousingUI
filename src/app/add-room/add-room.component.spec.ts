@@ -1,16 +1,34 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddRoomComponent } from './add-room.component';
 import { By } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, NgControlStatusGroup, FormGroup } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ModuleWithComponentFactories } from '@angular/core';
-import { RouterTestingModule } from '@angular/router/testing';
+import {RouterTestingModule}  from '@angular/router/testing'
+import {Room} from 'src/Entities/room';
+import {RoomData,RoomErrorList} from '../testing/dummyData'
+import { ApiService } from '../api.service';
+import { ApiServiceMock } from '../testing/mock/mock-api-service';
+import { Router } from '@angular/router';
+import { of } from 'rxjs';
+
 
 describe('AddRoomComponent', () => {
+
   let component: AddRoomComponent;
   let fixture: ComponentFixture<AddRoomComponent>;
+  let errorList: string[];
+
+  function formSetup(){
+    component.mygroup.controls['Type'].setValue(RoomData.Type);
+    component.mygroup.controls['MaxOccupancy'].setValue(RoomData.MaxOccupancy);
+    component.mygroup.controls['RoomNumber'].setValue(RoomData.RoomNumber);
+    component.mygroup.controls['Gender'].setValue(RoomData.Gender);
+    component.mygroup.controls['StartDate'].setValue(RoomData.StartDate);
+  }
 
   beforeEach(async(() => {
+
     TestBed.configureTestingModule({
       declarations: [ AddRoomComponent ],
       imports:[
@@ -18,7 +36,12 @@ describe('AddRoomComponent', () => {
         HttpClientTestingModule,
         ReactiveFormsModule,
         RouterTestingModule
+      ],
+      providers: [
+        { provide: ApiService, useClass: ApiServiceMock }
+
       ]
+
     })
     .compileComponents();
   }));
@@ -26,79 +49,190 @@ describe('AddRoomComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AddRoomComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
+    errorList = RoomErrorList.ErrorList;
   });
+//methods
+it('should create', () => {
+  expect(component).toBeTruthy();
+});
+//onNgInit()
+it('should initialize formgourp by calling onNgInit()', () => {
+  formSetup();
+  component.ngOnInit();
 
-
-//mrthods
-//ngOnInit test
-  it('should call getRoomInfo in ngOnInit',()=>{
-  spyOn(component,'getRoomInfo');
+    expect(component.mygroup.controls['Type'].value).toBe("");
+    expect(component.mygroup.controls['MaxOccupancy'].value).toBe("");
+    expect(component.mygroup.controls['RoomNumber'].value).toBe("");
+    expect(component.mygroup.controls['Gender'].value).toBe("");
+    expect(component.mygroup.controls['StartDate'].value).toBe("");
+})
+  //onSubmit
+ it('should  set submitted to true and show all error message', () => {
+  component.onSubmit();
+  expect(component.submitted).toBeTruthy();
   fixture.detectChanges();
-  expect(component.getRoomInfo).toHaveBeenCalled();
- })
+  //check total number of error content showed
+  const errors = fixture.debugElement.queryAll(By.css('div.validate'));
+  expect(errors.length).toBe(5);
+  for (let i = 0; i < errors.length; i++) {
+    expect(errors[i].nativeElement.textContent).toBe(errorList[i]);
+  }
 
- //form should have everything filled out
- it('should check if postRoomData is successful',async(()=>{
+});
+
+//assignLocationId
+it('should assign id',() =>{
+  component.LocationID=null;
+  component.assignLocationId(1);
+  expect(component.LocationID).toEqual(1);
+
+})
+it('should only show type is required', () => {
+  //input some data to form
+  formSetup();
+  component.mygroup.controls['Type'].setValue('');
+
+  component.onSubmit();
   fixture.detectChanges();
-  spyOn(component,'postRoomInfo');
-  expect(component.postRoomInfo).toBeTruthy();
- }));
 
-  // //postRoomInfo doesnt have everything filled out
-  // it('should check if postRoomData is unsuccessful',async(()=>{
-  //   fixture.detectChanges();
-  //   spyOn(component,'postRoomInfo');
-  //   expect(component.postRoomInfo).toBeFalsy();
-  //  }));
+  const error = fixture.debugElement.queryAll(By.css('div.validate'));
+  expect(error.length).toBe(1);
+  expect(error[0].nativeElement.textContent).toBe(errorList[0]);
+});
 
-    //form invalid if empty 
-    it('form invalid if empty',()=>{
-      fixture.detectChanges();
-      console.log(component.mygroup);
-      component.mygroup.controls['Type'].setValue('');
-      component.mygroup.controls['MaxOccupancy'].setValue('');
-      component.mygroup.controls['RoomNumber'].setValue('');
-      component.mygroup.controls['Gender'].setValue('');
-      component.mygroup.controls['StartDate'].setValue('');
-      component.mygroup.controls['EndDate'].setValue('');
-      expect(component.mygroup.valid).toBeFalsy();
-    });
-    
+it('should only show maxoccupancy is required', () => {
+  //input some data to form
+  formSetup();
+  component.mygroup.controls['MaxOccupancy'].setValue('');
 
-      // form valid if everything is filled out 
-       it('form valid',()=>{
-         fixture.detectChanges();
-         component.mygroup.controls['Type'].setValue('room');
-         component.mygroup.controls['MaxOccupancy'].setValue('1');
-         component.mygroup.controls['RoomNumber'].setValue('2');
-         component.mygroup.controls['Gender'].setValue('F');
-         component.mygroup.controls['StartDate'].setValue('2010/01/09');
-         component.mygroup.controls['EndDate'].setValue('2010/02/08');
-         expect(component.mygroup.valid).toBeTruthy();
-       });
+  component.onSubmit();
+  fixture.detectChanges();
+
+  const error = fixture.debugElement.queryAll(By.css('div.validate'));
+  expect(error.length).toBe(1);
+  expect(error[0].nativeElement.textContent).toBe(errorList[1]);
+});
+it('should only show RoomNumber is required', () => {
+  //input some data to form
+  formSetup();
+  component.mygroup.controls['RoomNumber'].setValue('');
+
+  component.onSubmit();
+  fixture.detectChanges();
+
+  const error = fixture.debugElement.queryAll(By.css('div.validate'));
+  expect(error.length).toBe(1);
+  expect(error[0].nativeElement.textContent).toBe(errorList[2]);
+});
+
+it('should only show Gender is required', () => {
+  //input some data to form
+  formSetup();
+  component.mygroup.controls['Gender'].setValue('');
+
+  component.onSubmit();
+  fixture.detectChanges();
+
+  const error = fixture.debugElement.queryAll(By.css('div.validate'));
+  expect(error.length).toBe(1);
+  expect(error[0].nativeElement.textContent).toBe(errorList[3]);
+});
+
+it('should only show StartDate is required', () => {
+  //input some data to form
+  formSetup();
+  component.mygroup.controls['StartDate'].setValue('');
+
+  component.onSubmit();
+  fixture.detectChanges();
+
+  const error = fixture.debugElement.queryAll(By.css('div.validate'));
+  expect(error.length).toBe(1);
+  expect(error[0].nativeElement.textContent).toBe(errorList[4]);
+});
+
+it('it should not have error message and should call postRoomInfo', () => {
+  //input some data to form
+  formSetup();
+spyOn(component,'postRoomInfo');
+  const routerstub = TestBed.get(Router);
+    spyOn(routerstub, 'navigate');
+  component.onSubmit();
+  console.log("data",RoomData);
+  //call postRoomInfo
+  expect(component.postRoomInfo).toHaveBeenCalledWith(RoomData);
+  expect(component.submitted).toBeFalsy();
+
+  expect(routerstub.navigate).toHaveBeenCalledWith(['']);
+
+});
+// // //#endregion
 
 
-      //html
-  
-  // start date is before end date
-    // it('should check if StartDate is before EndDate',async(()=>{
-    //   fixture.detectChanges();
-    //   spyOn(component,'postRoomInfo');
-    //   fixture.debugElement.query(By.css(''))
-    //   expect(component.StartDate).toHaveBeenCalledBefore(component.EndDate);
-    // }));
-  
-  //submit button
-       it('should check on onSubmit method', async(()=>{
-        fixture.detectChanges();
-        spyOn(component,'onSubmit');
-        fixture.debugElement.query(By.css('input[type=submit]'));
-        fixture.debugElement.query(By.css('input[type=submit]')).nativeElement.click();
-        expect(component.onSubmit).toHaveBeenCalledTimes(1);
-      }));
+//PostRoomInfo
+it('should post room info into database', () => {
+  //create room object
+  const room = new Room();
+  room.Type = RoomData.Type;
+  room.MaxOccupancy = RoomData.MaxOccupancy;
+  room.RoomNumber = RoomData.RoomNumber;
+  room.Gender = RoomData.Gender;
+  room.StartDate = RoomData.StartDate;
+
+  component.postRoomInfo(room);
+
+  //formgroup reset
+  expect(component.mygroup.controls['Type'].value).toEqual(null);
+  expect(component.mygroup.controls['MaxOccupancy'].value).toBe(null);
+  expect(component.mygroup.controls['RoomNumber'].value).toBe(null);
+  expect(component.mygroup.controls['Gender'].value).toBe(null);
+  expect(component.mygroup.controls['StartDate'].value).toBe(null);
+
+})
+// //need change
+// it('should get error from post request', () => {
+//   //create room object
+//   formSetup();
+//   const room = new Room();
+//   room.Type = RoomData.Type;
+//   room.MaxOccupancy = RoomData.MaxOccupancy;
+//   room.RoomNumber = RoomData.RoomNumber;
+//   room.Gender = RoomData.Gender;
+//   room.StartDate = RoomData.StartDate;
+//    //get service first
+//    const xService = fixture.debugElement.injector.get(ApiService);
+//    xService['apiError']=true;
+//    spyOn(xService,'postRoomData').and.returnValue(of());
+//    component.postRoomInfo(room);
+//    room.RoomID=1;
+//     //form didn't reset
+//     expect(component.mygroup.controls['Type'].value).toBe(RoomData.Type);
+//     expect(component.mygroup.controls['MaxOccupancy'].value).toBe(RoomData.MaxOccupancy);
+//     expect(component.mygroup.controls['RoomNumber'].value).toBe(RoomData.RoomNumber);
+//     expect(component.mygroup.controls['Gender'].value).toBe(RoomData.Gender);
+//     expect(component.mygroup.controls['StartDate'].value).toBe(RoomData.StartDate);
+//     //window alert
+//     expect(xService.postRoomData).toHaveBeenCalledWith(room);
+// })
+
+
+//  //html
+//  it('click submit button should call onSubmit()', () => {
+//   spyOn(component, 'onSubmit');
+//   const button = fixture.debugElement.query(By.css('button[type=submit]')).nativeElement;
+//   button.click();
+//   expect(component.onSubmit).toHaveBeenCalled();
+// })
+
+
  
 
 
+
+
+
   
+
  });
 
