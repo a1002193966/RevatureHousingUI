@@ -21,13 +21,14 @@ export const LocationErrorList = {
 
 export class MockProvider extends ProviderLocation{
     LocationID= 3; 
-    Address= '123 Main Street';
-    City= 'Queens'; 
-    State= 'New York';
-    ZipCode= '11111';
-    TrainingCenter= 'Queens College';
+    address= '123 Main Street';
+    city= 'Queens'; 
+    state= 'NY';
+    zipCode= '11111';
+    trainingCenter= 'Queens College';
     ProviderID= 1;
 }
+
 export class MockRoom extends Room{
      
 
@@ -46,3 +47,36 @@ export class MockRoom extends Room{
     //Foreign Key
     LocationID = 1;
 }
+
+
+const location1 = new MockProvider();
+const location2 = {
+    LocationID: 4,
+    address:'65 Kissena',
+    city: 'New York',
+    state: 'NY',
+    zipCode: '10000',
+    trainingCenter: 'Queens College',
+    ProviderID: 1
+}
+export const mockLocationList = [{location1}, {location2}]
+
+const room1 = new MockRoom();
+const room2= {
+     //Primary Key
+     RoomID : 2,
+     Type : 'dorm',
+     MaxOccupancy : 4,
+     RoomNumber : '102',
+     Gender : 'female',
+     StartDate : new Date('2019/08/10'),
+     EndDate :  new Date('2019/11/11'),
+     CurrentOccupancy : 2,
+     IsActive : true,
+     Description : 'this is a mock room',
+ 
+     //Foreign Key
+     LocationID : 1
+}
+export const mockRoomList = [{room1}, {room2}]
+
