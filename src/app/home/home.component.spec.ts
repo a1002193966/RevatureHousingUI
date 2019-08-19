@@ -46,7 +46,6 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-<<<<<<< HEAD
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -82,9 +81,5 @@ describe('HomeComponent', () => {
     expect(global.setTimeout).toHaveBeenCalled(); 
      
   });
-=======
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
->>>>>>> 06cf0440a67a8cf8ab5637a4556b31815879f36d
+
 });
