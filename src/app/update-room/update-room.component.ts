@@ -3,7 +3,6 @@ import { ApiService } from '../api.service';
 import { Room } from 'src/Entities/room';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-update-room',
@@ -23,7 +22,7 @@ export class UpdateRoomComponent implements OnInit {
   MO: number;
   rm = new Room();
 
-  constructor(private datasvc: ApiService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router, private datePipe: DatePipe) { 
+  constructor(private datasvc: ApiService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router) { 
     this.route.params.subscribe(params => this.assignRoomId(params['id']));
   }
 
