@@ -111,8 +111,6 @@ export class MockRoom extends Room{
     LocationID = 1;
 }
 
-<<<<<<< HEAD
-
 const location1 = new MockProvider();
 const location2 = {
     LocationID: 4,
@@ -144,7 +142,6 @@ const room2= {
 }
 export const mockRoomList = [{room1}, {room2}]
 
-=======
 export const RoomObject={
 
      
@@ -165,4 +162,3 @@ export const RoomObject={
     locationID : 1
 
 }
->>>>>>> 233da74f4b2ab2a6a67559b69f239dd950f6bcad
