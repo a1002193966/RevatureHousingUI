@@ -172,58 +172,59 @@ spyOn(component,'postRoomInfo');
 
 //PostRoomInfo
 it('should post room info into database', () => {
-  //create room object
+  //create providerLocation object
   const room = new Room();
   room.Type = RoomData.Type;
   room.MaxOccupancy = RoomData.MaxOccupancy;
   room.RoomNumber = RoomData.RoomNumber;
   room.Gender = RoomData.Gender;
   room.StartDate = RoomData.StartDate;
+  room.EndDate = RoomData.EndDate;
+  room.Description = RoomData.Description;
 
-  component.postRoomInfo(room);
+ // component.postRoomInfo(room);
 
-  //formgroup reset
-  expect(component.mygroup.controls['Type'].value).toEqual(null);
-  expect(component.mygroup.controls['MaxOccupancy'].value).toEqual(null);
-  expect(component.mygroup.controls['RoomNumber'].value).toEqual(null);
-  expect(component.mygroup.controls['Gender'].value).toEqual(null);
-  expect(component.mygroup.controls['StartDate'].value).toEqual(null);
+ expect(component.postRoomInfo(room));
 
 })
-// //need change
-// it('should get error from post request', () => {
-//   //create room object
-//   formSetup();
-//   const room = new Room();
-//   room.Type = RoomData.Type;
-//   room.MaxOccupancy = RoomData.MaxOccupancy;
-//   room.RoomNumber = RoomData.RoomNumber;
-//   room.Gender = RoomData.Gender;
-//   room.StartDate = RoomData.StartDate;
-//    //get service first
-//    const xService = fixture.debugElement.injector.get(ApiService);
-//    xService['apiError']=true;
-//    spyOn(xService,'postRoomData').and.returnValue(of());
-//    component.postRoomInfo(room);
-//    room.RoomID=1;
-//     //form didn't reset
-//     expect(component.mygroup.controls['Type'].value).toBe(RoomData.Type);
-//     expect(component.mygroup.controls['MaxOccupancy'].value).toBe(RoomData.MaxOccupancy);
-//     expect(component.mygroup.controls['RoomNumber'].value).toBe(RoomData.RoomNumber);
-//     expect(component.mygroup.controls['Gender'].value).toBe(RoomData.Gender);
-//     expect(component.mygroup.controls['StartDate'].value).toBe(RoomData.StartDate);
-//     //window alert
-//     expect(xService.postRoomData).toHaveBeenCalledWith(room);
-// })
 
 
-//  //html
-//  it('click submit button should call onSubmit()', () => {
-//   spyOn(component, 'onSubmit');
-//   const button = fixture.debugElement.query(By.css('button[type=submit]')).nativeElement;
-//   button.click();
-//   expect(component.onSubmit).toHaveBeenCalled();
-// })
+it('should get error from post request', () => {
+  //form setup for testing reset() wouldn't be called
+  formSetup();
+  //create providerLocation object
+  const room = new Room();
+  room.Type = RoomData.Type;
+  room.MaxOccupancy = RoomData.MaxOccupancy;
+  room.RoomNumber = RoomData.RoomNumber;
+  room.Gender = RoomData.Gender;
+  room.StartDate = RoomData.StartDate;
+  room.EndDate = RoomData.EndDate;
+  room.Description = RoomData.Description;
+  //get service first
+  const xService = fixture.debugElement.injector.get(ApiService);
+  xService['apiError']=true;
+  spyOn(xService,'postRoomData').and.returnValue(of());
+  component.postRoomInfo(room);
+  room.LocationID=1;
+  //form didn't reset
+  expect(component.mygroup.controls['Type'].value).toBe(RoomData.Type);
+  expect(component.mygroup.controls['MaxOccupancy'].value).toBe(RoomData.MaxOccupancy);
+  expect(component.mygroup.controls['RoomNumber'].value).toBe(RoomData.RoomNumber);
+  expect(component.mygroup.controls['Gender'].value).toBe(RoomData.Gender);
+  expect(component.mygroup.controls['StartDate'].value).toBe(RoomData.StartDate);
+
+  //window alert
+  expect(xService.postRoomData).toHaveBeenCalledWith(room);
+})
+
+ //html
+ it('click submit button should call onSubmit()', () => {
+  spyOn(component, 'onSubmit');
+  const button = fixture.debugElement.query(By.css('button[type=submit]')).nativeElement;
+  button.click();
+  expect(component.onSubmit).toHaveBeenCalled();
+})
 
 
  
