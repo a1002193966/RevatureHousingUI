@@ -1,7 +1,7 @@
 
 <div class="show-head">
     <h1>Display All Rooms By Location</h1>
-    <button (click)="showLocation()" id="btn-addRoom" >Add New Room</button>
+    <button [disabled]="locationID==null" (click)="showLocation()" id="btn-addRoom" >Add New Room</button>
 </div>
 
 <div class="show-body">
