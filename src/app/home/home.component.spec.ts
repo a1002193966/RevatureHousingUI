@@ -71,15 +71,15 @@ describe('HomeComponent', () => {
     component.updateRoom(1);
     expect(router.navigate).toHaveBeenCalledWith(['update-room', 1])
   }));
-  it ('ngOnInit should call setTimeout()', () => {
-   spyOn(component, 'ngOnInit');
-   spyOn(global, 'setTimeout')
-    component.ngOnInit();
-    setTimeout(()=>{
-      this.getLocationInfo()
-     }, 300);
-    expect(global.setTimeout).toHaveBeenCalled(); 
+  // it ('ngOnInit should call setTimeout()', () => {
+  //  spyOn(component, 'ngOnInit');
+  //  spyOn(global, 'setTimeout')
+  //   component.ngOnInit();
+  //   setTimeout(()=>{
+  //     this.getLocationInfo()
+  //    }, 300);
+  //   expect(global.setTimeout).toHaveBeenCalled(); 
      
-  });
+  // });
 
 });

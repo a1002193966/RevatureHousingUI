@@ -79,6 +79,7 @@ export class ApiServiceMock {
 
     if(!this.apiError)
 
+
       return of(mockLocationList);
 
     else{
@@ -93,9 +94,9 @@ export class ApiServiceMock {
 
     if(!this.apiError)
 
-      return of(mockRoomList);
 
-    else{
+      return of(mockRoomList);
+          else{
 
       return throwError(new Error("failed"));
 
@@ -129,18 +130,14 @@ export class ApiServiceMock {
     return of();
   }
 
-
   getRoomsByLocationId(id:number){
-
     if(!this.apiError)
-
       return of(mockRoomList);
-
     else
-
       return of();
-
   }
+
+ 
 
 
 
