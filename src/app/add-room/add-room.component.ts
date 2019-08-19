@@ -43,7 +43,7 @@ export class AddRoomComponent implements OnInit {
   }
 
   assignLocationId(id: number) {
-    this.LocationID = id;
+    this.LocationID = id; 
   }
 
  //Get RoomInfo working: Test It 
@@ -67,10 +67,7 @@ export class AddRoomComponent implements OnInit {
     }, error => {
       //httpclient post error handling 
       console.log("Error", error);
-    } )
-
-
-    //console.log(value);
+    })
   }
 
 
@@ -78,7 +75,6 @@ export class AddRoomComponent implements OnInit {
     //add room submit
     this.submitted = true;
        if(this.mygroup.invalid){
-         //console.log("room Invalid data");
          return;
        }else
        {
@@ -89,9 +85,6 @@ export class AddRoomComponent implements OnInit {
          this.mygroup.reset();
          this.submitted = false;
          this.router.navigate(['']); // redirect to home
-
        }
-      
   }
-
 }

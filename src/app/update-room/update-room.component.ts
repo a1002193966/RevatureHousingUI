@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Room } from 'src/Entities/room';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
-import { DatePipe } from '@angular/common';
+import { Validators, FormGroup, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-update-room',
@@ -23,7 +22,7 @@ export class UpdateRoomComponent implements OnInit {
   MO: number;
   rm = new Room();
 
-  constructor(private datasvc: ApiService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router, private datePipe: DatePipe) { 
+  constructor(private datasvc: ApiService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router) { 
     this.route.params.subscribe(params => this.assignRoomId(params['id']));
   }
 
@@ -59,8 +58,7 @@ export class UpdateRoomComponent implements OnInit {
       this.rm.StartDate = Object.values(data)[5] ;
       this.rm.EndDate = Object.values(data)[6];
       this.rm.LocationID = Object.values(data)[11];
-      this.rm.Description = Object.values(data)[9];
-      //  =  new Date(this.datePipe.transform(this.rm.StartDate, 'yyyy-MM-dd'));
+      this.rm.Description = Object.values(data)[9]
     }); 
 }
 

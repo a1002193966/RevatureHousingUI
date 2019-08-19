@@ -8,9 +8,12 @@ import { ApiService } from '../api.service';
 import { ApiServiceMock } from '../testing/mock/mock-api-service';
 import { UpdateRoomErrorList, RoomData } from '../testing/dummyData';
 import { By } from '@angular/platform-browser';
-import { formatDate } from '@angular/common';
+import { formatDate, DatePipe} from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
+import { Router } from '@angular/router';
+
+
 
 describe('UpdateRoomComponent', () => {
   let component: UpdateRoomComponent;
@@ -19,12 +22,12 @@ describe('UpdateRoomComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateRoomComponent ],
+      declarations: [ UpdateRoomComponent],
       imports:[
         RouterTestingModule,
         FormsModule,
         HttpClientTestingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
       ],
       providers: [
         { provide: ApiService, useClass: ApiServiceMock },
@@ -45,10 +48,21 @@ describe('UpdateRoomComponent', () => {
     errorList = UpdateRoomErrorList.ErrorList;
   });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
+//onNgInit()
+it('should initialize formgroup by calling onNgInit()', () => {
+  
+  component.ngOnInit();
+
+    expect(component.mygroup.controls['Type'].value).toBe("");
+    expect(component.mygroup.controls['MaxOccupancy'].value).toBe("");
+    expect(component.mygroup.controls['RoomNumber'].value).toBe("");
+    expect(component.mygroup.controls['Gender'].value).toBe("");
+    expect(component.mygroup.controls['StartDate'].value).toBe("");
+})
 //  //#region html
 
 //  it('click update button should call updateroom with roomID to', () => {
@@ -78,14 +92,23 @@ describe('UpdateRoomComponent', () => {
 //     expect(component.mygroup.controls['StartDate'].value).toBe("");
 // })
 
+
+//assignRoomId
+// it('should assign id',() =>{
+//   component.roomId=null;
+//   component.assignRoomId(1);
+//   expect(component.roomId).toEqual(1);
+
+// })
+
 //  //getRoomInfo()
 //  it('should assign value to room',()=>{
 //   //reset value
 //   component.room=null;
 //   component.getRoomInfo();
 //   expect(component.room).toEqual(RoomObject);
- 
-// })
+
+//  })
 
 // it('should not assign value to room',()=>{
 //   //reset room
@@ -97,19 +120,25 @@ describe('UpdateRoomComponent', () => {
 //   expect(component.room).toBeFalsy();
 // })
 
+// updateRoomInfo
+// it('should update room info'),() =>{
+//   component.updateRoomData(1);
+//   expect(component.room).toEqual(RoomObject);
+// }
 // it('should  set submitted to true and show all error message', () => {
 //   component.onSubmit();
 //   expect(component.submitted).toBeTruthy();
 //   component.mygroup.controls.roomID
-//   //change in html
+//   change in html
 //   fixture.detectChanges();
 //   const error = fixture.debugElement.queryAll(By.css('div.validate'));
-//   //check total number of error content showed
+//   check total number of error content showed
 //   expect(error.length).toBe(9);
 
 //   for (let i = 0; i < error.length; i++) {
 //     expect(error[i].nativeElement.textContent).toBe(errorList[i]);
 //   }
 
-// });
+// })
+
  });
