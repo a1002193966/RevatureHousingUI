@@ -8,7 +8,7 @@ import { ApiService } from '../api.service';
 import { ApiServiceMock } from '../testing/mock/mock-api-service';
 import { UpdateRoomErrorList, RoomData } from '../testing/dummyData';
 import { By } from '@angular/platform-browser';
-import { formatDate } from '@angular/common';
+import { formatDate, DatePipe} from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
@@ -22,7 +22,7 @@ describe('UpdateRoomComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateRoomComponent ],
+      declarations: [ UpdateRoomComponent],
       imports:[
         RouterTestingModule,
         FormsModule,
