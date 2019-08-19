@@ -38,14 +38,14 @@ export class ApiServiceMock {
   }
   getLocationData(){
     if(!this.apiError)
-      return (mockLocationList);
+      return of(mockLocationList);
     else{
       return throwError(new Error("failed") );
     }
   }
   getRoomData(){
     if(!this.apiError)
-      return (mockRoomList);
+      return of(mockRoomList);
     else{
       return throwError(new Error("failed"));
     }
@@ -62,5 +62,11 @@ export class ApiServiceMock {
     return of();
   }
 
+  getRoomsByLocationId(id:number){
+    if(!this.apiError)
+      return of(mockRoomList);
+    else
+      return of();
+  }
 
 }
