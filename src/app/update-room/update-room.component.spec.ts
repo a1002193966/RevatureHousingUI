@@ -11,6 +11,9 @@ import { By } from '@angular/platform-browser';
 import { formatDate, DatePipe} from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
+import { Router } from '@angular/router';
+
+
 
 describe('UpdateRoomComponent', () => {
   let component: UpdateRoomComponent;
@@ -25,7 +28,6 @@ describe('UpdateRoomComponent', () => {
         FormsModule,
         HttpClientTestingModule,
         ReactiveFormsModule,
-        DatePipe
       ],
       providers: [
         { provide: ApiService, useClass: ApiServiceMock },
@@ -46,10 +48,21 @@ describe('UpdateRoomComponent', () => {
     errorList = UpdateRoomErrorList.ErrorList;
   });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
+//onNgInit()
+it('should initialize formgroup by calling onNgInit()', () => {
+  
+  component.ngOnInit();
+
+    expect(component.mygroup.controls['Type'].value).toBe("");
+    expect(component.mygroup.controls['MaxOccupancy'].value).toBe("");
+    expect(component.mygroup.controls['RoomNumber'].value).toBe("");
+    expect(component.mygroup.controls['Gender'].value).toBe("");
+    expect(component.mygroup.controls['StartDate'].value).toBe("");
+})
 //  //#region html
 
 //  it('click update button should call updateroom with roomID to', () => {
