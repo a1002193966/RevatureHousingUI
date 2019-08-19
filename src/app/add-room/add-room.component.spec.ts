@@ -183,7 +183,7 @@ it('should post room info into database', () => {
   component.postRoomInfo(room);
 
   //formgroup reset
-  expect(component.mygroup.controls['Type'].value).toEqual(null);
+  expect(component.mygroup.controls['Type'].value).toBe(null);
   expect(component.mygroup.controls['MaxOccupancy'].value).toBe(null);
   expect(component.mygroup.controls['RoomNumber'].value).toBe(null);
   expect(component.mygroup.controls['Gender'].value).toBe(null);
