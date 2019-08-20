@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Pipe } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Room } from 'src/Entities/room';
@@ -20,7 +19,7 @@ import { MsAdalAngular6Module,AuthenticationGuard } from 'microsoft-adal-angular
 import { environment } from '../environments/environment';
 import { AddLocationComponent } from './add-location/add-location.component';
 import { ShowByLocationComponent } from './show-by-location/show-by-location.component';
-import { DatePipe } from '@angular/common';
+import { DatePipe, CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -41,18 +40,9 @@ import { DatePipe } from '@angular/common';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),//withConfig: remove warning message when using formcontrolname and ngModel
-    StickyNavModule,
-    MsAdalAngular6Module.forRoot({
-      tenant: environment.tenant,
-      clientId: environment.clientId,
-      redirectUri: window.location.origin,
-      endpoints: environment.endpoints,
-      navigateToLoginRequestUrl: false,
-      extraQueryParameter: environment.extraQueryParameter,
-      cacheLocation: 'localStorage'
-    })
+    StickyNavModule
   ],
-  providers: [Room, Provider, ProviderLocation, ApiService, AuthenticationGuard, DatePipe],
+  providers: [Room, Provider, ProviderLocation, ApiService, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

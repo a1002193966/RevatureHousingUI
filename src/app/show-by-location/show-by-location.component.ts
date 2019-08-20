@@ -19,7 +19,7 @@ export class ShowByLocationComponent implements OnInit {
   selectOption(id: any)
   {
     this.locationID = id;
-    console.log("locationID");
+    console.log("Test");
     console.log(id);
     this.getRoomInfoByLocation();
   }
@@ -34,7 +34,6 @@ export class ShowByLocationComponent implements OnInit {
   getRoomInfoByLocation(){
     this.datasvc.getRoomsByLocationId(this.locationID).subscribe(data=>{
       this.roomList=data;
-      // console.log(data);
     })
   }
 

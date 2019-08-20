@@ -13,11 +13,8 @@ export class HomeComponent implements OnInit {
   locationList: object;
   roomList: object;
   
-    constructor(private adalSvc: MsAdalAngular6Service, private datasvc: ApiService, private router: Router) {
-      console.log(this.adalSvc.userInfo);
-      this.adalSvc.acquireToken('https://graph.microsoft.com').subscribe((token: string) => {
-        console.log(token);
-      });
+    constructor(private datasvc: ApiService, private router: Router) {
+
     }
     
     getLocationInfo(){
@@ -32,7 +29,6 @@ export class HomeComponent implements OnInit {
     {
       this.datasvc.getRoomData().subscribe(data => {
         this.roomList=data;
-        console.log(data);
     });
     }
     

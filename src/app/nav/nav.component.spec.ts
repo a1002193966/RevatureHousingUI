@@ -45,9 +45,11 @@ describe('NavComponent', () => {
   });
 
   it('can get RouterLinks from page', () => {
-    expect(routerLinks.length).toBe(2, 'should have 2 routerLinks');
+    expect(routerLinks.length).toBe(4, 'should have 4 routerLinks');
     expect(routerLinks[0].linkParams).toBe('/');
-    expect(routerLinks[1].linkParams).toBe('./login');
+    expect(routerLinks[1].linkParams).toBe('/');
+    expect(routerLinks[2].linkParams).toBe('./show-by-location');
+    expect(routerLinks[3].linkParams).toBe('./login');
   });
 
   it('click on image should redirect to home page', () => {
@@ -60,10 +62,37 @@ describe('NavComponent', () => {
     expect(homeLink.navigatedTo).toBe('/');
   });
 
+  it('click on ShowAll should redirect to home page', () => {
+    const homeLinkDe = linkDes[1];
+    const homeLink = routerLinks[1];
+
+    expect(homeLink.navigatedTo).toBeNull('should not have navigated yet');
+    homeLinkDe.triggerEventHandler('click', null);
+    fixture.detectChanges();
+    expect(homeLink.navigatedTo).toBe('/');
+  });
+
+  it('click on show by location should redirect to show by location page', () => {
+    const homeLinkDe = linkDes[2];
+    const homeLink = routerLinks[2];
+
+    expect(homeLink.navigatedTo).toBeNull('should not have navigated yet');
+    homeLinkDe.triggerEventHandler('click', null);
+    fixture.detectChanges();
+    expect(homeLink.navigatedTo).toBe('./show-by-location');
+  });
+
+  
+
+  it(' href of about us should be "https://revature.com/our-story/"', () => {
+    const about = fixture.debugElement.queryAll(By.css('a'));
+    
+    expect(about[2].nativeElement.href).toEqual("https://revature.com/our-story/");
+  });
 
   it('click on anchor tag should redirect to login page', () => {
-    const loginLinkDe = linkDes[1];
-    const loginLink = routerLinks[1];
+    const loginLinkDe = linkDes[3];
+    const loginLink = routerLinks[3];
 
     expect(loginLink.navigatedTo).toBeNull('should not have navigated yet');
 
@@ -71,11 +100,5 @@ describe('NavComponent', () => {
     fixture.detectChanges();
 
     expect(loginLink.navigatedTo).toBe('./login');
-  });
-
-  it(' href of about us should be "https://revature.com/our-story/"', () => {
-    const about = fixture.debugElement.query(By.css('a')).nativeElement;
-    // expect(location.href).toEqual("https://revature.com/our-story/");
-    expect(about.href).toEqual("https://revature.com/our-story/");
   });
 });

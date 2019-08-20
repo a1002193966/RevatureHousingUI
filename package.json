@@ -2,15 +2,11 @@
   "name": "housingxyz",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
     "build": "ng build --configuration=production",
     "build:dev": "ng build",
     "inspect": "sonar-scanner -Dsonar.login=$SONAR_LOGIN -Dproject.settings=../.azure/sonarcloudup.properties",
-    "test": "ng test --browsers=ChromiumHeadless --code-coverage --watch=false",
-    "test:dev": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "test": "ng test --browsers=FirefoxHeadless --code-coverage --watch=false",
+    "test:dev": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +19,7 @@
     "@angular/platform-browser-dynamic": "~8.1.0",
     "@angular/router": "~8.1.0",
     "microsoft-adal-angular6": "^1.3.0",
+    "msal": "^1.1.3",
     "ng2-sticky-nav": "^6.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
@@ -30,7 +27,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.801.0",
-    "@angular/cli": "^8.1.3",
+    "@angular/cli": "~8.1.0",
     "@angular/compiler-cli": "~8.1.0",
     "@angular/language-service": "~8.1.0",
     "@types/jasmine": "~3.3.8",
@@ -40,8 +37,9 @@
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
-    "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-chrome-launcher": "~2.2.0",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.0",
