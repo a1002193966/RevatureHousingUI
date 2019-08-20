@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
      // get locations belonging to the provider
      setTimeout(()=>{
       this.getLocationInfo()
-     }, 100)
+     }, 500)
   }
   
 }

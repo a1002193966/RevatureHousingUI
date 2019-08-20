@@ -9,7 +9,7 @@
     <div class="nav-bar" ngStickyNav>
         <select class="dropdown" >
             <option disabled selected >Select a location</option>
-            <option id="id" *ngFor="let location of locationList;" (click)="selectOption(location.locationID)">{{location.address}}, {{location.city}}, {{location.state}} {{location.zipCode}}</option>
+            <option id="id" *ngFor="let location of locationList;" (click)="selectOption(location.locationID)">  {{location.address}}, {{location.city}}, {{location.state}} {{location.zipCode}}</option>
         </select>
     </div>
         

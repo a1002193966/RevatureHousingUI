@@ -19,6 +19,8 @@ export class ShowByLocationComponent implements OnInit {
   selectOption(id: any)
   {
     this.locationID = id;
+    console.log("locationID");
+    console.log(id);
     this.getRoomInfoByLocation();
   }
 
