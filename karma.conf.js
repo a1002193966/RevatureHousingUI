@@ -7,7 +7,7 @@ module.exports = function (config) {
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
-      require('karma-firefox-launcher'),
+      require('karma-Chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
@@ -20,20 +20,20 @@ module.exports = function (config) {
       reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true
     },
-    customLaunchers: {
-      FirefoxHeadless: {
-        base: 'Firefox',
-        flags: [
-          '-headless'
-        ]
-      }
-    },
+    // customLaunchers: {
+    //   FirefoxHeadless: {
+    //     base: 'Firefox',
+    //     flags: [
+    //       '-headless'
+    //     ]
+    //   }
+    // },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Firefox'],
+    browsers: ['Chrome'],
     singleRun: false,
     restartOnFileChange: true
   });

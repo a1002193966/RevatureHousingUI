@@ -65,4 +65,12 @@ describe('ShowByLocationComponent', () => {
     component.updateRoom(1);
     expect(routerstub.navigate).toHaveBeenCalledWith(['update-room', 1]);
   })
+
+  it('should navigate to add-room with id',()=>{
+    const routerstub = TestBed.get(Router);
+    spyOn(routerstub, 'navigate');
+    component.locationID="1";
+    component.showLocation();
+    expect(routerstub.navigate).toHaveBeenCalledWith(['/add-room', 1]);
+  })
 });
