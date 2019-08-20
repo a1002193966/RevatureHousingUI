@@ -18,8 +18,9 @@ const httpOptions = {
 
 export class ApiService {
 
-  private _locationUrl:string="http://localhost:55749/api/locations/";
-  private _RoomUrl:string="http://localhost:55749/api/rooms/";
+  private _locationUrl:string="http://localhost:57249/api/locations/";
+  private _RoomUrl:string="http://localhost:57249/api/rooms/";
+
   
 
   constructor(private http : HttpClient) { }

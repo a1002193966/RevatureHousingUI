@@ -40,16 +40,7 @@ import { DatePipe, CommonModule } from '@angular/common';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),//withConfig: remove warning message when using formcontrolname and ngModel
-    StickyNavModule,
-    MsAdalAngular6Module.forRoot({
-      tenant: environment.tenant,
-      clientId: environment.clientId,
-      redirectUri: window.location.origin,
-      endpoints: environment.endpoints,
-      navigateToLoginRequestUrl: false,
-      extraQueryParameter: environment.extraQueryParameter,
-      cacheLocation: 'localStorage'
-    })
+    StickyNavModule
   ],
   providers: [Room, Provider, ProviderLocation, ApiService, AuthenticationGuard],
   bootstrap: [AppComponent]
