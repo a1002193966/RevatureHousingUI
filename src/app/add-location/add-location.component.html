@@ -37,7 +37,7 @@
                 <!--validation-->
                 <div *ngIf="submitted && locationGroup.controls.State.errors">
                     <div class = "validate" *ngIf="locationGroup.controls.State.errors.required">State is required</div>
-                    <div class = "validate" *ngIf="locationGroup.controls.State.errors.minlength || locationGroup.controls.State.maxlength">Invalid State</div>
+                    <div class = "validate" *ngIf="locationGroup.controls.State.errors.minlength || locationGroup.controls.State.errors.maxlength">Invalid State</div>
                 </div>
             </div>
             <br>
