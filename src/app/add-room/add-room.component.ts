@@ -19,6 +19,7 @@ export class AddRoomComponent implements OnInit {
   submitted: boolean = false;
   success: boolean = false;
   StartDate: Date;
+  EndDate: Date;
   LocationID: number;
   
  
